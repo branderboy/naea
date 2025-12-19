@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NAEA 2026 | Only One Has Your Back</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #1a365d;
+      --navy-dark: #0f2341;
+      --teal: #2dd4bf;
+      --teal-dark: #14b8a6;
+      --gold: #f59e0b;
+      --white: #ffffff;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-400: #9ca3af;
+      --gray-500: #6b7280;
+      --gray-600: #4b5563;
+      --gray-800: #1f2937;
+      --success: #10b981;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; color: var(--gray-800); line-height: 1.6; background: var(--white); }
+    .top-bar { background: var(--gold); color: var(--navy-dark); text-align: center; padding: 0.75rem; font-size: 0.875rem; font-weight: 700; }
+    header { background: var(--white); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--gray-200); position: sticky; top: 0; z-index: 1000; }
+    .logo img { height: 48px; }
+    .header-label { color: var(--gray-500); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+    .hero { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%); padding: 4rem 5%; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: -200px; right: -200px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(45,212,191,0.15) 0%, transparent 70%); border-radius: 50%; }
+    .hero-container { max-width: 900px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+    .hero-badge { display: inline-flex; background: var(--gold); color: var(--navy-dark); padding: 0.5rem 1.25rem; border-radius: 50px; font-size: 0.8rem; font-weight: 700; margin-bottom: 1.5rem; }
+    .hero h1 { font-family: 'Poppins', sans-serif; font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; color: var(--white); line-height: 1.2; margin-bottom: 1.25rem; }
+    .hero h1 span { color: var(--teal); }
+    .hero p { font-size: 1.1rem; color: rgba(255,255,255,0.85); max-width: 700px; margin: 0 auto; }
+    section { padding: 4rem 5%; }
+    .section-container { max-width: 1000px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 2.5rem; }
+    .section-header h2 { font-family: 'Poppins', sans-serif; font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 700; color: var(--navy-dark); margin-bottom: 0.75rem; }
+    .section-header p { font-size: 1rem; color: var(--gray-600); max-width: 600px; margin: 0 auto; }
+
+    /* Alignment Section */
+    .alignment-section { background: var(--white); border-bottom: 1px solid var(--gray-200); }
+    .alignment-intro { max-width: 800px; margin: 0 auto 2.5rem; text-align: center; }
+    .alignment-intro p { font-size: 1.05rem; color: var(--gray-700); line-height: 1.8; }
+    .alignment-intro p strong { color: var(--navy); }
+    .alignment-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 2rem; }
+    @media (max-width: 868px) { .alignment-grid { grid-template-columns: 1fr; } }
+    .alignment-card { background: var(--gray-50); border-radius: 12px; padding: 1.5rem; border-left: 4px solid var(--teal); }
+    .alignment-card h3 { font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 700; color: var(--navy-dark); margin-bottom: 0.5rem; }
+    .alignment-card .purpose { font-size: 0.85rem; color: var(--teal-dark); font-weight: 600; margin-bottom: 0.75rem; }
+    .alignment-card p { font-size: 0.9rem; color: var(--gray-600); line-height: 1.6; }
+    .alignment-card .result { font-size: 0.85rem; color: var(--navy); font-weight: 600; margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--gray-200); }
+    .alignment-note { background: var(--navy); border-radius: 10px; padding: 1.5rem; text-align: center; }
+    .alignment-note p { color: var(--white); font-size: 1rem; margin: 0; }
+    .alignment-note p strong { color: var(--teal); }
+
+    /* Stats Bar */
+    .stats-bar { background: var(--gray-50); padding: 2.5rem 5%; border-bottom: 1px solid var(--gray-200); }
+    .stats-bar-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: center; }
+    @media (max-width: 768px) { .stats-bar-inner { grid-template-columns: repeat(2, 1fr); } }
+    .stat-number { font-family: 'Poppins', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--teal-dark); line-height: 1; }
+    .stat-label { color: var(--gray-500); font-size: 0.8rem; margin-top: 0.5rem; }
+
+    /* Built Section */
+    .built-section { background: var(--white); }
+    .built-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+    @media (max-width: 968px) { .built-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 568px) { .built-grid { grid-template-columns: 1fr; } }
+    .built-card { background: var(--gray-50); padding: 1.5rem; border-radius: 10px; border-top: 3px solid var(--teal); }
+    .built-card h3 { font-family: 'Poppins', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--navy-dark); margin-bottom: 0.5rem; }
+    .built-card p { font-size: 0.85rem; color: var(--gray-600); }
+
+    /* Comparison Section */
+    .comparison-section { background: var(--gray-50); }
+    .comparison-table-wrapper { background: var(--white); border-radius: 12px; overflow: hidden; border: 1px solid var(--gray-200); }
+    .comparison-table { width: 100%; border-collapse: collapse; }
+    .comparison-table thead { background: var(--gray-50); }
+    .comparison-table th { padding: 1.25rem 1rem; text-align: left; font-family: 'Poppins', sans-serif; font-weight: 600; color: var(--gray-600); font-size: 0.85rem; border-bottom: 2px solid var(--gray-200); }
+    .comparison-table th:first-child { padding-left: 1.5rem; }
+    .comparison-table th:last-child { background: var(--teal); color: var(--navy-dark); text-align: center; font-weight: 700; }
+    .comparison-table th.old-way { text-align: center; }
+    .comparison-table td { padding: 1rem; border-bottom: 1px solid var(--gray-100); font-size: 0.9rem; color: var(--gray-700); }
+    .comparison-table td:first-child { padding-left: 1.5rem; font-weight: 500; }
+    .comparison-table td:nth-child(2) { text-align: center; }
+    .comparison-table td:last-child { text-align: center; background: rgba(45,212,191,0.08); }
+    .table-check { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; background: var(--teal); border-radius: 50%; }
+    .table-check svg { width: 12px; height: 12px; color: var(--white); }
+    .table-x { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; background: var(--gray-200); border-radius: 50%; }
+    .table-x svg { width: 10px; height: 10px; color: var(--gray-400); }
+    .comparison-table tfoot { background: var(--navy); }
+    .comparison-table tfoot td { padding: 1.25rem 1rem; border: none; color: var(--white); font-family: 'Poppins', sans-serif; font-weight: 600; }
+    .comparison-table tfoot td:first-child { padding-left: 1.5rem; }
+    .comparison-table tfoot td:nth-child(2) { color: rgba(255,255,255,0.5); font-size: 0.8rem; font-weight: 400; }
+    .comparison-table tfoot td:last-child { background: var(--gold); color: var(--navy-dark); font-size: 1rem; font-weight: 700; }
+
+    /* Gap Section */
+    .gap-section { background: var(--white); }
+    .gap-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    @media (max-width: 868px) { .gap-layout { grid-template-columns: 1fr; } }
+    .gap-card { background: var(--gray-50); border-radius: 12px; padding: 1.75rem; border: 1px solid var(--gray-200); }
+    .gap-card-title { font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 1rem; color: var(--navy-dark); border-bottom: 2px solid var(--teal); padding-bottom: 0.5rem; display: inline-block; }
+    .gap-audience-list { list-style: none; }
+    .gap-audience-item { display: flex; align-items: flex-start; gap: 1rem; padding: 0.75rem 0; border-bottom: 1px solid var(--gray-200); }
+    .gap-audience-item:last-child { border-bottom: none; }
+    .gap-audience-number { width: 28px; height: 28px; background: var(--gold); color: var(--navy-dark); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.8rem; flex-shrink: 0; }
+    .gap-audience-text strong { display: block; font-size: 0.9rem; color: var(--navy-dark); margin-bottom: 0.2rem; }
+    .gap-audience-text span { font-size: 0.8rem; color: var(--gray-500); }
+    .gap-text h3 { font-family: 'Poppins', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--navy-dark); margin-bottom: 1.25rem; line-height: 1.3; }
+    .gap-text p { color: var(--gray-600); margin-bottom: 1rem; font-size: 0.95rem; line-height: 1.7; }
+
+    /* System Section */
+    .system-section { background: var(--gray-50); }
+    .system-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+    @media (max-width: 868px) { .system-grid { grid-template-columns: 1fr; } }
+    .system-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: 10px; padding: 1.5rem; position: relative; overflow: hidden; }
+    .system-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--teal) 0%, var(--gold) 100%); }
+    .system-card-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem; }
+    .system-number { width: 36px; height: 36px; background: var(--teal); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: 'Poppins', sans-serif; font-size: 0.9rem; font-weight: 800; color: var(--navy-dark); }
+    .system-card h3 { font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 700; color: var(--navy-dark); }
+    .system-card p { color: var(--gray-600); font-size: 0.85rem; line-height: 1.6; margin-bottom: 0.5rem; }
+    .system-card .membership-link { font-size: 0.8rem; color: var(--teal-dark); font-weight: 600; }
+    .system-tag { display: inline-block; background: var(--gray-100); border: 1px solid var(--gray-200); color: var(--gray-600); padding: 0.25rem 0.6rem; border-radius: 50px; font-size: 0.7rem; font-weight: 500; }
+
+    /* Audiences */
+    .audiences-section { background: var(--white); }
+    .audiences-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    @media (max-width: 968px) { .audiences-grid { grid-template-columns: 1fr; } }
+    .audience-card { background: var(--gray-50); border-radius: 10px; overflow: hidden; border: 1px solid var(--gray-200); }
+    .audience-card-header { background: var(--navy); padding: 1.25rem; text-align: center; }
+    .audience-card-header h3 { font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 0.2rem; }
+    .audience-card-header p { color: var(--teal); font-size: 0.85rem; font-style: italic; }
+    .audience-card-body { padding: 1.25rem; background: var(--white); }
+    .audience-card-body h4 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-400); margin-bottom: 0.5rem; font-weight: 600; }
+    .audience-card-body ul { list-style: none; }
+    .audience-card-body li { padding: 0.4rem 0; font-size: 0.8rem; color: var(--gray-600); border-bottom: 1px solid var(--gray-100); }
+    .audience-card-body li:last-child { border-bottom: none; }
+    .audience-card-body li strong { color: var(--navy); }
+    .audience-outcome { background: var(--teal); padding: 0.75rem 1.25rem; }
+    .audience-outcome p { font-size: 0.8rem; color: var(--navy-dark); font-weight: 600; text-align: center; }
+
+    /* Ownership */
+    .ownership-section { background: var(--gray-50); }
+    .ownership-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    @media (max-width: 768px) { .ownership-grid { grid-template-columns: 1fr; } }
+    .ownership-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: 10px; padding: 1.5rem; }
+    .ownership-card-icon { width: 44px; height: 44px; background: var(--teal); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+    .ownership-card-icon svg { width: 22px; height: 22px; color: var(--navy-dark); }
+    .ownership-card h3 { font-family: 'Poppins', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--navy-dark); margin-bottom: 0.75rem; }
+    .ownership-card ul { list-style: none; }
+    .ownership-card li { padding: 0.35rem 0; color: var(--gray-600); font-size: 0.8rem; display: flex; align-items: center; gap: 0.5rem; }
+    .ownership-check { width: 16px; height: 16px; background: var(--teal); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .ownership-check svg { width: 9px; height: 9px; color: var(--navy-dark); }
+
+    /* Investment */
+    .investment-section { background: var(--white); }
+    .investment-wrapper { max-width: 650px; margin: 0 auto; }
+    .investment-card { background: var(--white); border-radius: 14px; overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,0.1); border: 2px solid var(--teal); }
+    .investment-card-header { background: var(--navy); padding: 2rem; text-align: center; }
+    .investment-badge { display: inline-block; background: var(--teal); color: var(--navy-dark); padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .investment-amount { font-family: 'Poppins', sans-serif; font-size: 3rem; font-weight: 800; color: var(--white); line-height: 1; }
+    .investment-desc { color: rgba(255,255,255,0.7); margin-top: 0.5rem; font-size: 0.9rem; }
+    .investment-card-body { padding: 1.75rem; }
+    .investment-features { list-style: none; }
+    .investment-features li { display: flex; align-items: center; gap: 0.75rem; padding: 0.6rem 0; border-bottom: 1px solid var(--gray-100); color: var(--gray-700); font-size: 0.9rem; }
+    .investment-features li:last-child { border-bottom: none; }
+    .feature-check { width: 22px; height: 22px; background: var(--success); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .feature-check svg { width: 12px; height: 12px; color: var(--white); }
+    .investment-note { background: var(--gray-50); padding: 1rem 1.75rem; text-align: center; font-size: 0.85rem; color: var(--gray-500); font-style: italic; }
+
+    /* Optional Addon - comes AFTER investment */
+    .optional-section { background: var(--gray-50); border-top: 1px solid var(--gray-200); padding: 4rem 5%; }
+    .optional-badge { background: var(--gray-200); color: var(--gray-600); padding: 0.35rem 1rem; border-radius: 50px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+
+    /* Closing */
+    .closing-section { background: var(--navy); text-align: center; padding: 4rem 5%; }
+    .closing-section h2 { font-family: 'Poppins', sans-serif; font-size: clamp(1.5rem, 3.5vw, 2.25rem); font-weight: 800; color: var(--white); margin-bottom: 0.5rem; }
+    .closing-section h2 span { color: var(--teal); }
+    .closing-section p { font-size: 1rem; color: rgba(255,255,255,0.7); }
+    footer { background: var(--gray-100); color: var(--gray-500); padding: 1.5rem 5%; text-align: center; font-size: 0.75rem; border-top: 1px solid var(--gray-200); }
+    @keyframes bounce { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(5px); } }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+    .arrow-badge { display: inline-flex; align-items: center; gap: 0.4rem; background: var(--gold); color: var(--navy-dark); padding: 0.3rem 0.75rem; border-radius: 50px; font-size: 0.7rem; font-weight: 700; animation: pulse 2s infinite; }
+    .arrow-badge svg { width: 14px; height: 14px; }
+  </style>
+</head>
+<body>
+  <div class="top-bar">SEASON 2: Only One Has Your Back | January through March 2026</div>
+  <header>
+    <div class="logo"><img src="https://www.naea.org/wp-content/uploads/2020/04/NAEA_Logo_Color_RGB.png" alt="NAEA" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"><span style="display: none; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 1.5rem; color: var(--navy);">NAEA</span></div>
+    <span class="header-label">2026 Activation Proposal</span>
+  </header>
+
+  <section class="hero">
+    <div class="hero-container">
+      <span class="hero-badge">2026 Activation Proposal</span>
+      <h1>Built to <span>Grow Membership</span> Quarter After Quarter</h1>
+      <p>This proposal reduces cost, optimizes your current process, and maximizes presence across every audience that matters.</p>
+    </div>
+  </section>
+
+  <!-- ACKNOWLEDGMENT SECTION -->
+  <section class="alignment-section">
+    <div class="section-container">
+      <div class="alignment-intro">
+        <p style="font-size: 1.1rem; color: var(--navy); font-weight: 600; margin-bottom: 1rem;">What We Received From You</p>
+        <p>A clear mission: <strong>grow membership, strengthen member value, and reinforce relevance at the moments that matter most each quarter.</strong></p>
+        <p style="margin-top: 0.75rem;">Five campaign emails. Four seasonal waves. Twenty podcast episodes. Three distinct audiences. The "Only One Has Your Back" positioning ready for January 2.</p>
+        <p style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--gray-200); color: var(--gray-600);">This proposal does not introduce a parallel strategy. It operationalizes the strategy NAEA is already running.</p>
+      </div>
+      
+      <div class="alignment-grid">
+        <div class="alignment-card">
+          <h3>Tax-Paying Public</h3>
+          <div class="purpose">Your goal: Increase awareness so demand flows toward members</div>
+          <p>Content positions EAs as the solution when IRS pressure appears. NAEA becomes the recognizable authority behind that solution.</p>
+          <div class="result">→ More inbound opportunity for members during peak moments</div>
+        </div>
+        <div class="alignment-card">
+          <h3>Big Box Tax Firms</h3>
+          <div class="purpose">Your goal: Normalize referral behavior toward EAs</div>
+          <p>Messaging clarifies division of labor without competitive framing. EAs are positioned as the obvious destination for representation work.</p>
+          <div class="result">→ More referrals routed to EA members instead of delayed</div>
+        </div>
+        <div class="alignment-card">
+          <h3>CPAs & Tax Attorneys</h3>
+          <div class="purpose">Your goal: Convert proximity into membership consideration</div>
+          <p>Messaging highlights revenue leakage and missed opportunity. The EA credential is positioned as a practical lever, not an abstract designation.</p>
+          <div class="result">→ Increased interest from qualified prospective members</div>
+        </div>
+      </div>
+      
+      <div class="alignment-note">
+        <p>Each quarter starts with <strong>better information</strong>. Messaging becomes <strong>sharper, not louder</strong>. Member acquisition becomes <strong>more targeted over time</strong>.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats-bar">
+    <div class="stats-bar-inner">
+      <div><div class="stat-number">50-100</div><div class="stat-label">Clips Per Quarter</div></div>
+      <div><div class="stat-number">4</div><div class="stat-label">Seasonal Waves</div></div>
+      <div><div class="stat-number">20</div><div class="stat-label">Podcast Episodes</div></div>
+      <div><div class="stat-number">3</div><div class="stat-label">Target Audiences</div></div>
+    </div>
+  </div>
+
+  <section class="built-section">
+    <div class="section-container">
+      <div class="section-header"><h2>What You've Already Built</h2><p>Before we talk about what's next, let's acknowledge what's already here.</p></div>
+      <div class="built-grid">
+        <div class="built-card"><h3>The Messaging</h3><p>Five emails. Weekly social. Podcast reads. "Only One Has Your Back" ready January 2.</p></div>
+        <div class="built-card"><h3>The Seasons</h3><p>Four waves across the year, each with its own theme and emotional beat.</p></div>
+        <div class="built-card"><h3>The Audiences</h3><p>Enrolled Agents. Tax Professionals. Accountants. Each needs something different.</p></div>
+        <div class="built-card"><h3>The Content</h3><p>Twenty podcast episodes with Terry Lemons, Colin Dunn, Ed Ryan, Nayo Carter-Gray.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="comparison-section">
+    <div class="section-container">
+      <div class="section-header"><h2>Two Ways Forward</h2><p>There's the way associations have always done it. And there's what actually works now.</p></div>
+      <div style="display: flex; justify-content: flex-end; margin-bottom: 0.5rem; padding-right: 2rem;">
+        <span class="arrow-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12l7 7 7-7"/></svg> Compare</span>
+      </div>
+      <div class="comparison-table-wrapper">
+        <table class="comparison-table">
+          <thead><tr><th>What You Need</th><th class="old-way">The Old Way</th><th><span style="display: inline-flex; align-items: center; gap: 0.5rem;"><svg style="width: 18px; height: 18px; animation: bounce 1s infinite;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg> This Proposal</span></th></tr></thead>
+          <tbody>
+            <tr><td>Audience-specific messaging</td><td><span class="table-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td><td><span class="table-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></td></tr>
+            <tr><td>Campaign music you own forever</td><td><span class="table-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td><td><span class="table-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></td></tr>
+            <tr><td>Content that recycles across platforms</td><td><span class="table-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td><td><span class="table-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></td></tr>
+            <tr><td>CRM-ready contact enrichment</td><td><span class="table-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td><td><span class="table-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></td></tr>
+            <tr><td>Learning that carries quarter to quarter</td><td><span class="table-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td><td><span class="table-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></td></tr>
+          </tbody>
+          <tfoot><tr><td>Investment</td><td>Start from scratch every time</td><td>$5,960 one-time</td></tr></tfoot>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="gap-section">
+    <div class="section-container">
+      <div class="gap-layout">
+        <div class="gap-text">
+          <h3>The Gap: Why Good Campaigns Still Miss</h3>
+          <p>Most people don't arrive curious. They arrive stressed. They don't encounter NAEA in a clean sequence. They encounter fragments after something has already gone wrong.</p>
+          <p>People don't consume campaigns start to finish. They overhear moments. They recognize patterns. They decide later.</p>
+          <p>The question isn't whether your campaign runs. It's whether the right people notice at the right time and remember when it matters.</p>
+        </div>
+        <div class="gap-card">
+          <div class="gap-card-title">Three Audiences. Three Different Needs.</div>
+          <ul class="gap-audience-list">
+            <li class="gap-audience-item"><div class="gap-audience-number">1</div><div class="gap-audience-text"><strong>The Tax-Paying Public</strong><span>Doesn't want an explanation. They want the panic to stop.</span></div></li>
+            <li class="gap-audience-item"><div class="gap-audience-number">2</div><div class="gap-audience-text"><strong>Big Box Tax Firms</strong><span>Don't want positioning. They want problems off their desk.</span></div></li>
+            <li class="gap-audience-item"><div class="gap-audience-number">3</div><div class="gap-audience-text"><strong>CPAs & Attorneys</strong><span>Don't want vision. They want to know where money is leaking.</span></div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="system-section">
+    <div class="section-container">
+      <div class="section-header"><h2>What We're Building Together</h2><p>Consulting, strategy, and production. Four layers that strengthen each other.</p></div>
+      <div class="system-grid">
+        <div class="system-card">
+          <div class="system-card-header"><div class="system-number">01</div><h3>Contact Activation</h3></div>
+          <p>Convert any list into CRM-ready contacts. Enrich with verified professional emails and LinkedIn profiles.</p>
+          <p style="margin-top: 0.5rem; font-size: 0.8rem; color: var(--gray-500);">Includes research on best targets and virtual sessions to align on outreach strategy.</p>
+          <div class="membership-link">→ Supports targeted outreach to prospective members</div>
+          <span class="system-tag">2-3 Weeks</span>
+        </div>
+        <div class="system-card">
+          <div class="system-card-header"><div class="system-number">02</div><h3>Audio Identity</h3></div>
+          <p>Original music inspired by "Simply the Best" with the same emotional tone, full ownership, no licensing restrictions.</p>
+          <p style="margin-top: 0.5rem; font-size: 0.8rem; color: var(--gray-500);">Collaborative briefing sessions to nail the tone before production.</p>
+          <div class="membership-link">→ Builds brand recognition that compounds</div>
+          <span class="system-tag">2 Weeks</span>
+        </div>
+        <div class="system-card">
+          <div class="system-card-header"><div class="system-number">03</div><h3>Content Engine + Distribution</h3></div>
+          <p>50 to 100 clips per quarter from podcast episodes, tagged by audience and pain moment. Distributed across NAEA channels plus theme pages, repost networks, and supporter accounts.</p>
+          <p style="margin-top: 0.5rem; font-size: 0.8rem; color: var(--gray-500);">TikTok optimized for search, plus Shorts, Facebook, and LinkedIn. Weekly brainstorms on what's trending and where gaps exist.</p>
+          <div class="membership-link">→ Maximizes discoverability where people are already searching</div>
+          <span class="system-tag">Ongoing</span>
+        </div>
+        <div class="system-card">
+          <div class="system-card-header"><div class="system-number">04</div><h3>Decision Dashboard</h3></div>
+          <p>See what's working. Which audience is responding. Which message is driving demand.</p>
+          <p style="margin-top: 0.5rem; font-size: 0.8rem; color: var(--gray-500);">Virtual review sessions to interpret signals and recommend next moves.</p>
+          <div class="membership-link">→ Quarterly pivot based on evidence, not opinion</div>
+          <span class="system-tag">Concurrent</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRIGGER POSITIONING SECTION -->
+  <section style="background: var(--navy); padding: 4rem 5%;">
+    <div class="section-container">
+      <div class="section-header" style="margin-bottom: 2.5rem;">
+        <h2 style="color: var(--white);">Owning the Trigger</h2>
+        <p style="color: rgba(255,255,255,0.7);">The goal isn't awareness. It's being the automatic answer when the moment hits.</p>
+      </div>
+      
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;">
+        <!-- Public -->
+        <div style="background: rgba(255,255,255,0.05); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.1);">
+          <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--teal); margin-bottom: 1rem; font-weight: 600;">Tax-Paying Public</div>
+          
+          <div style="margin-bottom: 1.25rem;">
+            <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); margin-bottom: 0.25rem;">THE TRIGGER</div>
+            <div style="font-size: 1rem; color: var(--white); font-weight: 600;">"I got a letter from the IRS"</div>
+          </div>
+          
+          <div style="margin-bottom: 1.25rem;">
+            <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); margin-bottom: 0.25rem;">POSITION TO OWN</div>
+            <div style="font-size: 0.95rem; color: var(--teal);">"There's someone who handles this."</div>
+          </div>
+          
+          <div style="background: rgba(45,212,191,0.15); border-radius: 8px; padding: 0.75rem; margin-top: auto;">
+            <div style="font-size: 0.8rem; color: var(--white);">EAs are who you call when the IRS calls you.</div>
+          </div>
+        </div>
+        
+        <!-- Big Box -->
+        <div style="background: rgba(255,255,255,0.05); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.1);">
+          <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); margin-bottom: 1rem; font-weight: 600;">Big Box Tax Firms</div>
+          
+          <div style="margin-bottom: 1.25rem;">
+            <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); margin-bottom: 0.25rem;">THE TRIGGER</div>
+            <div style="font-size: 1rem; color: var(--white); font-weight: 600;">"This client is outside our scope"</div>
+          </div>
+          
+          <div style="margin-bottom: 1.25rem;">
+            <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); margin-bottom: 0.25rem;">POSITION TO OWN</div>
+            <div style="font-size: 0.95rem; color: var(--gold);">"Hand it to an EA."</div>
+          </div>
+          
+          <div style="background: rgba(245,158,11,0.15); border-radius: 8px; padding: 0.75rem; margin-top: auto;">
+            <div style="font-size: 0.8rem; color: var(--white);">EAs take the cases you can't keep.</div>
+          </div>
+        </div>
+        
+        <!-- CPAs -->
+        <div style="background: rgba(255,255,255,0.05); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.1);">
+          <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--teal); margin-bottom: 1rem; font-weight: 600;">CPAs & Attorneys</div>
+          
+          <div style="margin-bottom: 1.25rem;">
+            <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); margin-bottom: 0.25rem;">THE TRIGGER</div>
+            <div style="font-size: 1rem; color: var(--white); font-weight: 600;">"I keep turning away rep work"</div>
+          </div>
+          
+          <div style="margin-bottom: 1.25rem;">
+            <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); margin-bottom: 0.25rem;">POSITION TO OWN</div>
+            <div style="font-size: 0.95rem; color: var(--teal);">"The EA credential unlocks that revenue."</div>
+          </div>
+          
+          <div style="background: rgba(45,212,191,0.15); border-radius: 8px; padding: 0.75rem; margin-top: auto;">
+            <div style="font-size: 0.8rem; color: var(--white);">The EA credential is the revenue you're referring away.</div>
+          </div>
+        </div>
+      </div>
+      
+      <p style="text-align: center; color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-top: 2rem; max-width: 700px; margin-left: auto; margin-right: auto;">Every clip, every post, every piece of audio ladders up to one of these triggers. The seeding strategy puts them where the trigger is already happening.</p>
+    </div>
+  </section>
+
+  <section class="audiences-section">
+    <div class="section-container">
+      <div class="section-header"><h2>Three Audiences, Three Paths</h2><p>Same clips. Different framing. Each audience gets what they need.</p></div>
+      <div class="audiences-grid">
+        <div class="audience-card">
+          <div class="audience-card-header"><h3>The Tax-Paying Public</h3><p>"What do I do now?"</p></div>
+          <div class="audience-card-body"><h4>Seasonal Framing</h4><ul><li><strong>Tax Season:</strong> Fear, urgency</li><li><strong>Post-Tax:</strong> Cleanup, relief</li><li><strong>Mid-Year:</strong> Prevention</li><li><strong>Pre-Tax:</strong> Avoid the same mistake</li></ul></div>
+          <div class="audience-outcome"><p>→ NAEA becomes the name they recognize</p></div>
+        </div>
+        <div class="audience-card">
+          <div class="audience-card-header"><h3>Big Box Tax Firms</h3><p>"Get this off our plate"</p></div>
+          <div class="audience-card-body"><h4>Seasonal Framing</h4><ul><li><strong>Tax Season:</strong> Overflow, risk</li><li><strong>Post-Tax:</strong> Damage control</li><li><strong>Mid-Year:</strong> Efficiency</li><li><strong>Pre-Tax:</strong> Partnership lines</li></ul></div>
+          <div class="audience-outcome"><p>→ EAs become the referral lane</p></div>
+        </div>
+        <div class="audience-card">
+          <div class="audience-card-header"><h3>CPAs & Attorneys</h3><p>"Where am I losing revenue?"</p></div>
+          <div class="audience-card-body"><h4>Seasonal Framing</h4><ul><li><strong>Tax Season:</strong> "Can't bill for it"</li><li><strong>Post-Tax:</strong> "How much you lost"</li><li><strong>Mid-Year:</strong> "Rep fees > prep"</li><li><strong>Pre-Tax:</strong> "Keep it next year"</li></ul></div>
+          <div class="audience-outcome"><p>→ EA credential = financial lever</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ownership-section">
+    <div class="section-container">
+      <div class="section-header"><h2>What This Actually Saves and Creates</h2><p>Real numbers. Real leverage.</p></div>
+      <div class="ownership-grid">
+        <div class="ownership-card">
+          <div class="ownership-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <h3>Costs You Skip</h3>
+          <ul><li><span class="ownership-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span> $1,200/year audio license vs. major label fees</li><li><span class="ownership-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span> No per-send email costs on enriched lists</li><li><span class="ownership-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span> No agency retainers for content</li><li><span class="ownership-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span> No vendor dependency</li></ul>
+          <div style="margin-top: 1rem; padding-top: 0.75rem; border-top: 1px solid var(--gray-200);">
+            <p style="font-size: 0.75rem; color: #dc2626; font-weight: 500; margin: 0;">Licensing "Simply the Best" or "The Best" runs $50K to $250K+ per year.</p>
+          </div>
+        </div>
+        <div class="ownership-card">
+          <div class="ownership-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+          <h3>Reach You Gain</h3>
+          <ul><li><span class="ownership-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span> 50 to 100 clips per quarter</li><li><span class="ownership-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span> Seeded across theme pages + repost networks</li><li><span class="ownership-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span> TikTok search optimized for discoverability</li><li><span class="ownership-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span> Shorts, Facebook, LinkedIn distribution</li></ul>
+        </div>
+        <div class="ownership-card">
+          <div class="ownership-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></div>
+          <h3>Decisions Made Faster</h3>
+          <ul><li><span class="ownership-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span> One dashboard, not six logins</li><li><span class="ownership-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span> Weekly signal briefs</li><li><span class="ownership-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span> Quarterly pivot recommendations</li><li><span class="ownership-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span> Clear "do more / do less" guidance</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="investment-section">
+    <div class="section-container">
+      <div class="section-header"><h2>Q1 2026 Investment</h2><p>Season 2: January through March. Each line includes consulting, research, and delivery.</p></div>
+      <div class="investment-wrapper" style="max-width: 750px;">
+        <div class="investment-card">
+          <div class="investment-card-header">
+            <span class="investment-badge">Q1 Package</span>
+            <p class="investment-desc" style="margin-top: 0.5rem;">Full ownership of everything produced.</p>
+          </div>
+          <div class="investment-card-body" style="padding: 0;">
+            <!-- Line Items -->
+            <div style="border-bottom: 1px solid var(--gray-100);">
+              <div style="padding: 1rem 1.75rem;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                  <div>
+                    <div style="font-weight: 600; color: var(--gray-800); font-size: 0.95rem;">Contact Activation + Consulting</div>
+                    <div style="font-size: 0.8rem; color: var(--gray-500); margin-top: 0.25rem;">Full pipeline build across all three audiences</div>
+                  </div>
+                  <div style="font-family: 'Poppins', sans-serif; font-weight: 700; color: var(--navy); font-size: 1rem;">$1,450</div>
+                </div>
+                <div style="margin-top: 0.75rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem 1.5rem; font-size: 0.75rem; color: var(--gray-600);">
+                  <div>• 1,805 new EAs from IRS list (provided)</div>
+                  <div>• Email enrichment (70-80% match)</div>
+                  <div>• 500 to 1,000 Big Box contacts (sourced)</div>
+                  <div>• LinkedIn profile matching (70-85% match)</div>
+                  <div>• 1,000 to 2,000 CPAs & Attorneys (sourced)</div>
+                  <div>• Combined reach: 85-90% coverage</div>
+                </div>
+                <div style="margin-top: 0.5rem; font-size: 0.75rem; color: var(--teal-dark); font-weight: 500;">3,300 to 4,800 total contacts, CRM-ready export, outreach strategy consulting</div>
+                
+                <!-- Direct Mail Comparison Box -->
+                <div style="margin-top: 1rem; background: var(--gray-50); border-radius: 8px; padding: 1rem; border: 1px solid var(--gray-200);">
+                  <div style="font-size: 0.75rem; font-weight: 600; color: var(--navy); margin-bottom: 0.5rem;">Compare: Direct Mail to Same Audience</div>
+                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.75rem;">
+                    <div>
+                      <div style="color: #dc2626; font-weight: 600;">Direct Mail: $4,130 to $11,964</div>
+                      <div style="color: var(--gray-500);">1-3% response = 33 to 144 responses</div>
+                      <div style="color: var(--gray-500);">One-time use, no data captured</div>
+                    </div>
+                    <div>
+                      <div style="color: var(--teal-dark); font-weight: 600;">This: $1,450</div>
+                      <div style="color: var(--gray-500);">10-20% response = 330 to 960 conversations</div>
+                      <div style="color: var(--gray-500);">Unlimited reuse, full CRM data</div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Compounding Value Box -->
+                <div style="margin-top: 0.75rem; background: var(--navy); border-radius: 8px; padding: 1rem;">
+                  <div style="font-size: 0.75rem; font-weight: 600; color: var(--teal); margin-bottom: 0.5rem;">This Compounds</div>
+                  <div style="font-size: 0.7rem; color: rgba(255,255,255,0.85); line-height: 1.6;">
+                    Once enriched, these contacts fuel: <strong style="color: var(--white);">email automation sequences</strong>, <strong style="color: var(--white);">LinkedIn connection campaigns</strong>, <strong style="color: var(--white);">ad retargeting audiences</strong>, and <strong style="color: var(--white);">lookalike targeting</strong>. One list. Multiple channels. Ongoing reach.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div style="border-bottom: 1px solid var(--gray-100);">
+              <div style="padding: 1rem 1.75rem;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                  <div>
+                    <div style="font-weight: 600; color: var(--gray-800); font-size: 0.95rem;">Audio Identity + Consulting</div>
+                    <div style="font-size: 0.8rem; color: var(--gray-500); margin-top: 0.25rem;">Original music inspired by "Simply the Best," yearly license, creative briefing</div>
+                  </div>
+                  <div style="font-family: 'Poppins', sans-serif; font-weight: 700; color: var(--navy); font-size: 1rem;">$850</div>
+                </div>
+                
+                <!-- Licensing Comparison Box -->
+                <div style="margin-top: 1rem; background: var(--gray-50); border-radius: 8px; padding: 1rem; border: 1px solid var(--gray-200);">
+                  <div style="font-size: 0.75rem; font-weight: 600; color: var(--navy); margin-bottom: 0.5rem;">Compare: Licensing the Original Songs</div>
+                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.75rem;">
+                    <div>
+                      <div style="color: #dc2626; font-weight: 600;">"Simply the Best" or "The Best": $50K to $250K+/year</div>
+                      <div style="color: var(--gray-500);">Sync license, broadcast rights, renewals</div>
+                      <div style="color: var(--gray-500);">Usage restrictions, approval delays</div>
+                    </div>
+                    <div>
+                      <div style="color: var(--teal-dark); font-weight: 600;">This: $1,200/year</div>
+                      <div style="color: var(--gray-500);">Same emotional tone, original composition</div>
+                      <div style="color: var(--gray-500);">No restrictions, instant use, full control</div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Compounding Value Box -->
+                <div style="margin-top: 0.75rem; background: var(--navy); border-radius: 8px; padding: 1rem;">
+                  <div style="font-size: 0.75rem; font-weight: 600; color: var(--teal); margin-bottom: 0.5rem;">This Compounds</div>
+                  <div style="font-size: 0.7rem; color: rgba(255,255,255,0.85); line-height: 1.6;">
+                    One audio identity powers: <strong style="color: var(--white);">podcast intros/outros</strong>, <strong style="color: var(--white);">video clips and reels</strong>, <strong style="color: var(--white);">paid ads</strong>, <strong style="color: var(--white);">event walk-in music</strong>, <strong style="color: var(--white);">webinar bumpers</strong>, and <strong style="color: var(--white);">hold music</strong>. Recognizable sound. Every touchpoint. Year after year.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div style="border-bottom: 1px solid var(--gray-100);">
+              <div style="padding: 1rem 1.75rem;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                  <div>
+                    <div style="font-weight: 600; color: var(--gray-800); font-size: 0.95rem;">Content Engine + Distribution + Consulting</div>
+                    <div style="font-size: 0.8rem; color: var(--gray-500); margin-top: 0.25rem;">Create, slice, seed, and schedule across all platforms</div>
+                  </div>
+                  <div style="font-family: 'Poppins', sans-serif; font-weight: 700; color: var(--navy); font-size: 1rem;">$1,650</div>
+                </div>
+                
+                <!-- Two Format Boxes - Teal for Content -->
+                <div style="margin-top: 1rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                  <div style="background: rgba(45,212,191,0.1); border-radius: 8px; padding: 0.85rem; border-left: 3px solid var(--teal);">
+                    <div style="font-size: 0.75rem; font-weight: 600; color: var(--teal-dark); margin-bottom: 0.35rem;">Podcast Clips (50 to 70)</div>
+                    <div style="font-size: 0.7rem; color: var(--gray-600); line-height: 1.5;">Best moments from 20 episodes. Tagged by audience and pain moment. Evergreen authority content.</div>
+                  </div>
+                  <div style="background: rgba(45,212,191,0.1); border-radius: 8px; padding: 0.85rem; border-left: 3px solid var(--teal);">
+                    <div style="font-size: 0.75rem; font-weight: 600; color: var(--teal-dark); margin-bottom: 0.35rem;">Fly-on-the-Wall (20 to 30)</div>
+                    <div style="font-size: 0.7rem; color: var(--gray-600); line-height: 1.5;">Quick reactions to trending topics. Raw, human, timely. Fills content gaps others miss.</div>
+                  </div>
+                </div>
+                
+                <!-- Distribution Boxes - Gold -->
+                <div style="margin-top: 0.75rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                  <div style="background: rgba(245,158,11,0.1); border-radius: 8px; padding: 0.85rem; border-left: 3px solid var(--gold);">
+                    <div style="font-size: 0.75rem; font-weight: 600; color: #92400e; margin-bottom: 0.35rem;">Slicing + Scheduling</div>
+                    <div style="font-size: 0.7rem; color: var(--gray-600); line-height: 1.5;">Opus Clip automation. Content calendar. Posted to NAEA channels: LinkedIn, FB, IG, TikTok, Shorts.</div>
+                  </div>
+                  <div style="background: rgba(245,158,11,0.1); border-radius: 8px; padding: 0.85rem; border-left: 3px solid var(--gold);">
+                    <div style="font-size: 0.75rem; font-weight: 600; color: #92400e; margin-bottom: 0.35rem;">Seeding + Discovery</div>
+                    <div style="font-size: 0.7rem; color: var(--gray-600); line-height: 1.5;">Theme pages, repost networks, influencer identification. TikTok search optimization. AI discovery.</div>
+                  </div>
+                </div>
+                
+                <!-- Comparison Box -->
+                <div style="margin-top: 0.75rem; background: var(--gray-50); border-radius: 8px; padding: 1rem; border: 1px solid var(--gray-200);">
+                  <div style="font-size: 0.75rem; font-weight: 600; color: var(--navy); margin-bottom: 0.5rem;">Compare: Traditional Content Agency</div>
+                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.75rem;">
+                    <div>
+                      <div style="color: #dc2626; font-weight: 600;">Old Way: $3K to $8K/month retainer</div>
+                      <div style="color: var(--gray-500);">Polished content nobody engages with</div>
+                      <div style="color: var(--gray-500);">Calendar planned months ahead, moment gone</div>
+                    </div>
+                    <div>
+                      <div style="color: var(--teal-dark); font-weight: 600;">This: $1,650/quarter</div>
+                      <div style="color: var(--gray-500);">70 to 100 clips created, sliced, scheduled, seeded</div>
+                      <div style="color: var(--gray-500);">Reactive + evergreen, rides real attention</div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Compounding Value Box -->
+                <div style="margin-top: 0.75rem; background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%); border-radius: 8px; padding: 1rem;">
+                  <div style="font-size: 0.75rem; font-weight: 600; color: var(--teal); margin-bottom: 0.5rem;">This Compounds</div>
+                  <div style="font-size: 0.7rem; color: rgba(255,255,255,0.9); line-height: 1.6;">
+                    <strong style="color: var(--white);">Saves</strong> = intent to return. <strong style="color: var(--white);">Comments</strong> = conversation started. <strong style="color: var(--white);">Shares</strong> = earned distribution. <strong style="color: var(--white);">Mentions</strong> = word of mouth. One clip, seeded everywhere, compounds into organic reach no ad budget can buy.
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- YouTube Revival - OPTIONAL ADD-ON -->
+            <div style="border-bottom: 1px solid var(--gray-100); background: linear-gradient(90deg, rgba(239,68,68,0.03) 0%, rgba(255,255,255,0) 100%);">
+              <div style="padding: 1rem 1.75rem;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                  <div>
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                      <span style="font-size: 0.6rem; background: #ef4444; color: white; padding: 0.2rem 0.5rem; border-radius: 4px; font-weight: 600; text-transform: uppercase;">Add-On</span>
+                      <div style="font-weight: 600; color: var(--gray-800); font-size: 0.95rem;">YouTube Revival + Consulting</div>
+                    </div>
+                    <div style="font-size: 0.8rem; color: var(--gray-500); margin-top: 0.25rem;">89 videos sitting there. One hit 223K views. Let's fix the other 88.</div>
+                  </div>
+                  <div style="font-family: 'Poppins', sans-serif; font-weight: 700; color: #dc2626; font-size: 1rem;">+$750</div>
+                </div>
+                
+                <div style="margin-top: 0.75rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem 1.5rem; font-size: 0.75rem; color: var(--gray-600);">
+                  <div>• VidIQ or TubeBuddy setup + training</div>
+                  <div>• Shorts extracted from long-form webinars</div>
+                  <div>• Title + thumbnail rewrites (top 20 videos)</div>
+                  <div>• Keyword research for next quarter</div>
+                  <div>• SEO scoring on every new upload</div>
+                  <div>• Monthly optimization check-in</div>
+                </div>
+                
+                <div style="margin-top: 0.75rem; font-size: 0.7rem; color: var(--gray-500); font-style: italic;">"IRS Trouble? Find a Tax Expert" got 223K views because the title matched what people search. The other videos average 100-500 views. This fixes that.</div>
+              </div>
+            </div>
+            <div style="border-bottom: 1px solid var(--gray-100);">
+              <div style="padding: 1rem 1.75rem;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                  <div>
+                    <div style="font-weight: 600; color: var(--gray-800); font-size: 0.95rem;">Decision Dashboard + Consulting</div>
+                    <div style="font-size: 0.8rem; color: var(--gray-500); margin-top: 0.25rem;">See what's working, repurpose winners, skip the tools</div>
+                  </div>
+                  <div style="font-family: 'Poppins', sans-serif; font-weight: 700; color: var(--navy); font-size: 1rem;">$1,250</div>
+                </div>
+                
+                <div style="margin-top: 0.75rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem 1.5rem; font-size: 0.75rem; color: var(--gray-600);">
+                  <div>• Pre-built dashboard (Metricool or similar)</div>
+                  <div>• Weekly email report delivered to inbox</div>
+                  <div>• Make.com automation pulls all platforms</div>
+                  <div>• Winners flagged for ad repurposing</div>
+                  <div>• All channels in one view, no logins</div>
+                  <div>• Underperformers flagged to retire</div>
+                </div>
+                
+                <!-- Comparison Box -->
+                <div style="margin-top: 1rem; background: var(--gray-50); border-radius: 8px; padding: 1rem; border: 1px solid var(--gray-200);">
+                  <div style="font-size: 0.75rem; font-weight: 600; color: var(--navy); margin-bottom: 0.5rem;">Compare: DIY Analytics</div>
+                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.75rem;">
+                    <div>
+                      <div style="color: #dc2626; font-weight: 600;">Old Way: $100 to $300/mo in tools</div>
+                      <div style="color: var(--gray-500);">5 to 10 hours/month interpreting data</div>
+                      <div style="color: var(--gray-500);">Data without insight, winners get buried</div>
+                    </div>
+                    <div>
+                      <div style="color: var(--teal-dark); font-weight: 600;">This: Built into $1,250</div>
+                      <div style="color: var(--gray-500);">0 hours, report lands in your inbox</div>
+                      <div style="color: var(--gray-500);">Insight with action items, winners flagged</div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Compounding Value Box -->
+                <div style="margin-top: 0.75rem; background: var(--navy); border-radius: 8px; padding: 1rem;">
+                  <div style="font-size: 0.75rem; font-weight: 600; color: var(--teal); margin-bottom: 0.5rem;">This Compounds</div>
+                  <div style="font-size: 0.7rem; color: rgba(255,255,255,0.85); line-height: 1.6;">
+                    Winning clips become <strong style="color: var(--white);">ads</strong>. Ads drive <strong style="color: var(--white);">traffic</strong>. Traffic creates <strong style="color: var(--white);">followers</strong>. Followers see <strong style="color: var(--white);">more clips</strong>. Clips get <strong style="color: var(--white);">shared</strong>. The loop feeds itself — but only if you know what's winning.
+                  </div>
+                </div>
+                
+                <div style="margin-top: 0.75rem; font-size: 0.7rem; color: var(--gray-500); font-style: italic; text-align: center;">They don't log in. They don't learn tools. They get answers.</div>
+              </div>
+            </div>
+            <!-- Total -->
+            <div style="background: var(--navy); padding: 1.25rem 1.75rem; display: flex; justify-content: space-between; align-items: center;">
+              <div style="color: var(--white); font-weight: 600;">Q1 Total</div>
+              <div style="font-family: 'Poppins', sans-serif; font-weight: 800; color: var(--white); font-size: 1.75rem;">$5,200</div>
+            </div>
+          </div>
+          <div class="investment-note">Q1 builds the foundation. Future quarters build on what we learn.</div>
+          
+          <!-- ROI BREAKEVEN BOX -->
+          <div style="margin-top: 1.5rem; background: linear-gradient(135deg, #065f46 0%, #047857 100%); border-radius: 12px; padding: 1.25rem 1.5rem;">
+            <div style="font-size: 0.85rem; font-weight: 600; color: #6ee7b7; margin-bottom: 0.75rem;">When This Pays for Itself</div>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; text-align: center;">
+              <div>
+                <div style="font-family: 'Poppins', sans-serif; font-size: 1.75rem; font-weight: 800; color: white;">18</div>
+                <div style="font-size: 0.7rem; color: rgba(255,255,255,0.8);">New Members @ $285</div>
+              </div>
+              <div style="border-left: 1px solid rgba(255,255,255,0.2); border-right: 1px solid rgba(255,255,255,0.2);">
+                <div style="font-family: 'Poppins', sans-serif; font-size: 1.75rem; font-weight: 800; color: white;">8</div>
+                <div style="font-size: 0.7rem; color: rgba(255,255,255,0.8);">Tax Summit Tickets @ $650</div>
+              </div>
+              <div>
+                <div style="font-family: 'Poppins', sans-serif; font-size: 1.75rem; font-weight: 800; color: white;">4,800</div>
+                <div style="font-size: 0.7rem; color: rgba(255,255,255,0.8);">Prospects Reached</div>
+              </div>
+            </div>
+            <div style="margin-top: 1rem; text-align: center; font-size: 0.75rem; color: rgba(255,255,255,0.9);">This Q1 investment costs less than 20 memberships. Everything after that is growth.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPTIONAL ADD-ON - COMES AFTER INVESTMENT -->
+  <section class="optional-section">
+    <div class="section-container">
+      <div style="max-width: 1000px; margin: 0 auto;">
+        <!-- Section Header -->
+        <div class="section-header" style="margin-bottom: 2rem;">
+          <div style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; margin-bottom: 0.5rem;">
+            <span class="arrow-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12l7 7 7-7"/></svg> Upgrade</span>
+          </div>
+          <h2>Custom Decision Control System</h2>
+          <p>Optional add-on for teams who want signal visibility without platform-hopping</p>
+        </div>
+        
+        <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 2rem;">
+          <span style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--navy); color: var(--white); padding: 0.6rem 1.5rem; border-radius: 50px; font-size: 1rem; font-weight: 700;"><svg style="width: 18px; height: 18px; color: var(--teal);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> $4,500 One-Time</span>
+        </div>
+        
+        <p style="color: var(--gray-700); margin-bottom: 1.25rem; line-height: 1.8; font-size: 1rem;">Here's what typically happens: Someone asks "what's working?" and suddenly you're logging into Salesforce, pulling a GA report, checking Facebook Ads Manager, cross-referencing email opens, and trying to remember which spreadsheet has the podcast numbers. By the time you've gathered everything, the meeting's over and nobody made a decision.</p>
+        
+        <p style="color: var(--gray-700); margin-bottom: 2rem; line-height: 1.8; font-size: 1rem;">This doesn't run campaigns. <strong style="color: var(--navy);">It reads signals and recommends action.</strong> One owned dashboard that turns scattered campaign activity into clear, repeatable quarterly decisions aligned to membership growth.</p>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2.5rem;">
+          <div>
+            <h3 style="font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 700; color: var(--navy-dark); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--teal);">What Feeds Into It</h3>
+            
+            <div style="margin-bottom: 1rem;">
+              <h4 style="font-size: 0.7rem; font-weight: 600; color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">Content Inputs</h4>
+              <div style="display: flex; flex-wrap: wrap; gap: 0.35rem;">
+                <span style="background: var(--gray-100); padding: 0.35rem 0.65rem; border-radius: 5px; font-size: 0.75rem; color: var(--gray-700);">Podcast episodes</span>
+                <span style="background: var(--gray-100); padding: 0.35rem 0.65rem; border-radius: 5px; font-size: 0.75rem; color: var(--gray-700);">Fly-on-the-wall</span>
+                <span style="background: var(--gray-100); padding: 0.35rem 0.65rem; border-radius: 5px; font-size: 0.75rem; color: var(--gray-700);">Clip IDs</span>
+              </div>
+            </div>
+            
+            <div style="margin-bottom: 1rem;">
+              <h4 style="font-size: 0.7rem; font-weight: 600; color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">Distribution Inputs</h4>
+              <div style="display: flex; flex-wrap: wrap; gap: 0.35rem;">
+                <span style="background: var(--gray-100); padding: 0.35rem 0.65rem; border-radius: 5px; font-size: 0.75rem; color: var(--gray-700);">LinkedIn</span>
+                <span style="background: var(--gray-100); padding: 0.35rem 0.65rem; border-radius: 5px; font-size: 0.75rem; color: var(--gray-700);">Instagram</span>
+                <span style="background: var(--gray-100); padding: 0.35rem 0.65rem; border-radius: 5px; font-size: 0.75rem; color: var(--gray-700);">TikTok</span>
+                <span style="background: var(--gray-100); padding: 0.35rem 0.65rem; border-radius: 5px; font-size: 0.75rem; color: var(--gray-700);">YouTube</span>
+                <span style="background: var(--gray-100); padding: 0.35rem 0.65rem; border-radius: 5px; font-size: 0.75rem; color: var(--gray-700);">Theme pages</span>
+                <span style="background: var(--gray-100); padding: 0.35rem 0.65rem; border-radius: 5px; font-size: 0.75rem; color: var(--gray-700);">Partner reposts</span>
+              </div>
+            </div>
+            
+            <div style="margin-bottom: 1rem;">
+              <h4 style="font-size: 0.7rem; font-weight: 600; color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">Ad + Conversation Inputs</h4>
+              <div style="display: flex; flex-wrap: wrap; gap: 0.35rem;">
+                <span style="background: var(--gray-100); padding: 0.35rem 0.65rem; border-radius: 5px; font-size: 0.75rem; color: var(--gray-700);">Paid amplification</span>
+                <span style="background: var(--gray-100); padding: 0.35rem 0.65rem; border-radius: 5px; font-size: 0.75rem; color: var(--gray-700);">Spend per clip</span>
+                <span style="background: var(--gray-100); padding: 0.35rem 0.65rem; border-radius: 5px; font-size: 0.75rem; color: var(--gray-700);">Comments</span>
+                <span style="background: var(--gray-100); padding: 0.35rem 0.65rem; border-radius: 5px; font-size: 0.75rem; color: var(--gray-700);">Quote reposts</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Dashboard Mockup -->
+          <div style="background: var(--white); border-radius: 10px; box-shadow: 0 6px 20px rgba(0,0,0,0.1); overflow: hidden; border: 1px solid var(--gray-200);">
+            <div style="background: var(--gray-100); padding: 0.5rem 0.85rem; display: flex; align-items: center; gap: 0.35rem; border-bottom: 1px solid var(--gray-200);">
+              <span style="width: 9px; height: 9px; border-radius: 50%; background: #ff5f57;"></span>
+              <span style="width: 9px; height: 9px; border-radius: 50%; background: #ffbd2e;"></span>
+              <span style="width: 9px; height: 9px; border-radius: 50%; background: #28ca42;"></span>
+              <span style="margin-left: auto; font-size: 0.65rem; color: var(--gray-500);">Quarterly Pivot Brief</span>
+            </div>
+            <div style="padding: 1rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.85rem;">
+                <span style="font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.8rem; color: var(--navy);">Q1 → Q2 Decision View</span>
+                <span style="font-size: 0.6rem; color: var(--white); background: var(--teal); padding: 0.15rem 0.4rem; border-radius: 3px;">Season 2</span>
+              </div>
+              
+              <div style="margin-bottom: 0.85rem;">
+                <div style="font-size: 0.65rem; color: var(--gray-500); margin-bottom: 0.4rem; font-weight: 600;">AUDIENCE RESPONSE</div>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.4rem;">
+                  <div style="background: var(--gray-50); padding: 0.5rem; border-radius: 5px; text-align: center; border-left: 2px solid var(--teal);">
+                    <div style="font-size: 1rem; font-weight: 700; color: var(--teal-dark);">67%</div>
+                    <div style="font-size: 0.55rem; color: var(--gray-500);">Tax Public</div>
+                  </div>
+                  <div style="background: var(--gray-50); padding: 0.5rem; border-radius: 5px; text-align: center; border-left: 2px solid var(--gold);">
+                    <div style="font-size: 1rem; font-weight: 700; color: var(--gold);">34%</div>
+                    <div style="font-size: 0.55rem; color: var(--gray-500);">Big Box</div>
+                  </div>
+                  <div style="background: var(--gray-50); padding: 0.5rem; border-radius: 5px; text-align: center; border-left: 2px solid var(--navy);">
+                    <div style="font-size: 1rem; font-weight: 700; color: var(--navy);">52%</div>
+                    <div style="font-size: 0.55rem; color: var(--gray-500);">CPAs</div>
+                  </div>
+                </div>
+              </div>
+              
+              <div style="margin-bottom: 0.85rem;">
+                <div style="font-size: 0.65rem; color: var(--gray-500); margin-bottom: 0.35rem; font-weight: 600;">MESSAGE SIGNALS</div>
+                <div style="display: flex; gap: 0.3rem; flex-wrap: wrap;">
+                  <span style="background: rgba(45,212,191,0.15); color: var(--teal-dark); padding: 0.2rem 0.5rem; border-radius: 3px; font-size: 0.65rem; font-weight: 500;">Scary ↑</span>
+                  <span style="background: rgba(245,158,11,0.15); color: #b45309; padding: 0.2rem 0.5rem; border-radius: 3px; font-size: 0.65rem; font-weight: 500;">Discovery →</span>
+                  <span style="background: var(--gray-100); color: var(--gray-500); padding: 0.2rem 0.5rem; border-radius: 3px; font-size: 0.65rem; font-weight: 500;">Relief ↓</span>
+                </div>
+              </div>
+              
+              <div style="background: var(--navy); border-radius: 5px; padding: 0.65rem;">
+                <div style="font-size: 0.6rem; color: var(--teal); margin-bottom: 0.2rem; font-weight: 600;">Q2 RECOMMENDATION</div>
+                <div style="font-size: 0.7rem; color: var(--white); line-height: 1.4;">Lead with Scary clips. Shift CPAs to LinkedIn-only. Retire 3 low-velocity pieces.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Reports -->
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+          <h3 style="font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 700; color: var(--navy-dark); margin: 0;">What You Get Each Quarter</h3>
+          <span class="arrow-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg> Included</span>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.85rem; margin-bottom: 2rem;">
+          <div style="background: var(--white); border-radius: 8px; padding: 1rem; border: 1px solid var(--gray-200); border-top: 3px solid var(--teal);">
+            <h4 style="font-family: 'Poppins', sans-serif; font-size: 0.85rem; font-weight: 700; color: var(--navy-dark); margin-bottom: 0.4rem;">Weekly Brief</h4>
+            <p style="font-size: 0.75rem; color: var(--gray-600); line-height: 1.4;">What gained traction? What stalled?</p>
+          </div>
+          <div style="background: var(--white); border-radius: 8px; padding: 1rem; border: 1px solid var(--gray-200); border-top: 3px solid var(--teal);">
+            <h4 style="font-family: 'Poppins', sans-serif; font-size: 0.85rem; font-weight: 700; color: var(--navy-dark); margin-bottom: 0.4rem;">Monthly Report</h4>
+            <p style="font-size: 0.75rem; color: var(--gray-600); line-height: 1.4;">Which pain moments work? Do more/less guidance.</p>
+          </div>
+          <div style="background: var(--white); border-radius: 8px; padding: 1rem; border: 1px solid var(--gray-200); border-top: 3px solid var(--gold);">
+            <h4 style="font-family: 'Poppins', sans-serif; font-size: 0.85rem; font-weight: 700; color: var(--navy-dark); margin-bottom: 0.4rem;">Quarterly Pivot</h4>
+            <p style="font-size: 0.75rem; color: var(--gray-600); line-height: 1.4;">What to carry forward, reframe, or retire.</p>
+          </div>
+          <div style="background: var(--white); border-radius: 8px; padding: 1rem; border: 1px solid var(--gray-200); border-top: 3px solid var(--gold);">
+            <h4 style="font-family: 'Poppins', sans-serif; font-size: 0.85rem; font-weight: 700; color: var(--navy-dark); margin-bottom: 0.4rem;">Seasonal Compare</h4>
+            <p style="font-size: 0.75rem; color: var(--gray-600); line-height: 1.4;">What compounds vs fatigues over time.</p>
+          </div>
+        </div>
+        
+        <!-- Insight to Action -->
+        <h3 style="font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 700; color: var(--navy-dark); margin-bottom: 1rem;">Insight → Action</h3>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.85rem; margin-bottom: 2rem;">
+          <div style="background: var(--white); border: 1px solid var(--gray-200); border-radius: 8px; padding: 1rem; display: flex; gap: 0.85rem;">
+            <div style="width: 3px; background: var(--teal); border-radius: 2px; flex-shrink: 0;"></div>
+            <div>
+              <p style="font-size: 0.8rem; color: var(--gray-700); margin-bottom: 0.35rem;"><strong>Insight:</strong> "Scary clips spike early, then decay."</p>
+              <p style="font-size: 0.8rem; color: var(--teal-dark);"><strong>Action:</strong> Lead with fear. Transition to relief mid-season.</p>
+            </div>
+          </div>
+          <div style="background: var(--white); border: 1px solid var(--gray-200); border-radius: 8px; padding: 1rem; display: flex; gap: 0.85rem;">
+            <div style="width: 3px; background: var(--gold); border-radius: 2px; flex-shrink: 0;"></div>
+            <div>
+              <p style="font-size: 0.8rem; color: var(--gray-700); margin-bottom: 0.35rem;"><strong>Insight:</strong> "Professional Respect only works on LinkedIn."</p>
+              <p style="font-size: 0.8rem; color: #b45309;"><strong>Action:</strong> Narrow distribution. Stop wasting public placements.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Pricing -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;">
+          <div style="background: var(--white); border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem;">
+            <h4 style="font-family: 'Poppins', sans-serif; font-size: 0.9rem; font-weight: 700; color: var(--navy-dark); margin-bottom: 0.75rem;">What This Is Not</h4>
+            <p style="font-size: 0.85rem; color: var(--gray-600); line-height: 1.6;">Not a CRM. Not attribution modeling. Not ad buying. Not a reporting replacement. It exists to support <strong>quarterly judgment</strong>, not daily tweaking.</p>
+          </div>
+          <div style="background: var(--navy); border-radius: 8px; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <p style="color: rgba(255,255,255,0.6); font-size: 0.75rem; margin-bottom: 0.2rem;">Optional add-on</p>
+              <p style="font-family: 'Poppins', sans-serif; font-size: 2rem; font-weight: 700; color: var(--white); margin: 0 0 0.75rem 0;">$4,500</p>
+            </div>
+            <p style="color: rgba(255,255,255,0.85); font-size: 0.8rem; line-height: 1.5; margin: 0;">Add now or after Season 2 launches. The base package works either way. No IT dependency.</p>
+          </div>
+        </div>
+        
+        <p style="text-align: center; margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--gray-200); color: var(--gray-600); font-size: 0.9rem; font-style: italic;">"Tells us what to repeat, what to change, and what to stop. Based on evidence, not opinion."</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="closing-section">
+    <h2><span>Only One</span> Has Your Back</h2>
+    <p>Let's prove it. Starting this tax season.</p>
+  </section>
+
+  <footer>
+    <p>National Association of Enrolled Agents | Season 2: Only One Has Your Back | 2026 Activation Proposal</p>
+  </footer>
+</body>
+</html>
