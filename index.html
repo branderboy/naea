@@ -33,11 +33,16 @@
                     },
                     animation: {
                         'pulse-cf': 'pulse-cf 2.5s infinite',
+                        'bounce-x': 'bounce-x 1.5s infinite',
                     },
                     keyframes: {
                         'pulse-cf': {
                             '0%, 100%': { transform: 'scale(1)', boxShadow: '0 10px 25px rgba(239, 90, 58, 0.4)' },
                             '50%': { transform: 'scale(1.02)', boxShadow: '0 15px 35px rgba(239, 90, 58, 0.7)' },
+                        },
+                        'bounce-x': {
+                            '0%, 100%': { transform: 'translateX(0)' },
+                            '50%': { transform: 'translateX(8px)' },
                         }
                     }
                 }
@@ -486,8 +491,8 @@
             </div>
 
             <div class="border-l-4 border-white/30 pl-6 text-left max-w-2xl mx-auto bg-white/5 backdrop-blur-sm rounded-r-xl p-6 mt-8">
-                <h4 class="text-lg font-black text-white uppercase mb-3">LinkedIn Closes the Gap</h4>
-                <p class="text-base text-slate-300 leading-relaxed">Email enrichment captures 25–35% of the IRS list. LinkedIn connections and InMail reach the remaining 65–75% that email can't. Together, both channels deliver near-complete audience coverage — no one falls through the cracks.</p>
+                <h4 class="text-lg font-black text-white uppercase mb-3 flex items-center gap-3">LinkedIn Closes the Gap <i data-lucide="arrow-right" class="w-6 h-6 text-naeared-400 animate-bounce-x"></i></h4>
+                <p class="text-base text-white leading-relaxed">Email enrichment captures 25 to 35% of the IRS list. LinkedIn connections and InMail reach the remaining 65 to 75% that email can't. Together, both channels deliver near complete audience coverage, no one falls through the cracks.</p>
             </div>
 
         </div>
