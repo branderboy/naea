@@ -152,6 +152,21 @@
         .msg-wrapper { opacity: 0; transform: translateY(15px); transition: all 0.4s ease; width: 100%; }
         .msg-wrapper.show { opacity: 1; transform: translateY(0); }
         .msg-wrapper.unfocused { opacity: 0.5; }
+
+        /* Force navy color classes to render correctly */
+        .bg-navy-900, [class*="bg-navy-900"] { background-color: #002D5B !important; }
+        .bg-navy-800 { background-color: #003B73 !important; }
+        .text-navy-900 { color: #002D5B !important; }
+        .border-navy-900 { border-color: #002D5B !important; }
+        .text-naeared-400 { color: #F57A5D !important; }
+        .text-naeared-500 { color: #EF5A3A !important; }
+        .text-naeared-600 { color: #D64527 !important; }
+        .border-naeared-500 { border-color: #EF5A3A !important; }
+
+        /* Bigger section labels and headings */
+        .section-label { font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; }
+        .section-heading { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; text-transform: uppercase; letter-spacing: -0.02em; line-height: 1.1; }
+        .campaign-heading { font-size: clamp(1.75rem, 4vw, 2.5rem); }
     </style>
 </head>
 <body class="bg-cream text-slate-800 antialiased selection:bg-naeared-500 selection:text-white">
@@ -215,35 +230,35 @@
 
     <!-- 2. THE GAP -->
     <section class="max-w-4xl mx-auto px-6 mb-20">
-        <div class="bg-navy-900 rounded-3xl p-10 md:p-14 text-white">
-            <span class="text-naeared-400 font-bold uppercase tracking-widest text-xs mb-4 block">The Problem</span>
-            <h2 class="font-heading font-black text-4xl uppercase tracking-tight mb-10">The Gap</h2>
-            <div class="space-y-6">
-                <div class="flex items-start gap-5">
-                    <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 mt-1">
-                        <i data-lucide="mic" class="w-5 h-5 text-naeared-400"></i>
+        <div style="background-color:#002D5B;border-radius:1.5rem;padding:3.5rem;color:white;">
+            <span style="color:#F57A5D;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;font-size:0.75rem;display:block;margin-bottom:1rem;">The Problem</span>
+            <h2 class="font-heading font-black text-4xl uppercase tracking-tight" style="margin-bottom:2.5rem;">The Gap</h2>
+            <div style="display:flex;flex-direction:column;gap:1.5rem;">
+                <div style="display:flex;align-items:flex-start;gap:1.25rem;">
+                    <div style="width:2.5rem;height:2.5rem;border-radius:0.75rem;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:0.25rem;">
+                        <i data-lucide="mic" style="width:1.25rem;height:1.25rem;color:#F57A5D;"></i>
                     </div>
                     <div>
-                        <p class="font-heading font-bold text-xl text-white">The podcast exists.</p>
-                        <p class="text-slate-400 mt-1">Episodes are live. Guests are strong. Content is real.</p>
+                        <p class="font-heading font-bold text-xl" style="color:white;">The podcast exists.</p>
+                        <p style="color:#94a3b8;margin-top:0.25rem;">Episodes are live. Guests are strong. Content is real.</p>
                     </div>
                 </div>
-                <div class="flex items-start gap-5">
-                    <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 mt-1">
-                        <i data-lucide="users" class="w-5 h-5 text-naeared-400"></i>
+                <div style="display:flex;align-items:flex-start;gap:1.25rem;">
+                    <div style="width:2.5rem;height:2.5rem;border-radius:0.75rem;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:0.25rem;">
+                        <i data-lucide="users" style="width:1.25rem;height:1.25rem;color:#F57A5D;"></i>
                     </div>
                     <div>
-                        <p class="font-heading font-bold text-xl text-white">The audience exists.</p>
-                        <p class="text-slate-400 mt-1">66,000 enrolled agents on IRS record. Nonmembers who already fit the profile.</p>
+                        <p class="font-heading font-bold text-xl" style="color:white;">The audience exists.</p>
+                        <p style="color:#94a3b8;margin-top:0.25rem;">66,000 enrolled agents on IRS record. Nonmembers who already fit the profile.</p>
                     </div>
                 </div>
-                <div class="flex items-start gap-5">
-                    <div class="w-10 h-10 rounded-xl bg-naeared-600/30 flex items-center justify-center flex-shrink-0 mt-1">
-                        <i data-lucide="link-2-off" class="w-5 h-5 text-naeared-400"></i>
+                <div style="display:flex;align-items:flex-start;gap:1.25rem;">
+                    <div style="width:2.5rem;height:2.5rem;border-radius:0.75rem;background:rgba(239,90,58,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:0.25rem;">
+                        <i data-lucide="link-2-off" style="width:1.25rem;height:1.25rem;color:#F57A5D;"></i>
                     </div>
                     <div>
-                        <p class="font-heading font-bold text-xl text-naeared-400">No system to connect them.</p>
-                        <p class="text-slate-400 mt-1">No pipeline that takes content → traffic → data → membership. That's what's being wasted.</p>
+                        <p class="font-heading font-bold text-xl" style="color:#F57A5D;">No system to connect them.</p>
+                        <p style="color:#94a3b8;margin-top:0.25rem;">No pipeline that takes content → traffic → data → membership. That's what's being wasted.</p>
                     </div>
                 </div>
             </div>
@@ -252,8 +267,8 @@
 
     <!-- 3. THE SYSTEM -->
     <section class="max-w-4xl mx-auto px-6 mb-20">
-        <span class="text-naeared-600 font-bold uppercase tracking-widest text-xs mb-3 block">The Fix</span>
-        <h2 class="font-heading font-black text-4xl text-navy-900 uppercase tracking-tight mb-8">The System</h2>
+        <span class="section-label text-naeared-600 mb-3 block">The Fix</span>
+        <h2 class="section-heading font-heading font-black text-navy-900 mb-8">The System</h2>
 
         <div class="bg-white rounded-3xl p-8 shadow-[0_20px_50px_rgba(0,45,91,0.06)] border border-slate-100 mb-6">
             <div class="flex flex-wrap justify-center gap-4 lg:gap-0 items-center">
@@ -299,8 +314,8 @@
     <!-- 4. THE 4 CAMPAIGNS INTRO -->
     <section class="bg-navy-900 py-16 px-6">
         <div class="max-w-4xl mx-auto">
-            <span class="text-naeared-400 font-bold uppercase tracking-widest text-xs mb-3 block">Execution</span>
-            <h2 class="font-heading font-black text-4xl text-white uppercase tracking-tight mb-4">To power this system, there are 4 campaigns.</h2>
+            <span class="section-label text-naeared-400 mb-3 block">Execution</span>
+            <h2 class="section-heading font-heading font-black text-white mb-4">To power this system, there are 4 campaigns.</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-10">
                 <div class="bg-white/10 border border-white/10 rounded-2xl p-6 flex items-center gap-4">
                     <span class="w-10 h-10 bg-gradient-to-br from-naeared-400 to-naeared-600 rounded-xl flex items-center justify-center font-heading font-black text-white text-lg flex-shrink-0">1</span>
@@ -324,8 +339,8 @@
 
     <!-- 5. CAMPAIGN BREAKDOWN -->
     <section class="max-w-4xl mx-auto px-6 py-20">
-        <span class="text-naeared-600 font-bold uppercase tracking-widest text-xs mb-3 block">Campaign Breakdown</span>
-        <h2 class="font-heading font-black text-4xl text-navy-900 uppercase tracking-tight mb-14">Each Campaign, Explained.</h2>
+        <span class="section-label text-naeared-600 mb-3 block">Campaign Breakdown</span>
+        <h2 class="section-heading font-heading font-black text-navy-900 mb-14">Each Campaign, Explained.</h2>
 
         <div class="space-y-10">
 
@@ -430,7 +445,7 @@
                 <div class="p-8 grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div>
                         <span class="text-xs font-bold text-naeared-600 uppercase tracking-widest block mb-3">What it does</span>
-                        <p class="text-slate-700 font-medium">Turns each episode into social content that drives traffic back into the system.</p>
+                        <p class="text-slate-700 font-medium">Turns audio content into content to impressions — every episode becomes multi-platform reach.</p>
                     </div>
                     <div>
                         <span class="text-xs font-bold text-naeared-600 uppercase tracking-widest block mb-3">What we do</span>
@@ -457,8 +472,8 @@
     <!-- 6. HOW IT ALL CONNECTS -->
     <section class="bg-navy-900 py-16 px-6">
         <div class="max-w-4xl mx-auto">
-            <span class="text-naeared-400 font-bold uppercase tracking-widest text-xs mb-3 block">The Full Picture</span>
-            <h2 class="font-heading font-black text-4xl text-white uppercase tracking-tight mb-10">How the system works.</h2>
+            <span class="section-label text-naeared-400 mb-3 block">The Full Picture</span>
+            <h2 class="section-heading font-heading font-black text-white mb-10">How the system works.</h2>
             <div class="space-y-4">
                 <div class="flex items-center gap-5 py-4 border-b border-white/10">
                     <div class="w-8 h-8 rounded-lg bg-naeared-600 flex items-center justify-center flex-shrink-0"><i data-lucide="mic" class="w-4 h-4 text-white"></i></div>
@@ -482,8 +497,8 @@
 
     <!-- 7. DATA + PROOF -->
     <section class="max-w-4xl mx-auto px-6 py-20">
-        <span class="text-naeared-600 font-bold uppercase tracking-widest text-xs mb-3 block">The Numbers</span>
-        <h2 class="font-heading font-black text-4xl text-navy-900 uppercase tracking-tight mb-4">Data + Proof</h2>
+        <span class="section-label text-naeared-600 mb-3 block">The Numbers</span>
+        <h2 class="section-heading font-heading font-black text-navy-900 mb-4">Data + Proof</h2>
         <p class="text-slate-500 text-lg mb-10">The IRS Active EA FOIA listing contains ~66,000 enrolled agents. Here's what that means in practice.</p>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -524,8 +539,8 @@
     <!-- 8. DELIVERY -->
     <section class="bg-slate-50 border-y border-slate-200 py-20 px-6">
         <div class="max-w-4xl mx-auto">
-            <span class="text-naeared-600 font-bold uppercase tracking-widest text-xs mb-3 block">Timeline</span>
-            <h2 class="font-heading font-black text-4xl text-navy-900 uppercase tracking-tight mb-12">Delivery</h2>
+            <span class="section-label text-naeared-600 mb-3 block">Timeline</span>
+            <h2 class="section-heading font-heading font-black text-navy-900 mb-12">Delivery</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm flex gap-4 items-start">
                     <span class="w-10 h-10 rounded-xl bg-navy-900 text-white flex items-center justify-center font-heading font-black text-sm flex-shrink-0">W1</span>
@@ -564,8 +579,8 @@
         <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=1000&auto=format&fit=crop')] opacity-5 mix-blend-overlay object-cover z-0"></div>
 
         <div class="relative z-10 max-w-3xl mx-auto px-6 text-center">
-            <span class="text-naeared-400 font-bold uppercase tracking-widest text-xs mb-3 block">The Ask</span>
-            <h2 class="font-heading font-black text-4xl md:text-5xl text-white uppercase mb-12">Investment</h2>
+            <span class="section-label text-naeared-400 mb-3 block">The Ask</span>
+            <h2 class="section-heading font-heading font-black text-white mb-12">Investment</h2>
 
             <div class="bg-white rounded-3xl p-10 md:p-12 shadow-[0_20px_40px_rgba(0,0,0,0.4)] border-t-8 border-naeared-500 text-left">
                 <span class="inline-block bg-blue-50 text-navy-900 font-black px-4 py-1 rounded-full text-sm uppercase tracking-widest mb-6 border border-navy-900/10">6-Month Package</span>
