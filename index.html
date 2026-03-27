@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NAEA Campaign Proposal & Podcast Mockup</title>
+    <link rel="icon" type="image/png" href="images/thumbnail.png">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -681,7 +682,7 @@
                         
                         <div id="start-screen" class="absolute inset-0 z-50 bg-navy-900 flex flex-col items-center justify-center p-6 cursor-pointer transition-opacity duration-500" onclick="startExperience()">
                             <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=400&auto=format&fit=crop')] opacity-10 mix-blend-overlay"></div>
-                            <img src="images/thumbnail.png" alt="Podcast" class="w-32 h-32 rounded-2xl shadow-xl mb-6 object-cover border border-white/10 group-hover/phone:scale-105 transition-transform duration-500">
+                            <img src="images/thumbnail.png" alt="Podcast" class="w-32 h-32 rounded-2xl shadow-xl mb-6 object-cover object-top border border-white/10 group-hover/phone:scale-105 transition-transform duration-500">
                             <h3 class="font-heading font-black text-white text-2xl mb-4 text-shadow-sm">EA Advocate</h3>
                             <div class="bg-white/10 backdrop-blur-sm border border-white/20 text-white font-bold px-6 py-2 rounded-full text-sm animate-pulse shadow-sm">Tap to Play Chat</div>
                         </div>
@@ -731,7 +732,7 @@
                 </div>
                 <div class="mx-auto group cursor-pointer relative">
                     <div class="absolute inset-0 bg-naeared-500 rounded-[1.5rem] translate-x-4 translate-y-4 z-0 opacity-20 group-hover:translate-x-5 group-hover:translate-y-5 transition-transform"></div>
-                    <img src="images/thumbnail.png" class="relative z-10 w-full max-w-[320px] rounded-[1.5rem] shadow-[0_20px_40px_rgba(0,45,91,0.15)] group-hover:scale-[1.02] transition-transform duration-500" alt="Podcast">
+                    <img src="images/thumbnail.png" class="relative z-10 w-full max-w-[320px] rounded-[1.5rem] shadow-[0_20px_40px_rgba(0,45,91,0.15)] group-hover:scale-[1.02] transition-transform duration-500 object-cover object-top" alt="Podcast">
                 </div>
             </div>
         </section>
@@ -770,7 +771,7 @@
             
             <div class="bg-white rounded-[1.5rem] overflow-hidden flex flex-col md:flex-row shadow-[0_10px_30px_rgba(0,45,91,0.06)] border border-slate-100 mb-8 group cursor-pointer hover:shadow-[0_15px_40px_rgba(0,45,91,0.1)] transition-shadow">
                 <div class="md:w-2/5 overflow-hidden relative min-h-[250px]">
-                    <img src="images/thumbnail.png" alt="Episode" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <img src="images/thumbnail.png" alt="Episode" class="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700">
                 </div>
                 <div class="p-8 md:w-3/5 flex flex-col justify-center">
                     <span class="self-start bg-navy-900 text-naeared-400 px-3 py-1 rounded text-xs font-black uppercase tracking-wider mb-4 shadow-sm border border-naeared-500/20">Featured</span>
@@ -920,5 +921,19 @@
             runAnimation(); // loop
         }
     </script>
+
+    <!-- SIGNATURE -->
+    <footer class="bg-navy-900 py-16 border-t-4 border-naeared-500">
+        <div class="max-w-3xl mx-auto px-6 text-center">
+            <div class="mb-8">
+                <img src="images/thumbnail.png" alt="Brandy Spears" class="w-24 h-24 rounded-full object-cover object-top mx-auto mb-4 border-2 border-white/20 shadow-lg">
+                <h3 class="font-heading font-black text-2xl text-white uppercase tracking-tight">Brandy Spears</h3>
+                <p class="text-naeared-400 font-bold text-sm uppercase tracking-widest mt-1">Campaign Strategist</p>
+            </div>
+            <div class="w-16 h-1 bg-gradient-to-r from-naeared-400 to-naeared-600 rounded-full mx-auto mb-8"></div>
+            <p class="text-slate-400 text-sm">Prepared exclusively for the National Association of Enrolled Agents</p>
+        </div>
+    </footer>
+
 </body>
 </html>
