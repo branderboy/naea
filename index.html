@@ -1,1 +1,794 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAEA Campaign Proposal</title>
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: { 900: '#002D5B', 800: '#003B73', 700: '#004B8D' },
+                        naeared: { 400: '#F57A5D', 500: '#EF5A3A', 600: '#D64527' }, 
+                        cream: '#F7F8FA',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif']
+                    },
+                    animation: {
+                        'pulse-cf': 'pulse-cf 2.5s infinite',
+                    },
+                    keyframes: {
+                        'pulse-cf': {
+                            '0%, 100%': { transform: 'scale(1)', boxShadow: '0 10px 25px rgba(239, 90, 58, 0.4)' },
+                            '50%': { transform: 'scale(1.02)', boxShadow: '0 15px 35px rgba(239, 90, 58, 0.7)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --primary-navy: #002D5B; 
+            --secondary-navy: #004B8D; 
+            --highlight-navy: #0066CC; 
+            
+            --naea-red-light: #F57A5D;
+            --naea-red-main: #EF5A3A;
+            --naea-red-dark: #D64527;
+            --accent-gradient: linear-gradient(180deg, var(--naea-red-light) 0%, var(--naea-red-dark) 100%);
+            
+            --bg-light: #F7F8FA; 
+            --text-main: #1E293B;
+            --text-light: #475569;
+            --white: #FFFFFF;
+            
+            --card-shadow: 0 20px 40px rgba(0, 45, 91, 0.08);
+            --glow-shadow: 0 8px 25px rgba(239, 90, 58, 0.4);
+            --text-drop: 0 4px 15px rgba(0,0,0,0.6);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            font-size: 18px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4, h5 { font-family: 'Montserrat', sans-serif; color: var(--primary-navy); line-height: 1.2; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 5%; position: relative; z-index: 2; }
+
+        /* Custom Utilities */
+        .glass-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .glass-card-dark { background: rgba(0, 45, 91, 0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .clip-diagonal { clip-path: polygon(0 0, 100% 4vw, 100% 100%, 0 100%); }
+        .clip-diagonal-bottom { clip-path: polygon(0 0, 100% 0, 100% calc(100% - 4vw), 0 100%); }
+        .text-glow { text-shadow: 0 0 20px rgba(255,255,255,0.5); }
+        
+        /* ClickFunnels Style Buttons (Red/Orange) */
+        .btn-cf {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            background: var(--accent-gradient);
+            color: var(--white);
+            padding: 16px 40px;
+            text-decoration: none;
+            border-radius: 8px;
+            border: 2px solid #B5351A;
+            box-shadow: 0 10px 25px rgba(239, 90, 58, 0.4), inset 0 2px 0 rgba(255,255,255,0.4);
+            transition: all 0.2s ease;
+            cursor: pointer;
+            text-align: center;
+            animation: pulse-cf 2.5s infinite;
+        }
+        .btn-cf:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(239, 90, 58, 0.6), inset 0 2px 0 rgba(255,255,255,0.4);
+            filter: brightness(1.05);
+            animation: none;
+        }
+        .btn-cf:disabled {
+            background: var(--secondary-navy);
+            border-color: var(--primary-navy);
+            box-shadow: none;
+            transform: none;
+            animation: none;
+            cursor: default;
+            filter: none;
+        }
+        .btn-cf .main-text { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 22px; text-transform: uppercase; letter-spacing: 1px; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+        .btn-cf .sub-text { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; opacity: 0.95; margin-top: 4px; text-shadow: 0 1px 2px rgba(0,0,0,0.3); }
+
+        .white-glow-text { color: var(--white); text-shadow: 0 4px 20px rgba(255,255,255,0.4), 0 2px 10px rgba(0,0,0,0.8); display: inline-block; }
+
+        /* Deep Dimensional Background using NAEA Navy */
+        .deep-broadcast-bg {
+            background-color: var(--primary-navy);
+            background-image: 
+                radial-gradient(ellipse at 80% 20%, var(--highlight-navy) 0%, transparent 40%),
+                radial-gradient(ellipse at 20% 80%, var(--secondary-navy) 0%, transparent 50%),
+                repeating-radial-gradient(circle at 50% 150%, rgba(255,255,255,0.03) 0, rgba(255,255,255,0.03) 2px, transparent 2px, transparent 40px);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+        .deep-broadcast-bg::after { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(0,0,0,0.4) 0%, transparent 100%); pointer-events: none; }
+
+        /* Signature Inputs */
+        .sig-input {
+            width: 100%; border: none; border-bottom: 2px solid rgba(0,45,91,0.2); padding: 8px 0 12px;
+            font-family: 'Montserrat', sans-serif; font-size: 24px; font-style: italic; font-weight: 700; color: var(--primary-navy);
+            background: transparent; outline: none; transition: border-color 0.3s;
+        }
+        .sig-input:focus { border-bottom-color: var(--primary-navy); }
+        .sig-input::placeholder { color: #CBD5E1; font-style: normal; font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 500; }
+        .sig-input.small { font-family: 'Inter', sans-serif; font-size: 18px; font-style: normal; font-weight: 600; }
+
+        /* Chat Animations */
+        #chat::-webkit-scrollbar { display: none; }
+        .msg-wrapper { opacity: 0; transform: translateY(15px); transition: all 0.4s ease; width: 100%; }
+        .msg-wrapper.show { opacity: 1; transform: translateY(0); }
+        .msg-wrapper.unfocused { opacity: 0.5; }
+    </style>
+</head>
+<body class="bg-cream text-slate-800 antialiased selection:bg-naeared-500 selection:text-white">
+
+    <!-- STICKY NAVBAR -->
+    <nav class="fixed w-full top-0 z-50 glass-card-dark border-b border-white/10 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <span class="font-heading font-black text-2xl text-white tracking-wide uppercase">NAEA PROPOSAL</span>
+            </div>
+            <a href="#investment" class="hidden md:flex flex-col items-center justify-center bg-gradient-to-b from-naeared-400 to-naeared-600 border-b-4 border-[#B5351A] active:border-b-0 active:translate-y-1 text-white rounded-lg px-6 py-2 shadow-[0_0_20px_rgba(239,90,58,0.5)] transition-all hover:brightness-110">
+                <span class="font-heading font-black text-sm uppercase tracking-wider text-shadow-sm">View Investment</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- OVERLAPPING HERO SECTION -->
+    <section class="relative pt-32 pb-40 lg:pt-48 lg:pb-52 overflow-hidden">
+        <div class="absolute inset-0 z-0 bg-navy-900">
+            <img src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=2000&auto=format&fit=crop" alt="Podcast Studio" class="w-full h-full object-cover opacity-50 mix-blend-multiply" />
+            <div class="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/80 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-navy-900/90 to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-6">
+            <h1 class="font-heading font-black text-5xl md:text-7xl lg:text-[85px] text-white uppercase tracking-tighter leading-none mb-6">
+                NAEA: <br />
+                <span class="white-glow-text">There's Only One</span>
+            </h1>
+        </div>
+    </section>
+
+    <!-- SECTION 1: PURPOSE (Replaces the broken grid) -->
+    <section class="relative z-20 -mt-20 md:-mt-24 max-w-7xl mx-auto px-6 mb-16">
+        <div class="bg-white p-10 md:p-12 rounded-3xl shadow-xl border-t-4 border-naeared-500 text-center">
+            <h2 class="font-heading font-black text-3xl uppercase text-navy-900 tracking-tight mb-8">1. PURPOSE</h2>
+            <div class="flex flex-col items-center gap-5">
+                <div class="flex items-center gap-4">
+                    <i data-lucide="check-circle-2" class="w-8 h-8 text-naeared-500 flex-shrink-0"></i>
+                    <p class="text-2xl md:text-3xl font-black text-navy-900 tracking-wide">Support NAEA Membership Goals</p>
+                </div>
+                <div class="flex items-center gap-4">
+                    <i data-lucide="check-circle-2" class="w-8 h-8 text-naeared-500 flex-shrink-0"></i>
+                    <p class="text-2xl md:text-3xl font-black text-navy-900 tracking-wide">Support NAEA Awareness Goals</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2 & 3: GOALS & AUDIENCE -->
+    <section class="max-w-7xl mx-auto px-6 mb-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Left: Goals -->
+        <div class="bg-white rounded-3xl p-10 shadow-lg border border-slate-100 relative overflow-hidden">
+            <div class="relative z-10">
+                <h2 class="font-heading font-black text-3xl uppercase text-navy-900 tracking-tight mb-8">2. GOALS</h2>
+                <div class="space-y-6">
+                    <div class="flex items-center gap-4">
+                        <i data-lucide="target" class="w-6 h-6 text-naeared-500 flex-shrink-0"></i>
+                        <h4 class="font-heading font-bold text-navy-900 text-xl uppercase">Rank podcast</h4>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <i data-lucide="target" class="w-6 h-6 text-naeared-500 flex-shrink-0"></i>
+                        <h4 class="font-heading font-bold text-navy-900 text-xl uppercase">Increase quarterly memberships</h4>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <i data-lucide="target" class="w-6 h-6 text-naeared-500 flex-shrink-0"></i>
+                        <h4 class="font-heading font-bold text-navy-900 text-xl uppercase">Create music for “There’s Only One”</h4>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <i data-lucide="target" class="w-6 h-6 text-naeared-500 flex-shrink-0"></i>
+                        <h4 class="font-heading font-bold text-navy-900 text-xl uppercase">Leverage social media</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right: Audience (Dark Card) -->
+        <div class="bg-navy-900 rounded-3xl p-10 shadow-xl relative overflow-hidden">
+            <div class="relative z-10">
+                <h2 class="font-heading font-black text-3xl uppercase text-white tracking-tight mb-8">3. AUDIENCE</h2>
+                <div class="space-y-6">
+                    <div class="flex items-center gap-4">
+                        <i data-lucide="user" class="w-6 h-6 text-naeared-500 flex-shrink-0"></i>
+                        <h4 class="text-white font-bold text-xl uppercase">Enrolled Agents</h4>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <i data-lucide="user" class="w-6 h-6 text-naeared-500 flex-shrink-0"></i>
+                        <h4 class="text-white font-bold text-xl uppercase">Tax Attorneys</h4>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <i data-lucide="user" class="w-6 h-6 text-naeared-500 flex-shrink-0"></i>
+                        <h4 class="text-white font-bold text-xl uppercase">CPAs</h4>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <i data-lucide="user" class="w-6 h-6 text-naeared-500 flex-shrink-0"></i>
+                        <h4 class="text-white font-bold text-xl uppercase">Tax Preparers</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: HOW SUCCESS IS MEASURED -->
+    <section class="max-w-7xl mx-auto px-6 mb-20">
+        <h2 class="font-heading font-black text-3xl text-navy-900 uppercase tracking-tight mb-8">4. HOW SUCCESS IS MEASURED</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="bg-white p-8 rounded-2xl shadow-md border border-slate-100 flex items-center justify-center text-center">
+                <span class="font-heading font-bold text-navy-900 text-lg uppercase tracking-wide">Podcast Visibility</span>
+            </div>
+            <div class="bg-white p-8 rounded-2xl shadow-md border border-slate-100 flex items-center justify-center text-center">
+                <span class="font-heading font-bold text-navy-900 text-lg uppercase tracking-wide">Membership Growth</span>
+            </div>
+            <div class="bg-white p-8 rounded-2xl shadow-md border border-slate-100 flex items-center justify-center text-center">
+                <span class="font-heading font-bold text-navy-900 text-lg uppercase tracking-wide">List Growth</span>
+            </div>
+            <div class="bg-white p-8 rounded-2xl shadow-md border border-slate-100 flex items-center justify-center text-center">
+                <span class="font-heading font-bold text-navy-900 text-lg uppercase tracking-wide">Engagement</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: THE SYSTEM -->
+    <section class="max-w-7xl mx-auto px-6 mb-24">
+        <h2 class="font-heading font-black text-3xl text-navy-900 uppercase tracking-tight mb-8">5. HOW THIS SUPPORTS EXISTING NAEA CAMPAIGNS</h2>
+        
+        <!-- Interactive Glassmorphic Pipeline -->
+        <div class="relative bg-white rounded-3xl p-10 shadow-[0_20px_50px_rgba(0,45,91,0.06)] border border-slate-100 flex flex-wrap justify-center gap-6 lg:gap-4">
+            <!-- Absolute connecting line -->
+            <div class="hidden lg:block absolute top-1/2 left-10 right-10 h-1 bg-slate-100 -translate-y-1/2 z-0"></div>
+            
+            <div class="relative z-10 flex flex-col items-center group cursor-default">
+                <div class="w-16 h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 flex items-center justify-center mb-4 group-hover:bg-navy-900 group-hover:border-navy-900 transition-colors shadow-md">
+                    <i data-lucide="mic" class="w-6 h-6 text-navy-900 group-hover:text-white transition-colors"></i>
+                </div>
+                <span class="font-heading font-bold text-sm uppercase text-slate-800 text-center">Creates<br>Content</span>
+            </div>
+            
+            <i data-lucide="chevron-right" class="w-6 h-6 text-naeared-500 self-center hidden lg:block z-10 mb-8"></i>
+            
+            <div class="relative z-10 flex flex-col items-center group cursor-default">
+                <div class="w-16 h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 flex items-center justify-center mb-4 group-hover:bg-navy-900 group-hover:border-navy-900 transition-colors shadow-md">
+                    <i data-lucide="mouse-pointer-click" class="w-6 h-6 text-navy-900 group-hover:text-white transition-colors"></i>
+                </div>
+                <span class="font-heading font-bold text-sm uppercase text-slate-800 text-center">Creates<br>Traffic</span>
+            </div>
+
+            <i data-lucide="chevron-right" class="w-6 h-6 text-naeared-500 self-center hidden lg:block z-10 mb-8"></i>
+
+            <div class="relative z-10 flex flex-col items-center group cursor-default">
+                <div class="w-16 h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 flex items-center justify-center mb-4 group-hover:bg-navy-900 group-hover:border-navy-900 transition-colors shadow-md">
+                    <i data-lucide="database" class="w-6 h-6 text-navy-900 group-hover:text-white transition-colors"></i>
+                </div>
+                <span class="font-heading font-bold text-sm uppercase text-slate-800 text-center">Builds<br>Contact Data</span>
+            </div>
+
+            <i data-lucide="chevron-right" class="w-6 h-6 text-naeared-500 self-center hidden lg:block z-10 mb-8"></i>
+
+            <div class="relative z-10 flex flex-col items-center group cursor-default">
+                <div class="w-16 h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 flex items-center justify-center mb-4 group-hover:bg-navy-900 group-hover:border-navy-900 transition-colors shadow-md">
+                    <i data-lucide="mail" class="w-6 h-6 text-navy-900 group-hover:text-white transition-colors"></i>
+                </div>
+                <span class="font-heading font-bold text-sm uppercase text-slate-800 text-center">Supports<br>Email Campaigns</span>
+            </div>
+
+            <i data-lucide="chevron-right" class="w-6 h-6 text-naeared-500 self-center hidden lg:block z-10 mb-8"></i>
+
+            <div class="relative z-10 flex flex-col items-center group cursor-default">
+                <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-naeared-400 to-naeared-600 flex items-center justify-center mb-4 shadow-[0_10px_20px_rgba(239,90,58,0.3)] group-hover:scale-110 transition-transform">
+                    <i data-lucide="users" class="w-6 h-6 text-white drop-shadow-md"></i>
+                </div>
+                <span class="font-heading font-black text-sm uppercase text-navy-900 text-center">Drive<br>Membership</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: DELIVERABLES -->
+    <section class="deep-broadcast-bg py-24 border-y-8 border-naeared-500 clip-diagonal relative z-10 shadow-[0_0_40px_rgba(239,90,58,0.3)]">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <h2 class="font-heading font-black text-4xl md:text-6xl text-white uppercase tracking-tight text-center mb-16 text-shadow-sm">6. DELIVERABLES <span class="block text-2xl md:text-3xl mt-2 text-naeared-400">(ALIGNED TO GOALS)</span></h2>
+
+            <div class="grid grid-cols-1 gap-12">
+                
+                <!-- Deliverable 1 -->
+                <div class="group bg-white rounded-[2rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.4)] border-2 border-transparent hover:border-naeared-500 transition-all duration-300 flex flex-col lg:flex-row transform hover:-translate-y-2">
+                    <div class="lg:w-1/3 bg-gradient-to-br from-naeared-400 to-naeared-600 relative overflow-hidden min-h-[200px] flex items-center justify-center p-8 text-center">
+                        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=400&auto=format&fit=crop')] opacity-20 mix-blend-overlay"></div>
+                        <h3 class="font-heading font-black text-3xl md:text-4xl text-white uppercase leading-tight relative z-10 text-shadow-sm">Deliverable 1:<br>Podcast</h3>
+                    </div>
+                    <div class="p-10 lg:w-2/3 bg-white flex flex-col justify-center">
+                        <div class="mb-6">
+                            <h4 class="font-bold text-naeared-500 uppercase tracking-widest text-sm mb-2">Supports</h4>
+                            <p class="font-heading font-black text-navy-900 text-2xl">Podcast Growth And Discoverability</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-naeared-500 uppercase tracking-widest text-sm mb-2">Focus</h4>
+                            <ul class="space-y-3">
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-6 h-6 text-naeared-500 mt-0.5 flex-shrink-0"></i><span class="text-lg font-bold text-slate-700">Landing Page Optimization</span></li>
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-6 h-6 text-naeared-500 mt-0.5 flex-shrink-0"></i><span class="text-lg font-bold text-slate-700">Search Visibility</span></li>
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-6 h-6 text-naeared-500 mt-0.5 flex-shrink-0"></i><span class="text-lg font-bold text-slate-700">Content Structure</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Deliverable 2 -->
+                <div class="group bg-white rounded-[2rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.4)] border-2 border-transparent hover:border-naeared-500 transition-all duration-300 flex flex-col lg:flex-row transform hover:-translate-y-2">
+                    <div class="lg:w-1/3 bg-gradient-to-br from-naeared-400 to-naeared-600 relative overflow-hidden min-h-[200px] flex items-center justify-center p-8 text-center lg:order-2">
+                        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=400&auto=format&fit=crop')] opacity-20 mix-blend-overlay"></div>
+                        <h3 class="font-heading font-black text-3xl md:text-4xl text-white uppercase leading-tight relative z-10 text-shadow-sm">Deliverable 2:<br>Data</h3>
+                    </div>
+                    <div class="p-10 lg:w-2/3 bg-white flex flex-col justify-center lg:order-1">
+                        <div class="mb-6">
+                            <h4 class="font-bold text-naeared-500 uppercase tracking-widest text-sm mb-2">Supports</h4>
+                            <p class="font-heading font-black text-navy-900 text-2xl">Membership + Email Campaigns</p>
+                        </div>
+                        <div class="mb-6">
+                            <h4 class="font-bold text-naeared-500 uppercase tracking-widest text-sm mb-2">Focus</h4>
+                            <ul class="space-y-3">
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-6 h-6 text-naeared-500 mt-0.5 flex-shrink-0"></i><span class="text-lg font-bold text-slate-700">IRS-Based Contact Sourcing</span></li>
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-6 h-6 text-naeared-500 mt-0.5 flex-shrink-0"></i><span class="text-lg font-bold text-slate-700">Enriched Email Lists</span></li>
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-6 h-6 text-naeared-500 mt-0.5 flex-shrink-0"></i><span class="text-lg font-bold text-slate-700">EA + Tax Preparer Datasets</span></li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <h4 class="font-bold text-navy-900 uppercase tracking-widest text-xs mb-1">Output</h4>
+                            <p class="font-heading font-black text-naeared-600 text-xl">Usable Contact Lists For NAEA Campaigns</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Deliverable 3 -->
+                <div class="group bg-white rounded-[2rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.4)] border-2 border-transparent hover:border-naeared-500 transition-all duration-300 flex flex-col lg:flex-row transform hover:-translate-y-2">
+                    <div class="lg:w-1/3 bg-gradient-to-br from-naeared-400 to-naeared-600 relative overflow-hidden min-h-[200px] flex items-center justify-center p-8 text-center">
+                        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=400&auto=format&fit=crop')] opacity-20 mix-blend-overlay"></div>
+                        <h3 class="font-heading font-black text-3xl md:text-4xl text-white uppercase leading-tight relative z-10 text-shadow-sm">Deliverable 3:<br>Music</h3>
+                    </div>
+                    <div class="p-10 lg:w-2/3 bg-white flex flex-col justify-center">
+                        <div class="mb-6">
+                            <h4 class="font-bold text-naeared-500 uppercase tracking-widest text-sm mb-2">Supports</h4>
+                            <p class="font-heading font-black text-navy-900 text-2xl">“There’s Only One” Campaign</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-naeared-500 uppercase tracking-widest text-sm mb-2">Focus</h4>
+                            <ul class="space-y-3">
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-6 h-6 text-naeared-500 mt-0.5 flex-shrink-0"></i><span class="text-lg font-bold text-slate-700">Original Music Creation</span></li>
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-6 h-6 text-naeared-500 mt-0.5 flex-shrink-0"></i><span class="text-lg font-bold text-slate-700">Campaign-Aligned Sound</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Deliverable 4 -->
+                <div class="group bg-white rounded-[2rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.4)] border-2 border-transparent hover:border-naeared-500 transition-all duration-300 flex flex-col lg:flex-row transform hover:-translate-y-2">
+                    <div class="lg:w-1/3 bg-gradient-to-br from-naeared-400 to-naeared-600 relative overflow-hidden min-h-[200px] flex items-center justify-center p-8 text-center lg:order-2">
+                        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=400&auto=format&fit=crop')] opacity-20 mix-blend-overlay"></div>
+                        <h3 class="font-heading font-black text-3xl md:text-4xl text-white uppercase leading-tight relative z-10 text-shadow-sm">Deliverable 4:<br>Distribution</h3>
+                    </div>
+                    <div class="p-10 lg:w-2/3 bg-white flex flex-col justify-center lg:order-1">
+                        <div class="mb-6">
+                            <h4 class="font-bold text-naeared-500 uppercase tracking-widest text-sm mb-2">Supports</h4>
+                            <p class="font-heading font-black text-navy-900 text-2xl">Social Media Journey</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-naeared-500 uppercase tracking-widest text-sm mb-2">Focus</h4>
+                            <ul class="space-y-3">
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-6 h-6 text-naeared-500 mt-0.5 flex-shrink-0"></i><span class="text-lg font-bold text-slate-700">Podcast Clip Distribution</span></li>
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-6 h-6 text-naeared-500 mt-0.5 flex-shrink-0"></i><span class="text-lg font-bold text-slate-700">Facebook Business Page As Core Hub</span></li>
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-6 h-6 text-naeared-500 mt-0.5 flex-shrink-0"></i><span class="text-lg font-bold text-slate-700">Cross-Platform Distribution</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7: DATA CONTEXT -->
+    <section class="bg-navy-900 text-white py-20 relative z-0 -mt-12 pt-28 pb-32 clip-diagonal-bottom">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="font-heading font-black text-4xl uppercase tracking-tight mb-10 text-white drop-shadow-md">7. DATA CONTEXT</h2>
+            <div class="flex flex-col gap-6 items-center">
+                <span class="font-heading font-bold text-2xl text-white uppercase tracking-wide">IRS List Size</span>
+                <span class="font-heading font-bold text-2xl text-white uppercase tracking-wide">Match Rate Range</span>
+                <span class="font-heading font-bold text-2xl text-white uppercase tracking-wide">Estimated Contacts</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 8: TIMELINE -->
+    <div class="w-full py-16 md:py-24 bg-cream flex items-center justify-center border-b border-slate-200">
+        <h2 class="text-4xl md:text-5xl font-heading font-black text-navy-900 uppercase tracking-tight text-center px-6">8. TIMELINE</h2>
+    </div>
+
+    <section class="max-w-4xl mx-auto px-6 pb-20 pt-12">
+        <div class="relative border-l-4 border-slate-200 ml-6 md:ml-0 md:border-l-0">
+            <!-- Absolute center line for desktop -->
+            <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-slate-200 -translate-x-1/2 z-0"></div>
+
+            <!-- Week 1 -->
+            <div class="relative mb-12 flex flex-col md:flex-row items-start md:items-center w-full group">
+                <div class="absolute -left-10 md:left-1/2 md:-translate-x-1/2 w-8 h-8 rounded-full bg-navy-900 border-4 border-cream z-10"></div>
+                <div class="md:w-1/2 md:pr-12 text-left md:text-right mb-3 md:mb-0 pl-6 md:pl-0">
+                    <h3 class="font-heading font-black text-3xl text-navy-900 uppercase">Week 1</h3>
+                </div>
+                <div class="md:w-1/2 md:pl-12 pl-6 md:pl-16">
+                    <div class="bg-white p-6 rounded-2xl shadow-md border border-slate-100">
+                        <span class="font-bold text-xl text-slate-700 uppercase tracking-wide">Audits + Music</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Week 2 -->
+            <div class="relative mb-12 flex flex-col md:flex-row items-start md:items-center w-full group">
+                <div class="absolute -left-10 md:left-1/2 md:-translate-x-1/2 w-8 h-8 rounded-full bg-navy-900 border-4 border-cream z-10"></div>
+                <div class="md:w-1/2 md:pr-12 text-left md:text-right mb-3 md:mb-0 pl-6 md:pl-0 md:order-2">
+                    <h3 class="font-heading font-black text-3xl text-navy-900 uppercase">Week 2</h3>
+                </div>
+                <div class="md:w-1/2 md:pl-12 pl-6 md:pl-0 md:pr-12 md:order-1 text-left">
+                    <div class="bg-white p-6 rounded-2xl shadow-md border border-slate-100">
+                        <span class="font-bold text-xl text-slate-700 uppercase tracking-wide">Enrichment + Setup</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Week 3 -->
+            <div class="relative mb-12 flex flex-col md:flex-row items-start md:items-center w-full group">
+                <div class="absolute -left-10 md:left-1/2 md:-translate-x-1/2 w-8 h-8 rounded-full bg-navy-900 border-4 border-cream z-10"></div>
+                <div class="md:w-1/2 md:pr-12 text-left md:text-right mb-3 md:mb-0 pl-6 md:pl-0">
+                    <h3 class="font-heading font-black text-3xl text-navy-900 uppercase">Week 3</h3>
+                </div>
+                <div class="md:w-1/2 md:pl-12 pl-6 md:pl-16">
+                    <div class="bg-white p-6 rounded-2xl shadow-md border border-slate-100">
+                        <span class="font-bold text-xl text-slate-700 uppercase tracking-wide">Delivery</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Week 4 -->
+            <div class="relative flex flex-col md:flex-row items-start md:items-center w-full group">
+                <div class="absolute -left-10 md:left-1/2 md:-translate-x-1/2 w-8 h-8 rounded-full bg-naeared-500 border-4 border-cream z-10"></div>
+                <div class="md:w-1/2 md:pr-12 text-left md:text-right mb-3 md:mb-0 pl-6 md:pl-0 md:order-2">
+                    <h3 class="font-heading font-black text-3xl text-navy-900 uppercase">Week 4</h3>
+                </div>
+                <div class="md:w-1/2 md:pl-12 pl-6 md:pl-0 md:pr-12 md:order-1 text-left">
+                    <div class="bg-white p-6 rounded-2xl shadow-md border border-slate-100">
+                        <span class="font-bold text-xl text-naeared-600 uppercase tracking-wide">System Active</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 9: CONTRACT / STRUCTURE -->
+    <section id="investment" class="bg-navy-900 py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=1000&auto=format&fit=crop')] opacity-5 mix-blend-overlay object-cover z-0"></div>
+        
+        <div class="relative z-10 max-w-2xl mx-auto px-6 text-center">
+            <h2 class="font-heading font-black text-4xl md:text-5xl text-white uppercase mb-12 text-shadow-sm">9. CONTRACT / STRUCTURE</h2>
+            
+            <div class="bg-white rounded-3xl p-10 md:p-12 shadow-[0_20px_40px_rgba(0,0,0,0.4)] border-t-8 border-naeared-500 flex flex-col items-center gap-6">
+                <span class="font-heading font-bold text-3xl text-navy-900 uppercase">Monthly - 6 Month</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- PODCAST LANDING PAGE MOCKUP ONLY                          -->
+    <!-- ========================================================= -->
+
+    <div id="mockup-section" class="bg-navy-900 py-16 text-center shadow-[0_15px_30px_rgba(0,0,0,0.3)] relative z-20">
+      <span class="block text-naeared-400 font-bold uppercase tracking-[0.2em] text-sm mb-2">
+        Campaign 1 Deliverable Preview
+      </span>
+      <h2 class="font-heading font-black text-white text-3xl md:text-5xl uppercase tracking-tight text-shadow-sm">
+        The Podcast Landing Page
+      </h2>
+    </div>
+
+    <div class="max-w-[1200px] mx-auto my-12 bg-white rounded-[2rem] overflow-hidden shadow-2xl border border-slate-200">
+
+      <!-- Mockup: Interactive Hero -->
+      <section class="flex flex-col lg:flex-row items-center p-10 lg:p-16 bg-white gap-10 border-b border-slate-100">
+        <div class="flex-1 min-w-[300px]">
+          <span class="inline-block font-heading font-bold text-xs uppercase tracking-widest text-naeared-600 mb-4 bg-naeared-50 px-3 py-1 rounded-full border border-naeared-100">
+            Insights
+          </span>
+          <h2 class="font-heading font-black text-4xl md:text-5xl text-navy-900 leading-tight mb-6">
+            The Secret to Year-Round Revenue
+          </h2>
+          <p class="text-lg text-slate-600 mb-4">
+            Tax season doesn't have to end in April. Millions of taxpayers face IRS issues—letters, balances, and audits—every single month.
+          </p>
+          <p class="text-lg text-slate-600 mb-6">
+            By learning representation, you transform your practice from a 4-month sprint into a 12-month marathon of steady, high-value consulting income.
+          </p>
+          <p class="font-bold text-navy-900 text-lg border-l-4 border-naeared-500 pl-4 bg-slate-50 py-3 rounded-r-lg">
+            Tap the phone to see how your peers are breaking the cycle.
+          </p>
+        </div>
+
+        <div class="flex-shrink-0 mx-auto">
+          <div class="w-[320px] h-[600px] bg-slate-50 rounded-[3rem] border-[12px] border-navy-900 shadow-[0_20px_40px_rgba(0,45,91,0.15)] relative overflow-hidden group/phone">
+            <div id="app-screen" class="h-full flex flex-col bg-slate-50 relative">
+
+              <div id="start-screen" class="absolute inset-0 z-50 bg-navy-900 flex flex-col items-center justify-center p-6 cursor-pointer transition-opacity duration-500" onclick="startExperience()">
+                <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=400&auto=format&fit=crop')] opacity-10 mix-blend-overlay"></div>
+                <img src="podcast photo 2.jpg" alt="Podcast" class="w-32 h-32 rounded-2xl shadow-xl mb-6 object-cover border border-white/10 group-hover/phone:scale-105 transition-transform duration-500">
+                <h3 class="font-heading font-black text-white text-2xl mb-4 text-shadow-sm">EA Advocate</h3>
+                <div class="bg-white/10 backdrop-blur-sm border border-white/20 text-white font-bold px-6 py-2 rounded-full text-sm animate-pulse shadow-sm">
+                  Tap to Play Chat
+                </div>
+              </div>
+
+              <div id="app-header" class="bg-white p-4 text-center z-10 shadow-sm border-b border-slate-100">
+                <div class="font-heading font-black text-navy-900 text-lg">NAEA</div>
+                <div class="text-xs text-slate-500 font-medium">You Don't Have To Stay Seasonal</div>
+              </div>
+
+              <div class="bg-white text-center p-3 text-2xl border-b border-slate-100 shadow-[0_2px_5px_rgba(0,0,0,0.02)]">🎧</div>
+
+              <div id="chat" class="flex-1 p-4 overflow-y-auto flex flex-col gap-3 pb-16"></div>
+
+              <div id="ending" class="absolute inset-0 z-40 bg-navy-900/95 backdrop-blur-sm text-white flex flex-col items-center justify-center p-8 opacity-0 pointer-events-none transition-opacity duration-500 text-center">
+                <h4 class="font-bold text-xl leading-snug mb-6 drop-shadow-md">
+                  If your income resets every year, you're missing the second half of the work.
+                </h4>
+                <div class="w-12 h-1.5 bg-gradient-to-r from-naeared-400 to-naeared-600 rounded-full"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Mockup: Banner -->
+      <section class="bg-navy-900 text-center py-20 px-6 relative overflow-hidden border-y-4 border-naeared-500">
+        <div class="absolute inset-0 bg-gradient-to-r from-navy-900 via-highlight-navy/20 to-navy-900 z-0 pointer-events-none"></div>
+        <div class="relative z-10">
+          <h2 class="font-heading font-black text-white text-3xl md:text-4xl mb-4 text-shadow-sm leading-tight drop-shadow-lg">
+            You Don't Have To Stay Seasonal.
+          </h2>
+          <p class="text-lg text-slate-200 max-w-3xl mx-auto font-medium">
+            Expand your tax preparation practice into a lucrative, year-round business with the National Association of Enrolled Agents.
+          </p>
+        </div>
+      </section>
+
+      <!-- Mockup: Promo & Listen -->
+      <section class="py-20 px-8 bg-slate-50 border-b border-slate-200">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
+          <div>
+            <h2 class="font-heading font-black text-3xl md:text-4xl text-navy-900 leading-tight mb-6">
+              Join thousands of EAs, CPAs, and Tax Attorneys
+            </h2>
+            <p class="text-base text-slate-600 mb-8">
+              The Enrolled Agent Advocate is the official podcast of America's Tax Experts. Each episode features practitioners, IRS insiders, and policy advocates exploring what it means to represent taxpayers.
+            </p>
+
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+              <h4 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-4">Where To Listen</h4>
+              <div class="flex flex-wrap gap-3">
+                <a href="#" class="px-5 py-2 rounded-full border-2 border-navy-900 text-navy-900 font-bold text-sm hover:bg-navy-900 hover:text-white transition-colors shadow-sm">
+                  Apple Podcasts
+                </a>
+                <a href="#" class="px-5 py-2 rounded-full border-2 border-navy-900 text-navy-900 font-bold text-sm hover:bg-navy-900 hover:text-white transition-colors shadow-sm">
+                  Spotify
+                </a>
+                <a href="#" class="px-5 py-2 rounded-full border-2 border-navy-900 text-navy-900 font-bold text-sm hover:bg-navy-900 hover:text-white transition-colors shadow-sm">
+                  YouTube
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="mx-auto group cursor-pointer relative">
+            <div class="absolute inset-0 bg-naeared-500 rounded-[1.5rem] translate-x-4 translate-y-4 z-0 opacity-20 group-hover:translate-x-5 group-hover:translate-y-5 transition-transform"></div>
+            <img src="podcast photo 2.jpg" class="relative z-10 w-full max-w-[320px] rounded-[1.5rem] shadow-[0_20px_40px_rgba(0,45,91,0.15)] group-hover:scale-[1.02] transition-transform duration-500" alt="Podcast">
+          </div>
+        </div>
+      </section>
+
+      <!-- Mockup: Latest Episodes -->
+      <section class="py-20 px-8 bg-white max-w-5xl mx-auto">
+        <h2 class="text-center font-heading font-black text-3xl md:text-4xl text-navy-900 mb-12 uppercase tracking-tight">
+          Latest Episodes
+        </h2>
+
+        <div class="bg-white rounded-[1.5rem] overflow-hidden flex flex-col md:flex-row shadow-[0_10px_30px_rgba(0,45,91,0.06)] border border-slate-100 mb-8 group cursor-pointer hover:shadow-[0_15px_40px_rgba(0,45,91,0.1)] transition-shadow">
+          <div class="md:w-2/5 overflow-hidden relative min-h-[250px]">
+            <img src="podcast photo 2.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          </div>
+          <div class="p-8 md:w-3/5 flex flex-col justify-center">
+            <span class="self-start bg-navy-900 text-naeared-400 px-3 py-1 rounded text-xs font-black uppercase tracking-wider mb-4 shadow-sm border border-naeared-500/20">
+              Featured
+            </span>
+            <h3 class="font-heading font-black text-2xl text-navy-900 mb-3">
+              Magic, Movies & Tax Controversy
+            </h3>
+            <p class="text-slate-600 text-sm mb-6">
+              Host Brandy Spears sits down with Jeffrey Thompson, a tax pro whose career sits at the intersection of tax, storytelling, and performance...
+            </p>
+            <div class="inline-flex items-center gap-2 text-navy-900 font-bold text-sm bg-slate-50 px-4 py-2 rounded-lg border border-slate-200 group-hover:border-navy-900 transition-colors">
+              <i data-lucide="play-circle" class="w-5 h-5 text-naeared-600"></i>
+              Play Episode (56 min)
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <div class="bg-white rounded-xl p-5 flex items-center border border-slate-100 shadow-sm hover:shadow-md hover:border-naeared-500 transition-all cursor-pointer group">
+            <div class="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center mr-6 group-hover:bg-naeared-50 transition-colors">
+              <i data-lucide="play" class="w-5 h-5 text-navy-900 group-hover:text-naeared-600 transition-colors"></i>
+            </div>
+            <div>
+              <h4 class="font-heading font-bold text-lg text-navy-900 mb-1">Finding Your Voice Before the IRS</h4>
+              <span class="text-sm text-slate-500 font-medium">Mar 2 • 50 min</span>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl p-5 flex items-center border border-slate-100 shadow-sm hover:shadow-md hover:border-naeared-500 transition-all cursor-pointer group">
+            <div class="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center mr-6 group-hover:bg-naeared-50 transition-colors">
+              <i data-lucide="play" class="w-5 h-5 text-navy-900 group-hover:text-naeared-600 transition-colors"></i>
+            </div>
+            <div>
+              <h4 class="font-heading font-bold text-lg text-navy-900 mb-1">Tax Strategy, Leadership, and Trust</h4>
+              <span class="text-sm text-slate-500 font-medium">Feb 16 • 50 min</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- MAIN FOOTER -->
+    <footer class="bg-navy-900 py-12 text-center border-t border-slate-800">
+        <p class="text-slate-400 text-sm font-medium">Prepared exclusively for NAEA.</p>
+    </footer>
+
+    <!-- INTERACTIVE SCRIPTS -->
+    <script>
+      lucide.createIcons();
+
+      const messages = [
+        { sender: 'mike', text: 'Dead until next April 😭' },
+        { sender: 'mike', text: 'Gotta wait it out' },
+        { sender: 'jess', text: 'Why you waiting' },
+        { sender: 'mike', text: 'No more returns' },
+        { sender: 'jess', text: 'Your clients still have IRS problems' },
+        { sender: 'mike', text: 'Like what' },
+        { sender: 'jess', text: 'Letters, balances, payment plans' },
+        { sender: 'mike', text: 'I don’t do that' },
+        { sender: 'jess', text: 'I didn’t either' },
+        { sender: 'jess', text: 'NAEA showed me' },
+        { sender: 'mike', text: 'They actually teach that?' },
+        { sender: 'jess', text: 'Yeah that’s where I learned it' }
+      ];
+
+      const chat = document.getElementById('chat');
+      const ending = document.getElementById('ending');
+      const startScreen = document.getElementById('start-screen');
+      const END_PAUSE = 4000;
+      const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+      let audioCtx;
+
+      function initAudio() {
+        if (!audioCtx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          audioCtx = new AudioContext();
+        }
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+      }
+
+      function playMessageSound(isReceiver) {
+        if (!audioCtx) return;
+        const osc = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+        osc.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(isReceiver ? 880 : 660, audioCtx.currentTime);
+        gainNode.gain.setValueAtTime(0.0001, audioCtx.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.08, audioCtx.currentTime + 0.01);
+        gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.15);
+
+        osc.start(audioCtx.currentTime);
+        osc.stop(audioCtx.currentTime + 0.15);
+      }
+
+      function createMessage(msgData) {
+        const wrapper = document.createElement('div');
+        wrapper.className = `msg-wrapper flex ${msgData.sender === 'jess' ? 'justify-end' : 'justify-start'}`;
+
+        const bubble = document.createElement('div');
+        bubble.className = `max-w-[80%] px-4 py-3 rounded-2xl text-sm leading-snug shadow-sm ${
+          msgData.sender === 'jess'
+            ? 'bg-navy-900 text-white rounded-br-md'
+            : 'bg-white text-slate-800 border border-slate-100 rounded-bl-md'
+        }`;
+        bubble.textContent = msgData.text;
+
+        wrapper.appendChild(bubble);
+        chat.appendChild(wrapper);
+
+        requestAnimationFrame(() => {
+          wrapper.classList.add('show');
+          if (msgData.sender === 'jess') {
+            playMessageSound(true);
+          } else {
+            playMessageSound(false);
+          }
+        });
+
+        chat.scrollTop = chat.scrollHeight;
+      }
+
+      async function startExperience() {
+        initAudio();
+        startScreen.style.opacity = '0';
+        setTimeout(() => {
+          startScreen.style.display = 'none';
+        }, 500);
+
+        chat.innerHTML = '';
+        ending.style.opacity = '0';
+        ending.style.pointerEvents = 'none';
+
+        for (let i = 0; i < messages.length; i++) {
+          createMessage(messages[i]);
+          await sleep(900);
+        }
+
+        await sleep(END_PAUSE);
+        ending.style.opacity = '1';
+        ending.style.pointerEvents = 'auto';
+      }
+    </script>
+</body>
+</html>
