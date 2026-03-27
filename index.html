@@ -470,28 +470,59 @@
     </section>
 
     <!-- 6. HOW IT ALL CONNECTS -->
-    <section class="bg-navy-900 py-16 px-6">
-        <div class="max-w-4xl mx-auto">
-            <span class="section-label text-naeared-400 mb-3 block">The Full Picture</span>
-            <h2 class="section-heading font-heading font-black text-white mb-10">How the system works.</h2>
-            <div class="space-y-4">
-                <div class="flex items-center gap-5 py-4 border-b border-white/10">
-                    <div class="w-8 h-8 rounded-lg bg-naeared-600 flex items-center justify-center flex-shrink-0"><i data-lucide="mic" class="w-4 h-4 text-white"></i></div>
-                    <p class="text-white font-medium text-lg">Podcast creates content</p>
+    <section style="background-color:#002D5B;padding:5rem 1.5rem;">
+        <div style="max-width:56rem;margin:0 auto;">
+            <span class="section-label" style="color:#F57A5D;display:block;margin-bottom:1rem;">The Full Picture</span>
+            <h2 class="font-heading font-black" style="font-size:clamp(2rem,5vw,3.5rem);color:white;margin-bottom:3.5rem;text-transform:uppercase;letter-spacing:-0.02em;line-height:1.1;">How the system works.</h2>
+
+            <div id="system-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;">
+
+                <!-- Step 1 -->
+                <div style="padding:2rem 1.5rem;border-right:1px solid rgba(255,255,255,0.08);position:relative;">
+                    <div style="font-size:5rem;font-weight:900;font-family:'Montserrat',sans-serif;color:rgba(255,255,255,0.06);line-height:1;margin-bottom:1rem;letter-spacing:-0.04em;">01</div>
+                    <div style="width:3rem;height:3px;background:#EF5A3A;margin-bottom:1.25rem;"></div>
+                    <p style="font-family:'Montserrat',sans-serif;font-size:1.35rem;font-weight:900;color:white;text-transform:uppercase;letter-spacing:-0.01em;line-height:1.2;margin-bottom:0.75rem;">Podcast</p>
+                    <p style="color:rgba(255,255,255,0.45);font-size:0.875rem;line-height:1.6;">Creates content. Every episode is fuel.</p>
+                    <div class="step-arrow" style="position:absolute;right:-1px;top:50%;transform:translateY(-50%);width:0;height:0;border-top:10px solid transparent;border-bottom:10px solid transparent;border-left:10px solid #EF5A3A;z-index:10;"></div>
                 </div>
-                <div class="flex items-center gap-5 py-4 border-b border-white/10">
-                    <div class="w-8 h-8 rounded-lg bg-naeared-600 flex items-center justify-center flex-shrink-0"><i data-lucide="share-2" class="w-4 h-4 text-white"></i></div>
-                    <p class="text-white font-medium text-lg">Content drives traffic</p>
+
+                <!-- Step 2 -->
+                <div style="padding:2rem 1.5rem;border-right:1px solid rgba(255,255,255,0.08);position:relative;">
+                    <div style="font-size:5rem;font-weight:900;font-family:'Montserrat',sans-serif;color:rgba(255,255,255,0.06);line-height:1;margin-bottom:1rem;letter-spacing:-0.04em;">02</div>
+                    <div style="width:3rem;height:3px;background:#EF5A3A;margin-bottom:1.25rem;"></div>
+                    <p style="font-family:'Montserrat',sans-serif;font-size:1.35rem;font-weight:900;color:white;text-transform:uppercase;letter-spacing:-0.01em;line-height:1.2;margin-bottom:0.75rem;">Content</p>
+                    <p style="color:rgba(255,255,255,0.45);font-size:0.875rem;line-height:1.6;">Drives traffic. Clips, clips, clips.</p>
+                    <div class="step-arrow" style="position:absolute;right:-1px;top:50%;transform:translateY(-50%);width:0;height:0;border-top:10px solid transparent;border-bottom:10px solid transparent;border-left:10px solid #EF5A3A;z-index:10;"></div>
                 </div>
-                <div class="flex items-center gap-5 py-4 border-b border-white/10">
-                    <div class="w-8 h-8 rounded-lg bg-naeared-600 flex items-center justify-center flex-shrink-0"><i data-lucide="database" class="w-4 h-4 text-white"></i></div>
-                    <p class="text-white font-medium text-lg">Traffic builds data</p>
+
+                <!-- Step 3 -->
+                <div style="padding:2rem 1.5rem;border-right:1px solid rgba(255,255,255,0.08);position:relative;">
+                    <div style="font-size:5rem;font-weight:900;font-family:'Montserrat',sans-serif;color:rgba(255,255,255,0.06);line-height:1;margin-bottom:1rem;letter-spacing:-0.04em;">03</div>
+                    <div style="width:3rem;height:3px;background:#EF5A3A;margin-bottom:1.25rem;"></div>
+                    <p style="font-family:'Montserrat',sans-serif;font-size:1.35rem;font-weight:900;color:white;text-transform:uppercase;letter-spacing:-0.01em;line-height:1.2;margin-bottom:0.75rem;">Traffic</p>
+                    <p style="color:rgba(255,255,255,0.45);font-size:0.875rem;line-height:1.6;">Builds data. Every click enriches the list.</p>
+                    <div class="step-arrow" style="position:absolute;right:-1px;top:50%;transform:translateY(-50%);width:0;height:0;border-top:10px solid transparent;border-bottom:10px solid transparent;border-left:10px solid #EF5A3A;z-index:10;"></div>
                 </div>
-                <div class="flex items-center gap-5 py-4">
-                    <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-naeared-400 to-naeared-600 flex items-center justify-center flex-shrink-0"><i data-lucide="users" class="w-4 h-4 text-white"></i></div>
-                    <p class="text-white font-bold text-lg">Data drives membership</p>
+
+                <!-- Step 4 -->
+                <div style="padding:2rem 1.5rem;background:linear-gradient(135deg,rgba(239,90,58,0.15) 0%,rgba(214,69,39,0.08) 100%);position:relative;">
+                    <div style="font-size:5rem;font-weight:900;font-family:'Montserrat',sans-serif;color:rgba(239,90,58,0.15);line-height:1;margin-bottom:1rem;letter-spacing:-0.04em;">04</div>
+                    <div style="width:3rem;height:3px;background:#EF5A3A;margin-bottom:1.25rem;"></div>
+                    <p style="font-family:'Montserrat',sans-serif;font-size:1.35rem;font-weight:900;color:#F57A5D;text-transform:uppercase;letter-spacing:-0.01em;line-height:1.2;margin-bottom:0.75rem;">Membership</p>
+                    <p style="color:rgba(255,255,255,0.55);font-size:0.875rem;line-height:1.6;">The outcome. Data closes the loop.</p>
                 </div>
+
             </div>
+
+            <!-- Mobile fallback (stacked) -->
+            <style>
+                @media (max-width: 640px) {
+                    #system-grid { grid-template-columns: 1fr !important; }
+                    #system-grid > div { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.08); }
+                    #system-grid > div:last-child { border-bottom: none !important; }
+                    .step-arrow { display: none !important; }
+                }
+            </style>
         </div>
     </section>
 
@@ -582,12 +613,12 @@
             <span class="section-label text-naeared-400 mb-3 block">The Ask</span>
             <h2 class="section-heading font-heading font-black text-white mb-12">Investment</h2>
 
-            <div class="bg-white rounded-3xl p-10 md:p-12 shadow-[0_20px_40px_rgba(0,0,0,0.4)] border-t-8 border-naeared-500 text-left">
-                <span class="inline-block bg-blue-50 text-navy-900 font-black px-4 py-1 rounded-full text-sm uppercase tracking-widest mb-6 border border-navy-900/10">6-Month Package</span>
-                <div class="font-heading font-black text-6xl md:text-7xl text-navy-900 leading-none tracking-tighter mb-2">$1,980</div>
-                <div class="text-slate-500 font-bold text-lg mb-8 uppercase tracking-wider">Per Month <span class="mx-2">·</span> $11,880 Total</div>
+            <div class="bg-white rounded-3xl p-10 md:p-14 shadow-[0_20px_40px_rgba(0,0,0,0.4)] border-t-8 border-naeared-500 text-center">
+                <span class="inline-block bg-blue-50 font-black px-4 py-1 rounded-full text-sm uppercase tracking-widest mb-8 border" style="color:#002D5B;border-color:rgba(0,45,91,0.1);">6-Month Package</span>
+                <div class="font-heading font-black leading-none tracking-tighter mb-2" style="font-size:clamp(4rem,10vw,6rem);color:#002D5B;">$1,980</div>
+                <div class="font-bold uppercase tracking-wider mb-10" style="font-size:1.1rem;color:#64748b;">Per Month &nbsp;·&nbsp; $11,880 Total</div>
 
-                <div class="bg-slate-50 rounded-xl p-6 border border-slate-100">
+                <div class="bg-slate-50 rounded-xl p-6 border border-slate-100 text-left max-w-sm mx-auto">
                     <ul class="space-y-4">
                         <li class="flex items-center gap-3"><i data-lucide="check-square" class="w-6 h-6 text-green-500 flex-shrink-0"></i><span class="font-semibold text-slate-700">All 4 Campaign Workstreams</span></li>
                         <li class="flex items-center gap-3"><i data-lucide="check-square" class="w-6 h-6 text-green-500 flex-shrink-0"></i><span class="font-semibold text-slate-700">Audits + Strategy Included</span></li>
@@ -694,7 +725,7 @@
                         
                         <div id="start-screen" class="absolute inset-0 z-50 bg-navy-900 flex flex-col items-center justify-center p-6 cursor-pointer transition-opacity duration-500" onclick="startExperience()">
                             <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=400&auto=format&fit=crop')] opacity-10 mix-blend-overlay"></div>
-                            <img src="podcast photo 2.jpg" alt="Podcast" class="w-32 h-32 rounded-2xl shadow-xl mb-6 object-cover border border-white/10 group-hover/phone:scale-105 transition-transform duration-500">
+                            <img src="images/thumbnail.png" alt="Podcast" class="w-32 h-32 rounded-2xl shadow-xl mb-6 object-cover border border-white/10 group-hover/phone:scale-105 transition-transform duration-500">
                             <h3 class="font-heading font-black text-white text-2xl mb-4 text-shadow-sm">EA Advocate</h3>
                             <div class="bg-white/10 backdrop-blur-sm border border-white/20 text-white font-bold px-6 py-2 rounded-full text-sm animate-pulse shadow-sm">Tap to Play Chat</div>
                         </div>
@@ -744,7 +775,7 @@
                 </div>
                 <div class="mx-auto group cursor-pointer relative">
                     <div class="absolute inset-0 bg-naeared-500 rounded-[1.5rem] translate-x-4 translate-y-4 z-0 opacity-20 group-hover:translate-x-5 group-hover:translate-y-5 transition-transform"></div>
-                    <img src="podcast photo 2.jpg" class="relative z-10 w-full max-w-[320px] rounded-[1.5rem] shadow-[0_20px_40px_rgba(0,45,91,0.15)] group-hover:scale-[1.02] transition-transform duration-500" alt="Podcast">
+                    <img src="images/thumbnail.png" class="relative z-10 w-full max-w-[320px] rounded-[1.5rem] shadow-[0_20px_40px_rgba(0,45,91,0.15)] group-hover:scale-[1.02] transition-transform duration-500" alt="Podcast">
                 </div>
             </div>
         </section>
@@ -755,7 +786,7 @@
             
             <div class="bg-white rounded-[1.5rem] overflow-hidden flex flex-col md:flex-row shadow-[0_10px_30px_rgba(0,45,91,0.06)] border border-slate-100 mb-8 group cursor-pointer hover:shadow-[0_15px_40px_rgba(0,45,91,0.1)] transition-shadow">
                 <div class="md:w-2/5 overflow-hidden relative min-h-[250px]">
-                    <img src="podcast photo 2.jpg" alt="Episode" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <img src="images/thumbnail.png" alt="Episode" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                 </div>
                 <div class="p-8 md:w-3/5 flex flex-col justify-center">
                     <span class="self-start bg-navy-900 text-naeared-400 px-3 py-1 rounded text-xs font-black uppercase tracking-wider mb-4 shadow-sm border border-naeared-500/20">Featured</span>
