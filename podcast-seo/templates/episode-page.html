@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- REPLACE TOKENS: {{EPISODE_TITLE}} {{EPISODE_NUMBER}} {{EPISODE_DESCRIPTION}}
+                     {{EPISODE_DATE_ISO}} {{EPISODE_DURATION_ISO8601}}
+                     {{EPISODE_AUDIO_URL}} {{EPISODE_URL}} {{EPISODE_IMAGE_URL}}
+                     {{GUEST_NAME}} {{GUEST_BIO}} {{HOST_NAME}} -->
+
+<title>{{EPISODE_TITLE}} | EA Advocate Podcast</title>
+<meta name="description" content="{{EPISODE_DESCRIPTION}}">
+
+<!-- OG tags for social + LLM crawlers -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{EPISODE_TITLE}}">
+<meta property="og:description" content="{{EPISODE_DESCRIPTION}}">
+<meta property="og:image" content="{{EPISODE_IMAGE_URL}}">
+<meta property="og:url" content="{{EPISODE_URL}}">
+<meta property="article:published_time" content="{{EPISODE_DATE_ISO}}">
+
+<!-- PodcastEpisode schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "PodcastEpisode",
+  "name": "{{EPISODE_TITLE}}",
+  "url": "{{EPISODE_URL}}",
+  "datePublished": "{{EPISODE_DATE_ISO}}",
+  "duration": "{{EPISODE_DURATION_ISO8601}}",
+  "description": "{{EPISODE_DESCRIPTION}}",
+  "episodeNumber": "{{EPISODE_NUMBER}}",
+  "image": "{{EPISODE_IMAGE_URL}}",
+  "associatedMedia": {
+    "@type": "MediaObject",
+    "contentUrl": "{{EPISODE_AUDIO_URL}}"
+  },
+  "partOfSeries": {
+    "@type": "PodcastSeries",
+    "name": "EA Advocate Podcast",
+    "url": "https://naea.org/podcast"
+  },
+  "actor": [
+    {"@type": "Person", "name": "{{HOST_NAME}}"},
+    {"@type": "Person", "name": "{{GUEST_NAME}}"}
+  ]
+}
+</script>
+
+<!-- FAQPage schema — LLMs love this -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does this episode cover?",
+      "acceptedAnswer": {"@type": "Answer", "text": "{{EPISODE_DESCRIPTION}}"}
+    }
+  ]
+}
+</script>
+
+<style>
+  body { font-family: -apple-system, sans-serif; max-width: 760px; margin: 0 auto; padding: 24px; line-height: 1.6; color: #1a1a1a; }
+  h1 { font-size: 28px; line-height: 1.25; }
+  .meta { color: #666; font-size: 14px; margin-bottom: 18px; }
+  .direct-answer { background: #f5f8ff; border-left: 4px solid #4a6cf7; padding: 16px; margin: 20px 0; font-size: 17px; }
+  h2 { margin-top: 36px; border-bottom: 1px solid #eee; padding-bottom: 6px; }
+  .takeaways li { margin-bottom: 8px; }
+  .transcript { background: #fafafa; padding: 16px; border-radius: 6px; font-size: 14px; }
+  .faq dt { font-weight: 600; margin-top: 16px; }
+  .faq dd { margin: 6px 0 0; }
+  .related a { display: block; padding: 8px 0; }
+  audio { width: 100%; margin: 16px 0; }
+</style>
+</head>
+<body>
+
+<article>
+  <h1>{{EPISODE_TITLE}}</h1>
+  <div class="meta">Episode {{EPISODE_NUMBER}} &middot; {{EPISODE_DATE_ISO}} &middot; Hosted by {{HOST_NAME}} &middot; Guest: {{GUEST_NAME}}</div>
+
+  <audio controls src="{{EPISODE_AUDIO_URL}}"></audio>
+
+  <!-- 2-sentence direct answer — this is what LLMs extract -->
+  <div class="direct-answer">
+    <strong>Quick answer:</strong> {{EPISODE_DESCRIPTION}}
+  </div>
+
+  <h2>Key takeaways</h2>
+  <ul class="takeaways">
+    <li><strong>Takeaway 1:</strong> [Replace with concrete insight.]</li>
+    <li><strong>Takeaway 2:</strong> [Replace with concrete insight.]</li>
+    <li><strong>Takeaway 3:</strong> [Replace with concrete insight.]</li>
+  </ul>
+
+  <h2>Chapters</h2>
+  <ul>
+    <li>00:00 — Intro</li>
+    <li>02:15 — [Chapter title with target keyword]</li>
+    <li>08:40 — [Chapter title]</li>
+    <li>16:22 — [Chapter title]</li>
+    <li>24:10 — Closing</li>
+  </ul>
+
+  <h2>Full transcript</h2>
+  <div class="transcript">
+    [Paste full AI-generated transcript here. This is the bulk of the page weight for SEO + GEO.]
+  </div>
+
+  <h2>FAQ</h2>
+  <dl class="faq">
+    <dt>What is an Enrolled Agent?</dt>
+    <dd>An Enrolled Agent is a federally-licensed tax practitioner empowered by the IRS to represent taxpayers in all tax matters — audits, collections, and appeals — in every state.</dd>
+    <dt>[Question 2 that listeners would Google after the episode]</dt>
+    <dd>[2–3 sentence answer.]</dd>
+    <dt>[Question 3]</dt>
+    <dd>[Answer.]</dd>
+  </dl>
+
+  <h2>Related episodes</h2>
+  <div class="related">
+    <a href="/podcast/episodes/[slug]">[Related episode title 1]</a>
+    <a href="/podcast/episodes/[slug]">[Related episode title 2]</a>
+    <a href="/podcast/episodes/[slug]">[Related episode title 3]</a>
+  </div>
+
+  <h2>About the guest</h2>
+  <p>{{GUEST_BIO}}</p>
+</article>
+
+</body>
+</html>

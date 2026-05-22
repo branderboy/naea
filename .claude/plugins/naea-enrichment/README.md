@@ -8,7 +8,7 @@ Enriches the IRS Enrolled Agent FOIA roster (~66K names) with verified emails an
 IRS roster CSV
    │
    ▼
-ingest ─► enricher (Apollo → Outscraper → Snov → Clearbit waterfall)
+ingest ─► enricher (Outscraper → Apollo waterfall)
                     │
                     ├─► pattern-guesser ─► verifier (NeverBounce)
                     │
@@ -36,40 +36,49 @@ ingest ─► enricher (Apollo → Outscraper → Snov → Clearbit waterfall)
 | linkedin_url | resolved profile URL (if any) |
 | linkedin_confidence | high / medium / low / null |
 | segment | email_direct / linkedin_only / unverified |
-| source | apollo / outscraper / snov / clearbit / pattern |
+| source | outscraper / apollo / snov / clearbit / pattern |
 | enriched_at | ISO timestamp |
 
 ## Setup
 
-1. Copy `.env.example` to `.env` and fill in API keys:
-   - `APOLLO_API_KEY`
-   - `OUTSCRAPER_API_KEY`
-   - `SNOV_CLIENT_ID`, `SNOV_CLIENT_SECRET`
-   - `CLEARBIT_API_KEY`
-   - `NEVERBOUNCE_API_KEY`
-
-2. Place the IRS roster CSV at `data/irs_enrolled_agents.csv`. FOIA-released format expected: `first_name,last_name,credential,city,state,zip,ptin`.
-
+1. Copy `.env.example` to `.env` and fill in API keys (minimum: `OUTSCRAPER_API_KEY`, `NEVERBOUNCE_API_KEY`).
+2. Place the IRS roster CSV at `data/irs_enrolled_agents.csv`. FOIA-released format expected.
 3. Install MCP server deps:
    ```
    pip install -r .claude/plugins/naea-enrichment/requirements.txt
    ```
-
-4. Run the pipeline:
+4. Run the pipeline from Claude Code:
    ```
    /enrich
    ```
 
-## Cost budget (60K agents, one-time)
+## Lean cost budget (60K agents, one-time)
 
-| Layer | Estimated cost |
-|---|---|
-| Apollo bulk credits | $2,400–4,800 |
-| Outscraper (firm + LinkedIn lookup) | $520–600 |
-| Snov.io fallback | $200 |
-| Clearbit fallback | $1,000 |
-| NeverBounce verification | $600 |
-| Buffer | $500 |
-| **Total** | **$5,220–7,700** |
+| Layer | Vendor | Cost |
+|---|---|---|
+| LinkedIn URL finder | Outscraper | $300 |
+| Google Maps firm + domain | Outscraper | $90 |
+| Email finder | Outscraper / Hunter | $50–150 |
+| Pattern guessing | free (local) | $0 |
+| NeverBounce verification | NeverBounce bulk | $200 |
+| Apollo (free tier + spot use) | Apollo | $0–100 |
+| Buffer | — | $150 |
+| **Total** | | **~$800–1,000** |
 
-Realistic yield: ~30% direct emails + ~55% LinkedIn URLs = ~50K usable records.
+Realistic yield: ~25–30% direct emails + ~50–55% LinkedIn URLs = ~45K usable records out of 60K.
+
+## Phase it (recommended if budget is tight)
+
+Don't enrich all 66K up front. Phase 1: top 5 states (CA, NY, TX, FL, IL ≈ 25K agents) for ~$400 in API cost. Prove the campaign, then phase 2 with revenue from phase 1.
+
+## Components
+
+- `plugin.json` — registers the 5 MCP servers
+- `mcp-servers/outscraper/` — Google Maps, LinkedIn search, email finder
+- `mcp-servers/neverbounce/` — SMTP verification + pattern winner picker
+- `mcp-servers/apollo/` — people enrichment (free-tier friendly)
+- `mcp-servers/snov/` — fallback (optional)
+- `mcp-servers/clearbit/` — last-resort (optional, expensive)
+- `agents/` — 6 subagents that run the pipeline stages
+- `commands/enrich.md` — `/enrich` slash command
+- `lib/common.py` — shared HTTP + pattern helpers
