@@ -24,7 +24,7 @@ def _headers() -> dict[str, str]:
 def find_business(name: str, city: str, state: str) -> dict:
     """Look up a tax firm on Google Maps. Returns name, website domain, phone, address."""
     q = f"{name} {city} {state}"
-    data = http_get(f"{BASE}/maps/search-v3", params={"query": q, "limit": 1, "async": "false"}, headers=_headers())
+    data = http_get(f"{BASE}/maps/search-v2", params={"query": q, "limit": 1, "async": "false"}, headers=_headers())
     items = (data.get("data") or [[]])[0]
     if not items:
         return {"found": False}
@@ -45,7 +45,7 @@ def find_business(name: str, city: str, state: str) -> dict:
 def find_linkedin(first_name: str, last_name: str, city: str, state: str, keyword: str = "enrolled agent tax") -> dict:
     """Find a LinkedIn profile URL using Google search via Outscraper."""
     q = f'site:linkedin.com/in "{first_name} {last_name}" "{city}" {keyword}'
-    data = http_get(f"{BASE}/google-search-v3", params={"query": q, "limit": 5, "async": "false"}, headers=_headers())
+    data = http_get(f"{BASE}/google-search-v2", params={"query": q, "limit": 5, "async": "false"}, headers=_headers())
     results = (data.get("data") or [[]])[0]
     for r in results:
         link = r.get("link", "")

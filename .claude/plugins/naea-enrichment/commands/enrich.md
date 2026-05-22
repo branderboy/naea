@@ -2,17 +2,29 @@
 description: Run the full NAEA enrichment pipeline end-to-end on the IRS Enrolled Agent roster.
 ---
 
-Run the NAEA enrichment pipeline. Execute these workers in sequence, halting if any reports a failure:
+The actual work is done by the batch script (so it doesn't burn LLM tokens on 60K rows).
 
-1. Invoke the `ingest` subagent to load `data/irs_enrolled_agents.csv` into the SQLite store.
-2. Invoke the `enricher` subagent to run the Outscraper → Apollo waterfall.
-3. Invoke the `pattern-guesser` subagent for agents with resolved firm domains.
-4. Invoke the `verifier` subagent to confirm all non-pattern emails are deliverable.
-5. Invoke the `linkedin-matcher` subagent to fill in LinkedIn URLs.
-6. Invoke the `csv-builder` subagent to write the final deliverable CSV + summary.
+Run:
 
-After each step, print the worker's summary. After the full run, surface `data/enrolled_agents_enriched.csv` and `data/run_summary.md` to the user.
+```
+cd .claude/plugins/naea-enrichment && python scripts/run_pipeline.py all
+```
 
-If `$BUDGET_USD` is exceeded at any step, stop, write a partial CSV, and ask the user whether to top up and continue.
+After it finishes, surface `data/enrolled_agents_enriched.csv` and `data/run_summary.md` to the user.
+
+If you want to run only one stage (for testing or recovery from a partial run):
+
+```
+python scripts/run_pipeline.py ingest      # load CSV → SQLite
+python scripts/run_pipeline.py enrich      # Outscraper firm + email lookup
+python scripts/run_pipeline.py guess       # pattern-guess remaining emails
+python scripts/run_pipeline.py verify      # NeverBounce verify
+python scripts/run_pipeline.py linkedin    # LinkedIn URL match
+python scripts/run_pipeline.py export      # write final CSV
+```
+
+If `$BUDGET_USD` is exceeded mid-run, the script stops cleanly and reports.
+The SQLite state file (`data/pipeline.sqlite`) lets you resume — just re-run
+the same command and it picks up where it left off.
 
 $ARGUMENTS
