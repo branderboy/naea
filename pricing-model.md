@@ -1,22 +1,39 @@
 # NAEA Engagement — Pricing Model
 
-## Recommended structure
+## Q1 Invoice — $12,750
 
-**Setup (Q1 only):** $1,250 — Decision Dashboard build + enrichment pipeline standup
-**Ongoing retainer:** $1,250/month — list refresh, podcast SEO, content engine, dashboard maintenance, signal briefs
+| Line item | Amount |
+|---|---|
+| Decision Dashboard — build + first-quarter wiring | $2,750 |
+| Enrichment infrastructure — pipeline build + initial 65K delivery | $1,750 |
+| Audio identity package — "Only One" theme + show bumpers | $850 |
+| YouTube revival — 89-video archive audit + optimization | $1,500 |
+| Custom landing page — EA Resource Center | $500 |
+| Q1 retainer (3 months × $1,500/mo) — podcast SEO, content engine, list refresh, weekly signal briefs, monthly reports | $4,500 |
+| Data acquisition (pass-through, at-cost) — Outscraper + NeverBounce | ~$900 |
+| **Q1 Total** | **$12,750** |
 
-| | Q1 | Q2+ |
-|---|---|---|
-| Setup / Dashboard | $1,250 | — |
-| Monthly retainer × 3 | $3,750 | $3,750 |
-| **Per-quarter total** | **$5,000** | **$3,750** |
-| **Annualized** | | **~$16,250** |
+## Q2 and onward — $4,600/quarter ongoing
 
-Pass-through data costs ($800–1,000 one-time for the 60K enrichment) billed separately at-cost.
+| Line item | Amount |
+|---|---|
+| Retainer (3 months × $1,500) | $4,500 |
+| Quarterly list refresh data (new EAs only, ~5K names) | ~$100 |
+| **Per-quarter ongoing** | **~$4,600** |
 
-## What's included in the $1,250/month retainer
+## Annualized
 
-- IRS list enrichment refresh (quarterly run, new EAs added)
+| | Amount |
+|---|---|
+| Q1 | $12,750 |
+| Q2 | $4,600 |
+| Q3 | $4,600 |
+| Q4 | $4,600 |
+| **Year 1 total** | **~$26,550** |
+
+## What's included in the $1,500/month retainer
+
+- IRS list refresh (quarterly run, new EAs added)
 - Podcast SEO + GEO work (per checklist: episode pages, schema, transcripts, FAQ)
 - 5 guest pitches per week
 - 10 listicle pitches per week
@@ -26,36 +43,56 @@ Pass-through data costs ($800–1,000 one-time for the 60K enrichment) billed se
 - Monthly performance report
 - Quarterly pivot recommendations
 
-## What's NOT included (à la carte add-ons)
+## Add-on services (not in Q1, à la carte for later quarters)
 
 | Add-on | Price |
 |---|---|
-| YouTube revival (89 existing videos) | $750 one-time |
-| Original audio identity ("Only One" track) | $850 one-time |
-| Custom landing page build (per page) | $500 |
 | Paid LinkedIn ad management | $1,000/mo (separate from retainer) |
 | One-off enrichment of a different list | $0.05/record + min $500 |
+| Additional custom landing page | $500 |
+| Episode video production (per ep) | $250 |
 
-## Why this works for the client
+## Why this defends well in front of NAEA
 
-- $5,000 Q1 ≈ original $5,200 pitch — no sticker shock
-- Breakeven still at 18 new members ($285/ea)
-- Recurring retainer instead of project bursts → easier to budget
-- Pass-through data cost is transparent and small
+- **Each line is a separate deliverable** they can point at. Not "marketing services."
+- **Data cost is at-cost / pass-through** — clearly not your margin.
+- **$4,600/quarter ongoing** is **lower** than Q1, so the recurring rate feels like a discount they earned.
+- **89-video YouTube number** ties to something concrete they pitched.
+- **Decision Dashboard** is the visible artifact at every quarterly review — easiest to justify renewing.
 
-## Why this works for you
+## If they push back on the headline
 
-- $1,250/mo recurring is **>$15K/year** of predictable revenue
-- Setup fee covers your build time properly
-- API costs aren't eating your labor margin
-- Quarterly anchor moments (dashboard reset, list refresh) renew the perceived value
+Knobs to turn down without breaking the structure:
+
+| Defer | New Q1 total |
+|---|---|
+| Audio Identity ($850) → Q2 | $11,900 |
+| YouTube Revival ($1,500) → Q2 | $11,250 |
+| Both | $10,400 |
+
+Both are real add-ons. Deferring isn't losing them — it's sequencing.
 
 ## What to NOT do
 
-- **Don't** lump API costs into the retainer. If next year's IRS roster grows or NAEA wants a deeper enrichment, you need pass-through to flex.
-- **Don't** discount the retainer below $1,250. The work easily justifies $2,500+; $1,250 is already a friend-of-the-house rate.
-- **Don't** sell the dashboard cheaper than $1,250 even as a one-off. It's the most visible deliverable; price reflects perceived value.
+- **Don't** lump API data costs into the retainer. They're pass-through. If next year's roster grows or NAEA wants deeper enrichment, you need that line to flex.
+- **Don't** discount the retainer below $1,500. The work scope (podcast SEO + content engine + outreach pitches + briefs + reports + list refresh) is at least $3K/mo at solo-freelancer rates. $1,500 is already a friend-of-the-house price.
+- **Don't** sell the dashboard below $2,500. It's the most visible deliverable; it sets the perceived value of everything else.
+- **Don't** quote without the data line. Always show "Data acquisition (at-cost): $X" so the client understands what's vendor cost vs your work.
 
 ## Conversation script for NAEA
 
-> "Looking at Q1 actuals, I want to restructure for Q2 onward. The dashboard build is a $1,250 one-time anchor — you keep it forever. Everything ongoing — list refresh, podcast SEO, content engine, signal briefs — is $1,250/month flat. That's $3,750/quarter ongoing, vs the $5,200 we did in Q1. The data acquisition costs (~$800 for the full enrichment) come through at-cost, billed separately. Net: you pay less per quarter from Q2 forward, the work doesn't shrink, and the recurring rhythm makes both our planning easier."
+> "Looking at the full Q1 scope, here's the line-item invoice — $12,750. The big anchors are the Decision Dashboard build at $2,750, the enrichment infrastructure at $1,750, and the quarterly retainer at $4,500. Audio identity and YouTube revival are the two we discussed adding; if Q1 timing is tight on either, we can defer them to Q2 and start at $10,400.
+>
+> Data acquisition for the IRS roster is roughly $900, billed at-cost — that's vendor fees, not our work.
+>
+> Q2 onward drops to $4,600/quarter ongoing, which covers the retainer plus quarterly list refresh data. Year-one total comes in around $26,500."
+
+## Breakeven math for the client
+
+If your retainer + setup runs $12,750 in Q1 and average new-member dues are $285:
+- Q1 breakeven = **45 new members from the work**
+- Year-1 breakeven = **93 new members**
+
+For an association of 66K licensed EAs with declining engagement, 93 new members from a full-funnel campaign (verified email outreach + LinkedIn audience + podcast SEO + content engine + paid retargeting) is conservative — typical campaign benchmarks suggest 0.3–0.8% conversion of cold audience to membership, which on 50K reached agents = 150–400 new members.
+
+If conversion lands at the midpoint (~275), Year 1 ROI is roughly **3x**.
