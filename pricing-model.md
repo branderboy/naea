@@ -1,68 +1,92 @@
 # NAEA Engagement — Tiered Pricing Model
 
-Four tiers sized by roster coverage. Each tier is a complete deliverable; the client picks based on appetite and budget. Most associations pick Tier 2 or 3 in year one and graduate up.
+Five service tiers sized by roster coverage, plus a separate Dashboard Buyout option. Each tier is a complete deliverable; the client picks based on appetite and budget. Most associations pick Tier 2 or 3 in year one and graduate up.
 
-| Tier | Roster reach | Monthly retainer | Q1 setup | **Q1 total** | Year 1 |
+## Service tiers at a glance
+
+| Tier | Roster reach | Monthly | Q1 setup | **Q1 total** | Year 1 |
 |---|---|---|---|---|---|
-| 1 — Starter | 5,000 agents | $1,250/mo | $2,000 | **$5,840** | $17,090 |
-| 2 — Growth | 15,000 agents | $1,650/mo | $3,000 | **$8,225** | $23,200 |
-| 3 — Scale | 40,000 agents | $2,250/mo | $5,000 | **$12,475** | $30,275 |
-| 4 — Enterprise | 65,000 (full roster) | $3,000/mo | $7,000 | **$17,200** | $44,200 |
+| 1 — Starter | 5,000 | $1,250/mo | $2,000 | **$5,840** | $17,090 |
+| 2 — Foundation | 10,000 | $1,450/mo | $2,500 | **$7,035** | $20,485 |
+| 3 — Growth | 25,000 | $1,750/mo | $3,500 | **$9,200** | $24,950 |
+| 4 — Scale | 40,000 | $2,250/mo | $5,000 | **$12,475** | $30,275 |
+| 5 — Enterprise | 65,000 (full roster) | $3,000/mo | $7,000 | **$17,200** | $44,200 |
 
-Data costs (Outscraper + NeverBounce) billed at-cost in the Q1 total.
+Data costs (Outscraper + NeverBounce) billed at-cost in the Q1 total. Pacing is 5K agents per month regardless of tier — see `monthly-phase-plan.md`.
 
 ---
 
 ## Tier 1 — Starter ($1,250/mo)
 
-**For:** Proof-of-concept quarter. NAEA wants to test the engine before committing to full roster.
+**For:** Proof-of-concept quarter. NAEA wants to test the engine before committing.
 
-| What's included |
+| Included |
 |---|
-| **5,000 agents enriched** (highest-value metro, e.g. CA or top-5 cities) |
-| Podcast SEO basics — 4 episode pages optimized per quarter with schema + transcripts |
-| Content engine lite — 5–10 clips/month from existing episodes |
-| Monthly performance brief (1 page) |
+| **5,000 agents enriched** (single highest-value metro) |
+| Podcast SEO basics — 4 episode pages optimized per quarter |
+| Content engine lite — 5–10 clips/month |
+| Monthly performance brief |
 | Quarterly review call |
-| Decision Dashboard — read-only, single-page snapshot |
+| Dashboard view (read-only) |
 
-| Q1 line items | Amount |
+| Q1 | Amount |
 |---|---|
-| Pipeline + dashboard setup | $2,000 |
-| Q1 retainer (3 × $1,250) | $3,750 |
-| Data acquisition (5K, at-cost) | ~$90 |
+| Setup | $2,000 |
+| Retainer (3 × $1,250) | $3,750 |
+| Data (5K, at-cost) | ~$90 |
 | **Q1 Total** | **$5,840** |
 
 ---
 
-## Tier 2 — Growth ($1,650/mo)
+## Tier 2 — Foundation ($1,450/mo)
 
-**For:** Standard engagement. NAEA committed to a real campaign, wants meaningful coverage and content output.
+**For:** Real engagement at a controlled scale. NAEA wants more than a pilot, less than full-state coverage.
 
-| What's included | |
+| Included | |
 |---|---|
 | Everything in Starter, plus: | |
-| **15,000 agents enriched** (top 3 states by EA density: CA + NY + TX) | |
-| Content engine standard — 15–20 clips/month | |
+| **10,000 agents enriched** (top 1–2 states, e.g. CA + part of NY) | |
+| Content engine standard — 10–15 clips/month | |
 | Biweekly briefs | |
-| 1 guest pitch/week (podcast guest outreach) | |
-| Custom landing page — EA Resource Center | |
-| Full Decision Dashboard with quarterly pivot recommendations | |
+| 1 guest pitch/week | |
+| Basic Decision Dashboard included | |
 
-| Q1 line items | Amount |
+| Q1 | Amount |
 |---|---|
-| Pipeline + dashboard + landing page setup | $3,000 |
-| Q1 retainer (3 × $1,650) | $4,950 |
-| Data acquisition (15K, at-cost) | ~$275 |
-| **Q1 Total** | **$8,225** |
+| Setup (pipeline + basic dashboard) | $2,500 |
+| Retainer (3 × $1,450) | $4,350 |
+| Data (10K, at-cost) | ~$185 |
+| **Q1 Total** | **$7,035** |
 
 ---
 
-## Tier 3 — Scale ($2,250/mo)
+## Tier 3 — Growth ($1,750/mo)
 
-**For:** Serious revenue play. NAEA wants the full marketing flywheel and is willing to invest for material membership growth.
+**For:** Standard engagement. NAEA committed to a real campaign and wants meaningful coverage + content output.
 
-| What's included | |
+| Included | |
+|---|---|
+| Everything in Foundation, plus: | |
+| **25,000 agents enriched** (top 5 states: CA, NY, TX, FL, IL) | |
+| Custom landing page — EA Resource Center | |
+| Content engine standard+ — 15–20 clips/month | |
+| 5 guest pitches + 5 listicle pitches per week | |
+| Full Decision Dashboard with quarterly pivot recommendations | |
+
+| Q1 | Amount |
+|---|---|
+| Setup (pipeline + dashboard + landing page) | $3,500 |
+| Retainer (3 × $1,750) | $5,250 |
+| Data (25K, at-cost) | ~$450 |
+| **Q1 Total** | **$9,200** |
+
+---
+
+## Tier 4 — Scale ($2,250/mo)
+
+**For:** Serious revenue play. NAEA wants the full marketing flywheel and material membership growth.
+
+| Included | |
 |---|---|
 | Everything in Growth, plus: | |
 | **40,000 agents enriched** (top 15 states, ~90% of practicing EAs) | |
@@ -72,20 +96,20 @@ Data costs (Outscraper + NeverBounce) billed at-cost in the Q1 total.
 | 5 guest pitches + 10 listicle pitches per week | |
 | Paid ad strategy consultation (creative + audience structuring) | |
 
-| Q1 line items | Amount |
+| Q1 | Amount |
 |---|---|
-| Pipeline + dashboard + landing page + audio + YouTube setup | $5,000 |
-| Q1 retainer (3 × $2,250) | $6,750 |
-| Data acquisition (40K, at-cost) | ~$725 |
+| Setup (full — dashboard + landing page + audio + YouTube + pipeline) | $5,000 |
+| Retainer (3 × $2,250) | $6,750 |
+| Data (40K, at-cost) | ~$725 |
 | **Q1 Total** | **$12,475** |
 
 ---
 
-## Tier 4 — Enterprise ($3,000/mo)
+## Tier 5 — Enterprise ($3,000/mo)
 
 **For:** Full association coverage. NAEA wants the entire IRS roster activated and an ongoing data flywheel.
 
-| What's included | |
+| Included | |
 |---|---|
 | Everything in Scale, plus: | |
 | **65,000 agents — full IRS roster — enriched and refreshed quarterly** | |
@@ -94,54 +118,98 @@ Data costs (Outscraper + NeverBounce) billed at-cost in the Q1 total.
 | Dedicated quarterly strategy session | |
 | Priority support window (48-hr response) | |
 
-| Q1 line items | Amount |
+| Q1 | Amount |
 |---|---|
-| Full setup — dashboard + landing pages + audio + YouTube + pipeline + ad infra | $7,000 |
-| Q1 retainer (3 × $3,000) | $9,000 |
-| Data acquisition (65K, at-cost) | ~$1,200 |
+| Setup (full + ad infrastructure) | $7,000 |
+| Retainer (3 × $3,000) | $9,000 |
+| Data (65K, at-cost) | ~$1,200 |
 | **Q1 Total** | **$17,200** |
 
 ---
 
-## Why tiers work for the conversation
+## Dashboard Buyout — separate from tiers
 
-- **NAEA picks their risk tolerance**, not your price. You don't argue — they self-select.
-- **Tier 2 is the anchor.** Most clients pick the second-cheapest option. It looks safe and "reasonable."
-- **Tier 3 is the goal.** Frame it as "where you graduate to in Q2 once Tier 1 or 2 proves out."
-- **Tier 4 exists to make Tier 3 look reasonable.** Classic pricing decoy.
-- **Easy upgrade path mid-engagement** — they start at Tier 1, when ROI shows, you bump them to Tier 2 next quarter. Same retainer cadence, more scope.
+By default, the **Decision Dashboard is leased**: hosted by the agency, included in Tier 2+ retainers, lives at a private URL. NAEA stops paying → access ends.
+
+If NAEA wants to **own** the dashboard outright (audit committees and boards often prefer this), three options:
+
+### Option A — Buyout ($5,000 one-time)
+
+- NAEA receives the dashboard source code (HTML/CSS/JS + data layer)
+- Perpetual license — they can host on their own infrastructure
+- Custom-branded with NAEA logo + colors
+- One round of revisions included
+- Agency continues to populate it monthly as part of retainer (or NAEA takes that over)
+
+### Option B — Buyout + Annual Support ($5,000 + $1,200/year)
+
+- Everything in Option A, plus:
+- Quarterly feature releases (new charts, new data sources)
+- Bug-fix SLA (5 business days)
+- Email support for NAEA staff
+- Suitable if NAEA's IT team is small and they want maintenance off their plate
+
+### Option C — White-Label Member Edition ($7,500 one-time + $0.50/member/year)
+
+- The dashboard rebuilt as a member-facing tool — NAEA members log in to see their own market data
+- Becomes a **member benefit** that NAEA can market to drive renewals
+- $0.50/member/year is the licensing fee back to you for ongoing data pipeline
+- For 25K members: $12,500/year recurring on top of buyout — easy add for NAEA, real revenue for you
+
+### When to pitch each
+
+| If NAEA says... | Pitch |
+|---|---|
+| "We need to own everything." (board / audit driven) | Option A — straightforward buyout |
+| "Our IT is light, can you keep it running?" | Option B — buyout + support |
+| "How do we make members feel they got more this year?" | Option C — white-label, becomes a benefit |
+| (default, no objection) | Lease — included in retainer |
+
+---
+
+## Why this structure wins
+
+- **5 tiers give the client agency.** They're not negotiating with you, they're choosing among defined products.
+- **Tier 3 is the anchor.** Most clients pick the middle tier. It looks reasonable.
+- **Dashboard Buyout is the big-ticket upsell.** Many clients won't ask, but those who do are serious and have budget.
+- **Phased pacing (5K/month) keeps every tier deliverable** — no client buys 65K and lets it rot.
+- **Easy upgrade path** — start at Tier 1, graduate to Tier 3 in Q2 once ROI lands. Same machinery, more scope.
 
 ## Recommended pitch order
 
-1. Lead with **Tier 2 ($8,225 Q1)** as your default recommendation
-2. Mention **Tier 1 ($5,840)** as the "test it for a quarter" option
-3. Mention **Tier 3 ($12,475)** as "where most associations end up by Q2"
-4. Only mention Tier 4 if they ask "what's the full thing?"
+1. Lead with **Tier 3 ($9,200 Q1)** as your default recommendation
+2. Mention **Tier 1 or 2** as the "start small" option
+3. Mention **Tier 4 or 5** as "where you graduate to once Tier 3 proves out"
+4. Only mention **Dashboard Buyout** if they ask about ownership/control of the dashboard, or in Q4 of year one as an upsell
 
 ## Breakeven (assumes $285 avg new-member dues)
 
 | Tier | Q1 cost | Members needed to break even |
 |---|---|---|
 | 1 — Starter | $5,840 | 21 |
-| 2 — Growth | $8,225 | 29 |
-| 3 — Scale | $12,475 | 44 |
-| 4 — Enterprise | $17,200 | 61 |
+| 2 — Foundation | $7,035 | 25 |
+| 3 — Growth | $9,200 | 33 |
+| 4 — Scale | $12,475 | 44 |
+| 5 — Enterprise | $17,200 | 61 |
 
-For an association of 66K EAs, all of these are conservative against realistic 0.3–0.8% conversion benchmarks. Even Tier 4 needs only 0.12% conversion on a 50K reached audience to break even.
+For an association of 66K EAs, all conservative against realistic 0.3–0.8% conversion benchmarks. Even Tier 5 needs only 0.12% conversion on a 50K reached audience.
 
 ## What to NOT do
 
 - **Don't** custom-quote off these tiers. The whole point is to remove negotiation. "Which tier?" not "what's your budget?"
-- **Don't** discount within a tier. Bundle in a free add-on if you have to, but the headline price stays.
-- **Don't** quote Tier 4 first. Anchor at Tier 2 — Tier 4 only comes up if they ask.
-- **Don't** lump data costs into the retainer. Always show "Data acquisition (at-cost): $X." Keeps your margin clean and lets the roster size flex.
+- **Don't** discount within a tier. Bundle in a free add-on if you have to, but headline price stays.
+- **Don't** quote Tier 5 first. Anchor at Tier 3 — Tier 5 only comes up if they ask.
+- **Don't** lump data costs into the retainer. Always show "Data acquisition (at-cost): $X" as a separate line.
+- **Don't** offer Dashboard Buyout in the initial pitch. Let it be a surprise upsell when they ask, or position it in Q4 as a year-end ownership transfer.
 
 ## Conversation script for NAEA
 
-> "I've structured this in four tiers based on how much of the roster you want activated. The mid tier — Tier 2 Growth at $8,225 for Q1 — covers your top 3 states, runs the full content engine, and gets you a custom landing page. That's where I'd start.
+> "I've structured this in five tiers based on how much of the roster you want activated. The middle tier — Tier 3 Growth at $9,200 for Q1 — covers your top 5 states, full content engine, custom landing page, and the Decision Dashboard. That's where I'd start.
 >
-> If you want to dip a toe in first, Tier 1 Starter is $5,840 — same machinery, just on 5K agents in one metro. Easy to upgrade after a quarter if results land.
+> If you want to dip a toe in first, Tier 1 Starter is $5,840 — same machinery, just on 5K agents in one metro. Easy to upgrade after a quarter.
 >
-> If you want the full association activated, Tier 4 Enterprise is $17,200 — that's all 65K agents, refreshed quarterly, plus paid ad management.
+> If you want the full association activated, Tier 5 Enterprise is $17,200 — that's all 65K agents, refreshed quarterly, plus paid ad management.
 >
-> Data costs are billed at-cost and called out separately on every invoice — that's what we pay vendors like Outscraper and NeverBounce."
+> Data costs are billed at-cost and called out separately — that's what we pay vendors like Outscraper and NeverBounce. We pace enrichment at 5K agents per month so each batch gets a full 4-week campaign before the next one lands.
+>
+> The Decision Dashboard is included in your retainer and hosted by us. If at any point you want to own it outright — bring it in-house with your IT team — we have a buyout option at $5,000 that transfers the source code and gives you a perpetual license."
