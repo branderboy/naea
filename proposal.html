@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NAEA Member Growth Engine — Proposal 2026</title>
+<style>
+  :root {
+    --navy: #0f1f3d;
+    --navy-2: #1a2d52;
+    --gold: #c9a55b;
+    --gold-light: #e8d4a3;
+    --bg: #fafaf7;
+    --panel: #ffffff;
+    --ink: #1a1a1a;
+    --ink-dim: #5a5a5a;
+    --line: #e2dfd8;
+    --accent: #2e7d6b;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: Georgia, "Times New Roman", serif;
+    background: var(--bg); color: var(--ink); line-height: 1.6;
+  }
+  .sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+
+  /* COVER */
+  .cover {
+    background: linear-gradient(180deg, var(--navy) 0%, var(--navy-2) 100%);
+    color: white; padding: 80px 60px 100px; position: relative;
+  }
+  .cover::after {
+    content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 6px;
+    background: var(--gold);
+  }
+  .cover .eyebrow {
+    text-transform: uppercase; letter-spacing: 3px; font-size: 12px;
+    color: var(--gold); font-family: -apple-system, sans-serif; font-weight: 600;
+  }
+  .cover h1 {
+    font-size: 52px; line-height: 1.1; margin: 16px 0 12px;
+    font-weight: normal; max-width: 800px;
+  }
+  .cover .deck {
+    font-size: 20px; color: #c4d0e3; max-width: 700px; margin-top: 14px; font-style: italic;
+  }
+  .cover .meta {
+    margin-top: 60px; display: flex; gap: 48px; font-size: 13px;
+    font-family: -apple-system, sans-serif; color: #8a9bb8;
+  }
+  .cover .meta strong { color: white; display: block; font-weight: 600; }
+
+  /* SECTIONS */
+  section {
+    padding: 70px 60px; max-width: 1100px; margin: 0 auto;
+  }
+  section.alt { background: var(--panel); }
+  section.dark { background: var(--navy); color: white; max-width: none; padding: 70px 60px; }
+  section.dark a { color: var(--gold-light); }
+
+  h2 {
+    font-size: 32px; margin: 0 0 8px; font-weight: normal;
+    color: var(--navy); border-bottom: 2px solid var(--gold); padding-bottom: 12px; display: inline-block;
+  }
+  section.dark h2 { color: white; }
+  h3 { font-size: 20px; margin: 30px 0 8px; color: var(--navy); font-family: -apple-system, sans-serif; }
+  section.dark h3 { color: var(--gold-light); }
+  .lede { font-size: 18px; color: var(--ink-dim); margin: 20px 0 30px; max-width: 800px; }
+
+  /* TIER CARDS */
+  .tiers {
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin: 30px 0;
+  }
+  .tier {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 6px;
+    padding: 22px 16px; position: relative; transition: all .2s;
+  }
+  .tier.recommended {
+    border: 2px solid var(--gold); transform: translateY(-6px);
+    box-shadow: 0 6px 18px rgba(201, 165, 91, 0.18);
+  }
+  .tier.recommended::before {
+    content: "RECOMMENDED"; position: absolute; top: -12px; left: 50%;
+    transform: translateX(-50%); background: var(--gold); color: white;
+    padding: 4px 12px; font-size: 10px; letter-spacing: 1.5px;
+    font-family: -apple-system, sans-serif; font-weight: 700; border-radius: 12px;
+  }
+  .tier .name {
+    font-size: 13px; color: var(--ink-dim); text-transform: uppercase; letter-spacing: 1px;
+    font-family: -apple-system, sans-serif;
+  }
+  .tier .label { font-size: 22px; margin: 6px 0 14px; color: var(--navy); font-weight: 600; }
+  .tier .reach {
+    font-size: 32px; color: var(--accent); font-family: -apple-system, sans-serif; font-weight: 700;
+  }
+  .tier .reach-unit {
+    font-size: 12px; color: var(--ink-dim); text-transform: uppercase; letter-spacing: 1px;
+  }
+  .tier .price {
+    margin: 18px 0 6px; font-size: 13px; color: var(--ink-dim); font-family: -apple-system, sans-serif;
+  }
+  .tier .price-big {
+    font-size: 24px; color: var(--navy); font-weight: 700; font-family: -apple-system, sans-serif;
+  }
+  .tier .q1 {
+    margin-top: 18px; padding-top: 14px; border-top: 1px dotted var(--line);
+    font-size: 12px; color: var(--ink-dim); font-family: -apple-system, sans-serif;
+  }
+  .tier .q1 strong { color: var(--navy); font-size: 14px; }
+
+  /* TABLES */
+  table { width: 100%; border-collapse: collapse; margin: 20px 0; font-family: -apple-system, sans-serif; font-size: 14px; }
+  th, td { text-align: left; padding: 12px 10px; border-bottom: 1px solid var(--line); }
+  th { background: var(--bg); color: var(--navy); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  tr.total td { border-top: 2px solid var(--navy); font-weight: 700; }
+  section.dark table th { background: var(--navy-2); color: var(--gold-light); }
+  section.dark table td { border-color: #2a3d62; }
+
+  /* FUNNEL diagram */
+  .funnel {
+    background: var(--navy-2); border-radius: 8px; padding: 30px; margin: 30px 0;
+    font-family: -apple-system, sans-serif;
+  }
+  .funnel-stage {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 20px; margin-bottom: 10px;
+    background: linear-gradient(90deg, rgba(201, 165, 91, 0.15), transparent);
+    border-left: 4px solid var(--gold); border-radius: 4px;
+  }
+  .funnel-stage .stage-name { color: white; font-weight: 600; }
+  .funnel-stage .stage-detail { color: var(--gold-light); font-size: 13px; }
+  .funnel-stage:nth-child(2) { margin-left: 20px; }
+  .funnel-stage:nth-child(3) { margin-left: 40px; }
+  .funnel-stage:nth-child(4) { margin-left: 60px; }
+  .funnel-stage:nth-child(5) { margin-left: 80px; }
+  .funnel-stage:nth-child(6) { margin-left: 100px; }
+
+  /* BUYOUT cards */
+  .buyout-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 24px 0; }
+  .buyout {
+    background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 24px;
+  }
+  .buyout h4 {
+    margin: 0 0 6px; font-family: -apple-system, sans-serif; color: var(--navy);
+    font-size: 16px; text-transform: uppercase; letter-spacing: 1px;
+  }
+  .buyout .price-tag {
+    font-size: 28px; color: var(--accent); font-weight: 700; margin: 8px 0 16px;
+    font-family: -apple-system, sans-serif;
+  }
+  .buyout ul { padding-left: 18px; font-size: 14px; }
+  .buyout li { margin-bottom: 6px; }
+
+  /* PODCAST formula */
+  .formula-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 24px 0;
+  }
+  .formula-card {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 8px;
+    padding: 24px;
+  }
+  .formula-card .num {
+    font-size: 48px; color: var(--gold); font-family: -apple-system, sans-serif;
+    font-weight: 700; line-height: 1;
+  }
+  .formula-card h4 {
+    margin: 8px 0; color: var(--navy); font-size: 18px; font-family: -apple-system, sans-serif;
+  }
+  .formula-card p { font-size: 14px; color: var(--ink-dim); margin: 0; }
+
+  /* CTAs */
+  .cta-box {
+    background: var(--navy); color: white; padding: 40px; border-radius: 8px;
+    margin: 40px 0; text-align: center;
+  }
+  .cta-box h2 { color: white; border-color: var(--gold); }
+  .cta-button {
+    display: inline-block; background: var(--gold); color: var(--navy);
+    padding: 14px 32px; font-size: 14px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; text-decoration: none; border-radius: 4px;
+    font-family: -apple-system, sans-serif; margin-top: 18px;
+  }
+
+  /* utility */
+  .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+  .checklist li { list-style: none; padding-left: 28px; position: relative; margin-bottom: 8px; }
+  .checklist li::before {
+    content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: 700;
+  }
+  .quote {
+    border-left: 4px solid var(--gold); padding: 16px 24px; margin: 30px 0;
+    background: var(--bg); font-style: italic; color: var(--ink-dim); font-size: 18px;
+  }
+
+  /* Footer */
+  footer {
+    background: var(--navy); color: #8a9bb8; padding: 40px 60px; font-size: 13px;
+    font-family: -apple-system, sans-serif;
+  }
+  footer strong { color: white; }
+
+  /* PRINT */
+  @media print {
+    .cover, section, footer { page-break-inside: avoid; }
+    section { padding: 30px; }
+    .tier.recommended { transform: none; }
+  }
+
+  /* MOBILE */
+  @media (max-width: 900px) {
+    section { padding: 40px 20px; }
+    .cover { padding: 50px 20px; }
+    .cover h1 { font-size: 32px; }
+    .tiers { grid-template-columns: 1fr; }
+    .buyout-options, .formula-grid, .row-2 { grid-template-columns: 1fr; }
+    .cover .meta { flex-direction: column; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="eyebrow">Strategic Engagement Proposal — 2026</div>
+  <h1>NAEA Member Growth Engine</h1>
+  <p class="deck">A phased, data-driven program to reach all 65,000 federally-licensed Enrolled Agents, grow the EA Advocate Podcast, and convert audience into renewing members.</p>
+  <div class="meta">
+    <div><strong>Prepared for</strong>National Association of Enrolled Agents</div>
+    <div><strong>Prepared by</strong>Brand Spears / Digiwaxx</div>
+    <div><strong>Date</strong>May 2026</div>
+    <div><strong>Validity</strong>30 days</div>
+  </div>
+</div>
+
+<!-- EXECUTIVE SUMMARY -->
+<section>
+  <h2>Executive Summary</h2>
+  <p class="lede">
+    NAEA has the membership opportunity of a generation. Of the ~66,000 licensed Enrolled Agents in the United States, only a fraction are dues-paying members. The IRS FOIA roster makes the entire universe addressable — every name, city, and credential. What's missing is the engine that turns that public list into engaged prospects, podcast listeners, and renewing members.
+  </p>
+  <p class="lede">
+    This proposal delivers that engine: a phased enrichment pipeline that finds every EA's verified email and LinkedIn profile, a content + podcast SEO program that grows the EA Advocate Podcast 3–5x in twelve months, and a Decision Dashboard that turns activity into evidence for the board.
+  </p>
+  <p class="lede">
+    Five service tiers let NAEA scale into the program at the pace they're ready for — starting at <strong>$1,250/month</strong> and scaling to full association coverage. Every tier paces enrichment at 5,000 agents per month so each batch gets a full four-week campaign window before the next lands.
+  </p>
+  <div class="quote">
+    "The data is public. The infrastructure isn't. We're going to build the infrastructure, and use it month after month to turn the public roster into active members."
+  </div>
+</section>
+
+<!-- THE FIVE TIERS -->
+<section class="alt">
+  <h2>Five Tiers, One Engine</h2>
+  <p class="lede">Pick the tier that matches budget and outbound capacity. Every tier uses the same pipeline and the same content engine — they differ in roster reach, content output, and add-on services. Upgrade between quarters at any time.</p>
+
+  <div class="tiers">
+    <div class="tier">
+      <div class="name">Tier 1</div>
+      <div class="label">Starter</div>
+      <div class="reach">5,000</div>
+      <div class="reach-unit">agents — 1 metro</div>
+      <div class="price">monthly retainer</div>
+      <div class="price-big">$1,250</div>
+      <div class="q1"><strong>Q1 total: $5,840</strong><br>Setup $2,000 + 3mo + data</div>
+    </div>
+    <div class="tier">
+      <div class="name">Tier 2</div>
+      <div class="label">Foundation</div>
+      <div class="reach">10,000</div>
+      <div class="reach-unit">agents — top 1–2 states</div>
+      <div class="price">monthly retainer</div>
+      <div class="price-big">$1,450</div>
+      <div class="q1"><strong>Q1 total: $7,035</strong><br>Setup $2,500 + 3mo + data</div>
+    </div>
+    <div class="tier recommended">
+      <div class="name">Tier 3</div>
+      <div class="label">Growth</div>
+      <div class="reach">25,000</div>
+      <div class="reach-unit">agents — top 5 states</div>
+      <div class="price">monthly retainer</div>
+      <div class="price-big">$1,750</div>
+      <div class="q1"><strong>Q1 total: $9,200</strong><br>Setup $3,500 + 3mo + data</div>
+    </div>
+    <div class="tier">
+      <div class="name">Tier 4</div>
+      <div class="label">Scale</div>
+      <div class="reach">40,000</div>
+      <div class="reach-unit">agents — top 15 states</div>
+      <div class="price">monthly retainer</div>
+      <div class="price-big">$2,250</div>
+      <div class="q1"><strong>Q1 total: $12,475</strong><br>Setup $5,000 + 3mo + data</div>
+    </div>
+    <div class="tier">
+      <div class="name">Tier 5</div>
+      <div class="label">Enterprise</div>
+      <div class="reach">65,000</div>
+      <div class="reach-unit">full IRS roster</div>
+      <div class="price">monthly retainer</div>
+      <div class="price-big">$3,000</div>
+      <div class="q1"><strong>Q1 total: $17,200</strong><br>Setup $7,000 + 3mo + data</div>
+    </div>
+  </div>
+
+  <h3>What's included at each tier</h3>
+  <table>
+    <thead>
+      <tr><th>Capability</th><th>Starter</th><th>Foundation</th><th>Growth</th><th>Scale</th><th>Enterprise</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Agents enriched (cumulative)</td><td>5K</td><td>10K</td><td>25K</td><td>40K</td><td>65K</td></tr>
+      <tr><td>Podcast SEO + GEO program</td><td>basic</td><td>basic</td><td>full</td><td>full</td><td>full</td></tr>
+      <tr><td>Content engine (clips/month)</td><td>5–10</td><td>10–15</td><td>15–20</td><td>20–30</td><td>30+</td></tr>
+      <tr><td>Guest pitches per week</td><td>—</td><td>1</td><td>5</td><td>5</td><td>5</td></tr>
+      <tr><td>Listicle pitches per week</td><td>—</td><td>—</td><td>5</td><td>10</td><td>10</td></tr>
+      <tr><td>Custom landing page</td><td>—</td><td>—</td><td>✓</td><td>✓</td><td>multiple</td></tr>
+      <tr><td>Decision Dashboard</td><td>read-only</td><td>basic</td><td>full</td><td>full</td><td>full</td></tr>
+      <tr><td>YouTube revival (89 videos)</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>✓</td></tr>
+      <tr><td>Audio identity package</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>✓</td></tr>
+      <tr><td>Paid LinkedIn ad management</td><td>—</td><td>—</td><td>—</td><td>consult</td><td>full</td></tr>
+      <tr><td>Performance brief cadence</td><td>monthly</td><td>biweekly</td><td>biweekly</td><td>weekly</td><td>weekly</td></tr>
+      <tr><td>Quarterly strategy session</td><td>—</td><td>—</td><td>✓</td><td>✓</td><td>dedicated</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- PHASED PLAN -->
+<section>
+  <h2>The Phased Enrichment Plan</h2>
+  <p class="lede">
+    Every tier paces at <strong>5,000 agents per month</strong>. This isn't a budgeting trick — it's the rate at which a tight email + LinkedIn campaign can be properly run on a fresh cohort before the next one lands. Bigger upfront purchases create enriched-but-uncampaigned lists, which is wasted spend.
+  </p>
+
+  <h3>Per-phase economics (5K cohort)</h3>
+  <table>
+    <thead>
+      <tr><th>Vendor line</th><th class="num">Cost</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Outscraper — Google Maps firm lookup (3K × $0.003)</td><td class="num">$9</td></tr>
+      <tr><td>Outscraper — LinkedIn search (5K × $0.005)</td><td class="num">$25</td></tr>
+      <tr><td>Outscraper — email scraper (3K domains × $0.013)</td><td class="num">$39</td></tr>
+      <tr><td>NeverBounce — bulk verification (~4K × $0.004)</td><td class="num">$16</td></tr>
+      <tr><td>Retry/buffer (~10%)</td><td class="num">$10</td></tr>
+      <tr class="total"><td>Per-phase data cost (at-cost, billed pass-through)</td><td class="num">$99</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Monthly cost by tier (during enrichment)</h3>
+  <table>
+    <thead>
+      <tr><th>Tier</th><th class="num">Setup (Mo 0)</th><th class="num">Per-month during enrichment</th><th class="num">Months of enrichment</th><th class="num">Per-month after</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1 — Starter</td><td class="num">$2,000</td><td class="num">$1,340</td><td class="num">1</td><td class="num">$1,250</td></tr>
+      <tr><td>2 — Foundation</td><td class="num">$2,500</td><td class="num">$1,540</td><td class="num">2</td><td class="num">$1,450</td></tr>
+      <tr><td>3 — Growth</td><td class="num">$3,500</td><td class="num">$1,840</td><td class="num">5</td><td class="num">$1,750</td></tr>
+      <tr><td>4 — Scale</td><td class="num">$5,000</td><td class="num">$2,340</td><td class="num">8</td><td class="num">$2,250</td></tr>
+      <tr><td>5 — Enterprise</td><td class="num">$7,000</td><td class="num">$3,090</td><td class="num">13</td><td class="num">$3,025</td></tr>
+    </tbody>
+  </table>
+
+  <h3>What a month looks like</h3>
+  <p>
+    <strong>Days 1–3:</strong> enrichment pipeline runs on this month's cohort.
+    Output: verified emails, LinkedIn URLs, firm domains.
+    <strong>Days 4–7:</strong> handoff to outreach — emails loaded into SMTP tool, LinkedIn URLs uploaded as Campaign Manager custom audience.
+    <strong>Week 2:</strong> sequence one (intro) sends; LinkedIn ad campaign begins.
+    <strong>Week 3:</strong> sequence two (value drop); ad creative adjusted based on early CTR.
+    <strong>Week 4:</strong> sequence three (offer); conversion data pulled and briefed to NAEA.
+    <strong>Day 28–30:</strong> decision — continue campaign on this cohort or move on. Next month's enrichment begins Day 1.
+  </p>
+</section>
+
+<!-- PODCAST FORMULA -->
+<section class="dark">
+  <h2>The Podcast Formula</h2>
+  <p class="lede" style="color: #c4d0e3;">
+    The EA Advocate Podcast is NAEA's most under-leveraged asset. Right now it produces episodes. Under this program it becomes a discovery engine that compounds month over month — search-engine and LLM-citation-friendly content that drives podcast subscribers, drives traffic to NAEA.org, and feeds the membership funnel.
+  </p>
+
+  <div class="funnel">
+    <div class="funnel-stage">
+      <div><div class="stage-name">1 · Episode Production</div></div>
+      <div class="stage-detail">Existing weekly cadence — no change in studio</div>
+    </div>
+    <div class="funnel-stage">
+      <div><div class="stage-name">2 · SEO + GEO Optimization</div></div>
+      <div class="stage-detail">Schema markup, full transcripts, FAQ pages, llms.txt for AI citation</div>
+    </div>
+    <div class="funnel-stage">
+      <div><div class="stage-name">3 · Distribution Multiplier</div></div>
+      <div class="stage-detail">40+ podcast directories; TikTok, Reels, LinkedIn, YouTube clips</div>
+    </div>
+    <div class="funnel-stage">
+      <div><div class="stage-name">4 · Discovery</div></div>
+      <div class="stage-detail">Apple search rank, Google AI Overview, ChatGPT/Claude/Perplexity citations</div>
+    </div>
+    <div class="funnel-stage">
+      <div><div class="stage-name">5 · Subscribe</div></div>
+      <div class="stage-detail">Listener → podcast subscriber across Apple, Spotify, YouTube</div>
+    </div>
+    <div class="funnel-stage">
+      <div><div class="stage-name">6 · Convert</div></div>
+      <div class="stage-detail">Email signup, EA Resource Center download, NAEA membership</div>
+    </div>
+  </div>
+
+  <h3>How we engineer each layer</h3>
+  <div class="formula-grid">
+    <div class="formula-card">
+      <div class="num">01</div>
+      <h4>SEO foundation</h4>
+      <p>Every episode gets a structured page with PodcastEpisode schema, full AI-generated transcript, FAQ section answering questions listeners would search after the show. Pillar pages link episode clusters around topics like IRS audits, practice growth, PTIN renewal.</p>
+    </div>
+    <div class="formula-card">
+      <div class="num">02</div>
+      <h4>GEO + AI citation</h4>
+      <p>llms.txt and llms-full.txt at site root. Standardized entity reference across 40+ directories. Reddit and HARO answers seeded by NAEA practitioners to appear in LLM training data. Wikipedia mention through an existing NAEA page.</p>
+    </div>
+    <div class="formula-card">
+      <div class="num">03</div>
+      <h4>Content multiplier</h4>
+      <p>Each episode becomes 15–30 short clips for TikTok, Reels, LinkedIn, Shorts, Facebook. One-page LinkedIn article per episode from the host's profile. 600-word email digest to the enriched list.</p>
+    </div>
+    <div class="formula-card">
+      <div class="num">04</div>
+      <h4>Backlink machine</h4>
+      <p>5 guest pitches per week to position NAEA practitioners in tax media. 10 listicle pitches per week to land in "best podcasts for tax pros" roundups — the primary signal LLMs use for recommendations.</p>
+    </div>
+    <div class="formula-card">
+      <div class="num">05</div>
+      <h4>Cross-platform syndication</h4>
+      <p>Submission to Listen Notes, Podchaser, Goodpods (huge LLM training signals), plus the major directories. YouTube revival — 89 archive videos audited, retitled, and re-thumbnailed for search.</p>
+    </div>
+    <div class="formula-card">
+      <div class="num">06</div>
+      <h4>Conversion pipeline</h4>
+      <p>Custom landing page (EA Resource Center) captures emails from podcast listeners. Email sequence nurtures toward membership. LinkedIn retargeting closes the loop on visitors who don't convert immediately.</p>
+    </div>
+  </div>
+
+  <h3>90-day milestones</h3>
+  <table>
+    <thead><tr><th>Day</th><th>Milestone</th></tr></thead>
+    <tbody>
+      <tr><td>Day 30</td><td>llms.txt live; show submitted to 40+ directories; 5 Reddit answers/week active</td></tr>
+      <tr><td>Day 60</td><td>First guest article published on Accounting Today or CPA Practice Advisor</td></tr>
+      <tr><td>Day 90</td><td>First confirmed LLM citation in ChatGPT/Claude/Perplexity for any query about tax podcasts</td></tr>
+      <tr><td>Day 180</td><td>Show appears in 3+ "best podcasts for tax pros" listicles</td></tr>
+      <tr><td>Day 365</td><td>Wikipedia mention via NAEA page; 3–5x organic episode-page traffic vs baseline</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- DASHBOARD BUYOUT -->
+<section>
+  <h2>Decision Dashboard — Lease or Buy</h2>
+  <p class="lede">
+    The Decision Dashboard turns campaign activity into evidence the board can act on. It pulls enrichment progress, podcast signals, content distribution, and membership conversion into one weekly-refreshed view. By default it's included in your retainer (Tier 2+) and hosted by us. If NAEA wants to own it outright — common when audit committees or boards prefer in-house control — three buyout options are available.
+  </p>
+
+  <div class="buyout-options">
+    <div class="buyout">
+      <h4>Option A · Buyout</h4>
+      <div class="price-tag">$5,000</div>
+      <p style="font-size: 13px; color: var(--ink-dim);">One-time fee. NAEA owns and self-hosts.</p>
+      <ul>
+        <li>Full source code (HTML/CSS/JS + data layer)</li>
+        <li>Perpetual license, no recurring fee</li>
+        <li>Custom-branded with NAEA logo and colors</li>
+        <li>One round of revisions included</li>
+        <li>Agency continues populating data monthly (if retainer continues)</li>
+      </ul>
+    </div>
+    <div class="buyout">
+      <h4>Option B · Buyout + Support</h4>
+      <div class="price-tag">$5,000 + $1,200/yr</div>
+      <p style="font-size: 13px; color: var(--ink-dim);">Best if NAEA's IT team is light.</p>
+      <ul>
+        <li>Everything in Option A</li>
+        <li>Quarterly feature releases (new charts, new data sources)</li>
+        <li>Bug-fix SLA (5 business days)</li>
+        <li>Email support for NAEA staff</li>
+        <li>Annual security and dependency updates</li>
+      </ul>
+    </div>
+    <div class="buyout">
+      <h4>Option C · White-Label Member Edition</h4>
+      <div class="price-tag">$7,500 + $0.50/member/yr</div>
+      <p style="font-size: 13px; color: var(--ink-dim);">Becomes a member benefit.</p>
+      <ul>
+        <li>Dashboard rebuilt as a member-facing tool</li>
+        <li>NAEA members log in to see their own market data</li>
+        <li>New member benefit — drives renewals and signups</li>
+        <li>Hosted infrastructure included</li>
+        <li>Licensing fee covers ongoing data pipeline maintenance</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- BREAKEVEN -->
+<section class="alt">
+  <h2>The Math</h2>
+  <p class="lede">
+    At an average new-member dues rate of $285/year, the program pays for itself with a small fraction of the addressable audience. Even Tier 5 — the full association activation — needs only <strong>0.12% conversion</strong> on a reached audience of 50,000 to break even on year-one investment.
+  </p>
+
+  <h3>Year-one breakeven by tier</h3>
+  <table>
+    <thead>
+      <tr><th>Tier</th><th class="num">Q1 cost</th><th class="num">Year 1 total</th><th class="num">Members for Q1 breakeven</th><th class="num">Members for Year 1 breakeven</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1 — Starter</td><td class="num">$5,840</td><td class="num">$17,090</td><td class="num">21</td><td class="num">60</td></tr>
+      <tr><td>2 — Foundation</td><td class="num">$7,035</td><td class="num">$20,485</td><td class="num">25</td><td class="num">72</td></tr>
+      <tr><td>3 — Growth</td><td class="num">$9,200</td><td class="num">$24,950</td><td class="num">33</td><td class="num">88</td></tr>
+      <tr><td>4 — Scale</td><td class="num">$12,475</td><td class="num">$30,275</td><td class="num">44</td><td class="num">107</td></tr>
+      <tr><td>5 — Enterprise</td><td class="num">$17,200</td><td class="num">$44,200</td><td class="num">61</td><td class="num">156</td></tr>
+    </tbody>
+  </table>
+
+  <p style="margin-top: 30px;">
+    Industry benchmarks for B2B membership conversion on a verified, targeted audience run between <strong>0.3% and 0.8%</strong>. At the midpoint (0.55%), Tier 5 yields approximately <strong>275 new members in Year 1</strong> — well above the 156-member threshold. The math is conservative; the upside is multiples of break-even.
+  </p>
+</section>
+
+<!-- WHAT YOU GET / WHAT WE NEED -->
+<section>
+  <h2>Engagement Logistics</h2>
+  <div class="row-2">
+    <div>
+      <h3>What we deliver every quarter</h3>
+      <ul class="checklist">
+        <li>Enriched contact CSV (segmented: email, LinkedIn, awareness)</li>
+        <li>Decision Dashboard refreshed weekly</li>
+        <li>Podcast SEO program — episode pages, schema, transcripts</li>
+        <li>Content clips — short-form video across 5 platforms</li>
+        <li>Guest pitch and listicle outreach (per tier cadence)</li>
+        <li>Performance briefs — weekly or biweekly per tier</li>
+        <li>Quarterly strategy session with explicit pivot recommendations</li>
+        <li>One-page year-over-year summary at engagement close</li>
+      </ul>
+    </div>
+    <div>
+      <h3>What we need from NAEA</h3>
+      <ul class="checklist">
+        <li>Single point of contact for content approvals</li>
+        <li>Access to the EA Advocate Podcast RSS + episode production calendar</li>
+        <li>Brand guidelines (logos, colors, voice)</li>
+        <li>SMTP / email service provider access (or referral to one we can stand up)</li>
+        <li>Decision authority on landing page copy within 5 business days</li>
+        <li>Monthly invoice approval workflow</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="alt">
+  <div class="cta-box">
+    <h2 style="border-color: var(--gold);">Ready to Activate?</h2>
+    <p style="font-size: 18px; color: #c4d0e3; max-width: 600px; margin: 20px auto;">
+      Select a tier, sign the Q1 statement of work, and we begin enrichment on the first cohort within seven business days.
+    </p>
+    <a href="mailto:kawani@digiwaxx.com?subject=NAEA Engagement — Selected Tier" class="cta-button">Begin Engagement</a>
+  </div>
+
+  <h3 style="margin-top: 60px;">Frequently asked</h3>
+  <p><strong>Can we upgrade tiers mid-engagement?</strong> Yes. Tier upgrades are billed prorated from the next month forward. Most clients start at Tier 1 or 2 and graduate to Tier 3 in Q2.</p>
+  <p><strong>What if we want to pause?</strong> Each month is a clean stopping point. The pipeline state is preserved; resume at any later month with no re-enrichment cost.</p>
+  <p><strong>Who owns the data?</strong> NAEA owns the enriched roster outright. Pipeline source code remains with the agency unless a Dashboard Buyout (Option A or B) is purchased.</p>
+  <p><strong>What about GDPR / CAN-SPAM compliance?</strong> The IRS roster is public-record (FOIA). All outbound email follows CAN-SPAM (clear sender, physical address, opt-out). LinkedIn outreach uses the platform's compliant messaging tools.</p>
+  <p><strong>What if a vendor (Outscraper, NeverBounce) raises prices?</strong> Data line on the invoice flexes with actual cost. Retainer is fixed.</p>
+</section>
+
+<footer>
+  <strong>NAEA Member Growth Engine — 2026 Proposal</strong><br>
+  Prepared by Brand Spears / Digiwaxx · kawani@digiwaxx.com<br>
+  Proposal valid 30 days from issue. All figures in USD. Data-acquisition line items billed at-cost.<br>
+  This document supersedes any prior pricing communicated for the 2026 engagement.
+</footer>
+
+</body>
+</html>
