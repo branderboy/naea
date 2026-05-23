@@ -145,8 +145,10 @@
 <section>
   <h2>2. Podcast Optimization (EA Advocate)</h2>
   <p>
-    Drives impressions, page visits, and listens by ranking the show in podcast directory search,
-    getting it cited by AI answer engines (AEO / GEO), and earning links from external publications.
+    A four-layer model that ranks the show in podcast directory search, optimizes the website
+    + RSS for discovery, gets cited by AI answer engines (AEO + GEO), and converts listeners
+    into newsletter subscribers and email captures. AI workers handle the execution layer so
+    output scales without scaling cost.
   </p>
 
   <table>
@@ -160,40 +162,82 @@
     </thead>
     <tbody>
       <tr>
-        <td class="col-label">AEO + GEO</td>
+        <td class="col-label">1 · Website + RSS Optimization</td>
         <td>
-          Episode pages get full transcripts, PodcastEpisode and FAQPage schema, and direct
-          2-sentence answers LLMs extract. Site gets llms.txt + llms-full.txt for AI crawlers.
-          Topic cluster pages link episode groups. Apple / Spotify metadata tuned for search rank.
+          Podcast landing page rewrite with full SEO + AEO + GEO. Schema markup
+          (PodcastEpisode, FAQPage, PodcastSeries). llms.txt + llms-full.txt at site root.
+          RSS feed cleaned and submitted to 40+ directories. Topic cluster pages reinforce
+          episode discoverability. Apple / Spotify show-page metadata tuned for keyword rank.
         </td>
-        <td>4 episodes optimized<br>2 cluster pages built or refreshed</td>
-        <td class="num">$650</td>
-      </tr>
-      <tr>
-        <td class="col-label">Inbound guests</td>
-        <td>
-          Pitch and book guests from Accounting Today, IRS-adjacent voices, software vendors,
-          and tax-firm operators. Each guest brings a backlink and audience cross-pollination.
-        </td>
-        <td>5 guest pitches sent<br>1 booked episode (avg)</td>
+        <td>1 landing page audit/rewrite<br>2 cluster pages built or refreshed<br>RSS + directory updates</td>
         <td class="num">$550</td>
       </tr>
       <tr>
-        <td class="col-label">Outbound guests + listicles</td>
+        <td class="col-label">2 · Podbean / Platform Optimization</td>
         <td>
-          Pitch NAEA practitioners as guests on tax, accounting, and finance podcasts.
-          Pitch into "best tax podcasts" listicles — the primary signal LLMs use for recommendations.
-          Each placement earns a backlink and reaches new EA-adjacent audiences.
+          Show metadata tuned at the podcast platform itself (Podbean): categories, tags,
+          show description first-250-chars rewrite, episode-level descriptions with keywords,
+          thumbnail and episode-art testing for click-through rate. Chapter markers added on
+          Apple + Spotify. Submission to remaining niche directories (Listen Notes, Podchaser,
+          Goodpods) — heavy LLM training signals.
         </td>
-        <td>10 listicle pitches sent<br>5 outbound guest pitches<br>1–2 placements (avg)</td>
-        <td class="num">$650</td>
+        <td>4 episodes platform-optimized<br>Thumbnail A/B testing<br>Directory submission tracking</td>
+        <td class="num">$400</td>
+      </tr>
+      <tr>
+        <td class="col-label">3 · Guest Post Per Month</td>
+        <td>
+          One episode-driven guest post placement per month on tax, accounting, or
+          finance publications (Accounting Today, CPA Practice Advisor, Tax Pro Today).
+          Each placement = backlink + audience cross-pollination + LLM citation signal.
+          Listicle pitches ("best podcasts for tax pros") run alongside.
+        </td>
+        <td>1 placed guest post<br>10 listicle pitches sent<br>5 outbound guest pitches</td>
+        <td class="num">$450</td>
+      </tr>
+      <tr>
+        <td class="col-label">4 · Substack Newsletter (AI worker)</td>
+        <td>
+          An AI worker auto-converts each episode transcript into a structured Substack
+          newsletter post — key takeaways, guest quotes, timestamps, and a link back
+          to the episode page. Human edits for tone and accuracy before publishing.
+          The enriched email list from Section 1 seeds the subscriber base. Substack's
+          own discovery network adds free reach. Newsletter → podcast subscriber
+          conversion typically runs 5–8%.
+        </td>
+        <td>4 newsletter posts (one per episode, AI-drafted, human-edited)<br>Subscriber import + growth report</td>
+        <td class="num">$250</td>
       </tr>
       <tr class="total">
-        <td colspan="3">All three layers</td>
+        <td colspan="3">All four layers — full podcast program</td>
         <td class="num">$1,650 / mo</td>
       </tr>
     </tbody>
   </table>
+
+  <h3>AI Worker Execution Layer (included)</h3>
+  <p>
+    AI workers handle production across all four layers:
+  </p>
+  <ul class="tight">
+    <li><strong>Transcripts → Substack newsletter:</strong> AI worker pulls each episode transcript and outputs a publish-ready Substack post (Layer 4).</li>
+    <li><strong>Transcripts → episode page content:</strong> AI worker drafts the 2-sentence direct answer, FAQ section, and key takeaways for each episode page (Layer 1).</li>
+    <li><strong>Episode → social captions + clip scripts:</strong> AI worker drafts platform-specific copy for clip distribution.</li>
+    <li><strong>Episode → guest post draft:</strong> AI worker outlines and drafts the monthly guest post (Layer 3) from the episode it's pulled from.</li>
+  </ul>
+  <p>
+    Human review and strategic decisions stay with the agency; AI handles the production
+    load. This is how the program runs at $1,650/mo instead of $3,500+ at traditional
+    agency labor rates.
+  </p>
+
+  <h3>How the email list feeds the podcast</h3>
+  <p>
+    The Enrolled Agent enrichment from Section 1 isn't just for direct outreach — it
+    feeds the newsletter (Layer 4) and seeds podcast subscriber growth. Verified emails
+    go into Substack as a starter list; LinkedIn URLs become ad audiences for podcast
+    awareness campaigns. The two sections compound when run together.
+  </p>
 
   <h3>90-day targets (full program)</h3>
   <ul class="tight">
@@ -202,6 +246,7 @@
     <li>Apple search rank top-10 for "Enrolled Agent" niche</li>
     <li>~30–50% lift in episode-page organic traffic vs baseline</li>
     <li>~2–3x lift in social clip impressions</li>
+    <li>Substack newsletter launched, first 500–1,000 subscribers from enriched list</li>
   </ul>
 </section>
 
