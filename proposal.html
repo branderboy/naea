@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NAEA 2026 — Outreach & Podcast Options</title>
+<title>NAEA 2026 — Options</title>
 <style>
   :root {
     --navy: #0f1f3d;
@@ -13,7 +13,6 @@
     --ink: #1a1a1a;
     --ink-dim: #5a5a5a;
     --line: #e2dfd8;
-    --accent: #2e7d6b;
   }
   * { box-sizing: border-box; }
   body {
@@ -22,23 +21,23 @@
     background: var(--bg); color: var(--ink); line-height: 1.55;
   }
   header {
-    background: var(--navy); color: white; padding: 36px 48px;
+    background: var(--navy); color: white; padding: 32px 48px;
     border-bottom: 4px solid var(--gold);
   }
-  header h1 { margin: 0; font-size: 26px; font-weight: 600; letter-spacing: 0.5px; }
-  header .sub { margin-top: 6px; color: #c4d0e3; font-size: 14px; }
+  header h1 { margin: 0; font-size: 24px; font-weight: 600; letter-spacing: 0.5px; }
+  header .sub { margin-top: 6px; color: #c4d0e3; font-size: 13px; }
   main { max-width: 1080px; margin: 0 auto; padding: 40px 48px 80px; }
   section { margin-bottom: 50px; }
   h2 {
-    font-size: 20px; color: var(--navy); margin: 0 0 18px;
+    font-size: 18px; color: var(--navy); margin: 0 0 16px;
     padding-bottom: 8px; border-bottom: 1px solid var(--line);
     text-transform: uppercase; letter-spacing: 1.5px;
   }
-  h3 { font-size: 16px; color: var(--navy); margin: 28px 0 10px; }
-  p { margin: 8px 0; color: var(--ink); }
-  .note { color: var(--ink-dim); font-size: 13px; font-style: italic; margin-top: 6px; }
+  h3 { font-size: 14px; color: var(--navy); margin: 24px 0 8px; text-transform: uppercase; letter-spacing: 1px; }
+  p { margin: 8px 0; color: var(--ink); font-size: 14px; }
+  .note { color: var(--ink-dim); font-size: 12px; font-style: italic; margin-top: 6px; }
 
-  table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 14px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 12px 0; }
   th, td {
     text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line);
     vertical-align: top;
@@ -50,19 +49,12 @@
   td.num { text-align: right; font-variant-numeric: tabular-nums; }
   td.col-label { font-weight: 600; color: var(--navy); }
   tr.total td { font-weight: 700; background: #f5f3ec; }
-  tr:hover { background: #f8f6ef; }
-
-  .callout {
-    background: var(--panel); border: 1px solid var(--line); padding: 18px 22px;
-    border-left: 4px solid var(--gold); margin: 18px 0; font-size: 14px;
-  }
-  .callout strong { color: var(--navy); }
 
   ul.tight { padding-left: 22px; margin: 8px 0; }
   ul.tight li { margin-bottom: 4px; font-size: 14px; }
 
   footer {
-    padding: 24px 48px; background: var(--navy); color: #8a9bb8;
+    padding: 20px 48px; background: var(--navy); color: #8a9bb8;
     font-size: 12px; text-align: center;
   }
 
@@ -75,19 +67,19 @@
 <body>
 
 <header>
-  <h1>NAEA 2026 — Outreach &amp; Podcast Options</h1>
-  <div class="sub">Volume-based pricing for email + LinkedIn enrichment and podcast growth. Updated May 2026.</div>
+  <h1>NAEA 2026 — Options</h1>
+  <div class="sub">Enrolled Agent enrichment and podcast optimization. Updated May 2026.</div>
 </header>
 
 <main>
 
-<!-- DATA OPTIONS -->
+<!-- 1 — ENRICHMENT -->
 <section>
-  <h2>Email + LinkedIn Outreach Lists</h2>
+  <h2>1. Enrolled Agent Enrichment</h2>
   <p>
-    Pulled from the IRS FOIA Enrolled Agent roster. For each target volume, the pipeline returns
-    a verified direct email where possible, and a matched LinkedIn profile URL for the rest
-    (so you can run LinkedIn ad audiences and InMail on the agents where email isn't recoverable).
+    Pulled from the IRS FOIA Enrolled Agent roster. For each target volume the pipeline returns
+    a verified direct email where possible, and a matched LinkedIn profile URL for the rest —
+    so you can run LinkedIn audiences and InMail on the agents where email isn't recoverable.
   </p>
 
   <table>
@@ -95,9 +87,9 @@
       <tr>
         <th>Target</th>
         <th class="num">Verified emails</th>
-        <th class="num">LinkedIn URLs (no-email subset)</th>
+        <th class="num">LinkedIn URLs<br>(no-email subset)</th>
         <th class="num">Total reachable</th>
-        <th class="num">Data cost (at-cost)</th>
+        <th class="num">Data cost<br>(at-cost)</th>
         <th class="num">Service fee</th>
         <th class="num">Total</th>
       </tr>
@@ -131,7 +123,7 @@
         <td class="num">$4,040</td>
       </tr>
       <tr>
-        <td class="col-label">60,000 agents (full roster)</td>
+        <td class="col-label">60,000 agents<br>(full roster)</td>
         <td class="num">~18,000</td>
         <td class="num">~33,000</td>
         <td class="num">~51,000</td>
@@ -143,24 +135,18 @@
   </table>
 
   <p class="note">
-    Yields are estimates from typical pipeline runs (Outscraper + NeverBounce). Actual hit rates
-    vary by state — California/NY tend higher; smaller states tend lower. Data cost is billed at-cost.
+    Yields are estimates from typical pipeline runs (Outscraper + NeverBounce). Hit rates vary
+    by state — California / NY tend higher; smaller states tend lower. Data cost is billed at-cost.
+    Output: one CSV with PTIN, name, city, state, firm, email, LinkedIn URL, confidence flags.
   </p>
-
-  <h3>What "verified email" and "LinkedIn URL" each enable</h3>
-  <ul class="tight">
-    <li><strong>Verified emails</strong> → cold email sequences, newsletter list, ESP segments, member nurture.</li>
-    <li><strong>LinkedIn URLs</strong> → LinkedIn Ads custom audience upload, Sales Navigator targeting, InMail outreach, retargeting.</li>
-    <li>Output: one CSV with all fields (PTIN, name, city, state, firm, email, LinkedIn URL, confidence flags).</li>
-  </ul>
 </section>
 
-<!-- PODCAST -->
+<!-- 2 — PODCAST OPTIMIZATION -->
 <section>
-  <h2>Podcast Optimization (EA Advocate)</h2>
+  <h2>2. Podcast Optimization (EA Advocate)</h2>
   <p>
-    Drives impressions, page visits, and listens by getting the show ranked in podcast directory
-    search, cited by AI answer engines (AEO/GEO), and linked from external publications.
+    Drives impressions, page visits, and listens by ranking the show in podcast directory search,
+    getting it cited by AI answer engines (AEO / GEO), and earning links from external publications.
   </p>
 
   <table>
@@ -176,15 +162,15 @@
       <tr>
         <td class="col-label">AEO + GEO</td>
         <td>
-          Episode pages get full transcripts, PodcastEpisode schema, FAQPage schema, and direct
-          2-sentence answers that LLMs extract. Site gets llms.txt + llms-full.txt for AI crawlers.
-          Topic cluster pages link episode groups. Apple/Spotify metadata tuned for search rank.
+          Episode pages get full transcripts, PodcastEpisode and FAQPage schema, and direct
+          2-sentence answers LLMs extract. Site gets llms.txt + llms-full.txt for AI crawlers.
+          Topic cluster pages link episode groups. Apple / Spotify metadata tuned for search rank.
         </td>
         <td>4 episodes optimized<br>2 cluster pages built or refreshed</td>
         <td class="num">$650</td>
       </tr>
       <tr>
-        <td class="col-label">Guest posts<br>(inbound to NAEA)</td>
+        <td class="col-label">Inbound guests</td>
         <td>
           Pitch and book guests from Accounting Today, IRS-adjacent voices, software vendors,
           and tax-firm operators. Each guest brings a backlink and audience cross-pollination.
@@ -193,104 +179,29 @@
         <td class="num">$550</td>
       </tr>
       <tr>
-        <td class="col-label">Guest posts<br>(outbound, NAEA voices)</td>
+        <td class="col-label">Outbound guests + listicles</td>
         <td>
           Pitch NAEA practitioners as guests on tax, accounting, and finance podcasts.
+          Pitch into "best tax podcasts" listicles — the primary signal LLMs use for recommendations.
           Each placement earns a backlink and reaches new EA-adjacent audiences.
-          Also pitches into "best tax podcasts" listicles — the primary signal LLMs use.
         </td>
         <td>10 listicle pitches sent<br>5 outbound guest pitches<br>1–2 placements (avg)</td>
         <td class="num">$650</td>
       </tr>
       <tr class="total">
-        <td colspan="3">All three layers (full podcast program)</td>
+        <td colspan="3">All three layers</td>
         <td class="num">$1,650 / mo</td>
       </tr>
     </tbody>
   </table>
 
-  <p class="note">
-    Run any single layer standalone, or combine all three. The combined program is what produces
-    compounding growth: AEO/GEO gets the show cited, guest posts build the backlinks that make
-    those citations stick.
-  </p>
-
   <h3>90-day targets (full program)</h3>
   <ul class="tight">
-    <li>First LLM citation in ChatGPT / Claude / Perplexity for "podcasts for tax professionals" or related queries</li>
+    <li>First LLM citation in ChatGPT / Claude / Perplexity for "podcasts for tax professionals"</li>
     <li>3+ inclusions in "best podcasts" listicles</li>
     <li>Apple search rank top-10 for "Enrolled Agent" niche</li>
     <li>~30–50% lift in episode-page organic traffic vs baseline</li>
     <li>~2–3x lift in social clip impressions</li>
-  </ul>
-</section>
-
-<!-- BUNDLES -->
-<section>
-  <h2>Combined Options</h2>
-  <p>
-    A starting point if NAEA wants both layers (outreach + podcast) at once. Mix and match
-    any outreach volume with any podcast layer; below is the most common combination at each
-    spend level.
-  </p>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Combined</th>
-        <th>Outreach</th>
-        <th>Podcast</th>
-        <th class="num">Total / month</th>
-        <th class="num">Total / Q1</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="col-label">Light</td>
-        <td>10K agents one-time<br>($1,680 first month)</td>
-        <td>AEO + GEO only<br>($650/mo)</td>
-        <td class="num">$650 ongoing</td>
-        <td class="num">$3,630</td>
-      </tr>
-      <tr>
-        <td class="col-label">Standard</td>
-        <td>20K agents over 4 months<br>(billed monthly)</td>
-        <td>AEO + GEO + Inbound guests<br>($1,200/mo)</td>
-        <td class="num">$1,915 ongoing</td>
-        <td class="num">$5,745</td>
-      </tr>
-      <tr>
-        <td class="col-label">Aggressive</td>
-        <td>30K agents over 6 months<br>(billed monthly)</td>
-        <td>All three layers<br>($1,650/mo)</td>
-        <td class="num">$2,323 during enrichment<br>$1,650 after</td>
-        <td class="num">$6,970</td>
-      </tr>
-      <tr>
-        <td class="col-label">Full</td>
-        <td>60K agents over 12 months<br>(billed monthly)</td>
-        <td>All three layers<br>($1,650/mo)</td>
-        <td class="num">$2,198 during enrichment<br>$1,650 after</td>
-        <td class="num">$6,595</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p class="note">
-    Outreach can be delivered as a one-time batch or paced monthly at 5,000 agents/month.
-    Monthly pacing keeps data cost level and matches outbound campaign cadence.
-  </p>
-</section>
-
-<!-- NOTES -->
-<section>
-  <h2>Notes</h2>
-  <ul class="tight">
-    <li>Data costs (Outscraper, NeverBounce) are pass-through and itemized on each invoice.</li>
-    <li>Enrichment runs on the IRS FOIA Enrolled Agent roster (public record).</li>
-    <li>Outbound email follows CAN-SPAM. LinkedIn outreach uses platform-compliant messaging.</li>
-    <li>NAEA owns the enriched data and any landing pages built. Pipeline source code remains with the agency unless otherwise agreed.</li>
-    <li>Service fees can be paid as one-time (for one-time enrichment) or monthly (for paced delivery).</li>
   </ul>
 </section>
 
