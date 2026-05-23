@@ -1,0 +1,8 @@
+# Eyes-only / internal docs — never push to public repos
+INTERNAL-*.md
+_eyes-only/
+.env
+data/
+*.sqlite
+__pycache__/
+*.pyc

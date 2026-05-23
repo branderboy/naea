@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NAEA 2026 — Options</title>
+<style>
+  :root {
+    --navy: #0f1f3d;
+    --gold: #c9a55b;
+    --bg: #fafaf7;
+    --panel: #ffffff;
+    --ink: #1a1a1a;
+    --ink-dim: #5a5a5a;
+    --line: #e2dfd8;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg); color: var(--ink); line-height: 1.55;
+  }
+  header {
+    background: var(--navy); color: white; padding: 32px 48px;
+    border-bottom: 4px solid var(--gold);
+  }
+  header h1 { margin: 0; font-size: 24px; font-weight: 600; letter-spacing: 0.5px; }
+  header .sub { margin-top: 6px; color: #c4d0e3; font-size: 13px; }
+  main { max-width: 1080px; margin: 0 auto; padding: 40px 48px 80px; }
+  section { margin-bottom: 50px; }
+  h2 {
+    font-size: 18px; color: var(--navy); margin: 0 0 16px;
+    padding-bottom: 8px; border-bottom: 1px solid var(--line);
+    text-transform: uppercase; letter-spacing: 1.5px;
+  }
+  h3 { font-size: 14px; color: var(--navy); margin: 24px 0 8px; text-transform: uppercase; letter-spacing: 1px; }
+  p { margin: 8px 0; color: var(--ink); font-size: 14px; }
+  .note { color: var(--ink-dim); font-size: 12px; font-style: italic; margin-top: 6px; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 12px 0; }
+  th, td {
+    text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  th {
+    background: var(--panel); color: var(--navy); font-size: 11px;
+    text-transform: uppercase; letter-spacing: 1px; border-bottom: 2px solid var(--navy);
+  }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  td.col-label { font-weight: 600; color: var(--navy); }
+  tr.total td { font-weight: 700; background: #f5f3ec; }
+
+  ul.tight { padding-left: 22px; margin: 8px 0; }
+  ul.tight li { margin-bottom: 4px; font-size: 14px; }
+
+  footer {
+    padding: 20px 48px; background: var(--navy); color: #8a9bb8;
+    font-size: 12px; text-align: center;
+  }
+
+  @media (max-width: 700px) {
+    header, main, footer { padding-left: 20px; padding-right: 20px; }
+    th, td { padding: 8px 6px; font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>NAEA 2026 — Options</h1>
+  <div class="sub">Enrolled Agent enrichment and podcast optimization. Updated May 2026.</div>
+</header>
+
+<main>
+
+<!-- 1 — ENRICHMENT -->
+<section>
+  <h2>1. Enrolled Agent Enrichment</h2>
+  <p>
+    Pulled from the IRS public roster. The pipeline returns a verified email
+    where we can find one, and a LinkedIn profile URL for the rest. That way
+    you can run email campaigns and LinkedIn ads on the same list.
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Target</th>
+        <th class="num">Verified emails</th>
+        <th class="num">LinkedIn URLs<br>(no-email subset)</th>
+        <th class="num">Total reachable</th>
+        <th class="num">Data cost<br>(at-cost)</th>
+        <th class="num">Service fee</th>
+        <th class="num">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="col-label">10,000 agents</td>
+        <td class="num">~3,000 (30%)</td>
+        <td class="num">~5,500 (55%)</td>
+        <td class="num">~8,500</td>
+        <td class="num">$180</td>
+        <td class="num">$1,500</td>
+        <td class="num">$1,680</td>
+      </tr>
+      <tr>
+        <td class="col-label">20,000 agents</td>
+        <td class="num">~6,000</td>
+        <td class="num">~11,000</td>
+        <td class="num">~17,000</td>
+        <td class="num">$360</td>
+        <td class="num">$2,500</td>
+        <td class="num">$2,860</td>
+      </tr>
+      <tr>
+        <td class="col-label">30,000 agents</td>
+        <td class="num">~9,000</td>
+        <td class="num">~16,500</td>
+        <td class="num">~25,500</td>
+        <td class="num">$540</td>
+        <td class="num">$3,500</td>
+        <td class="num">$4,040</td>
+      </tr>
+      <tr>
+        <td class="col-label">60,000 agents<br>(full roster)</td>
+        <td class="num">~18,000</td>
+        <td class="num">~33,000</td>
+        <td class="num">~51,000</td>
+        <td class="num">$1,080</td>
+        <td class="num">$5,500</td>
+        <td class="num">$6,580</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="note">
+    Yields are estimates from real pipeline runs. Big states like California
+    and New York tend to come back higher. Smaller states tend lower. Data
+    cost is what we pay vendors and is billed at-cost. You get one CSV with
+    name, city, state, firm, email, LinkedIn URL, and confidence flags.
+  </p>
+</section>
+
+<!-- 2 — PODCAST OPTIMIZATION -->
+<section>
+  <h2>2. Podcast Optimization (EA Advocate)</h2>
+  <p>
+    Four layers. Each one drives podcast traffic from a different angle.
+    AI workers handle the writing so cost stays flat as output grows.
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Layer</th>
+        <th>What it does</th>
+        <th>Monthly output</th>
+        <th class="num">Cost / mo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="col-label">1 · Website</td>
+        <td>
+          Rewrite the podcast landing page so search engines and AI tools
+          can find it. Add the technical tags (schema, llms.txt) that help
+          Google and ChatGPT cite the show. Clean up the RSS feed. Submit
+          to 40+ podcast directories. Tune the Apple and Spotify show pages.
+          The website is the hub. Every other layer sends traffic here.
+        </td>
+        <td>1 landing page rewrite<br>2 topic pages<br>RSS + directory updates</td>
+        <td class="num">$500</td>
+      </tr>
+      <tr>
+        <td class="col-label">2 · Distribution</td>
+        <td>
+          An AI worker takes each episode transcript and rewrites it for six
+          platforms: Medium, Reddit, LinkedIn, Substack, Facebook, and YouTube.
+          Each post is tuned to fit that platform. Two purposes: backlinks
+          pointing to the website, and the same idea published in different
+          formats so AI tools have more ways to quote it.
+        </td>
+        <td>4 episodes × 6 platforms<br>≈ 24 posts a month<br>(AI-drafted, human-edited)</td>
+        <td class="num">$500</td>
+      </tr>
+      <tr>
+        <td class="col-label">3 · Platform Optimization</td>
+        <td>
+          Tune the podcast hosting account (Podbean, Buzzsprout, or whichever
+          one is in use). Rewrite the show description. Update categories
+          and tags. Test thumbnails for higher click-through. Add chapter
+          markers on Apple and Spotify. Submit to Listen Notes, Podchaser,
+          and Goodpods — the directories AI tools use to recommend podcasts.
+        </td>
+        <td>4 episodes optimized<br>Thumbnail A/B testing<br>Directory submissions</td>
+        <td class="num">$300</td>
+      </tr>
+      <tr>
+        <td class="col-label">4 · Guest Posts</td>
+        <td>
+          Land one guest post per month in a tax publication like Accounting
+          Today or CPA Practice Advisor. Pitch the show to "best podcasts"
+          roundups. These mentions on outside sites are what AI tools look
+          for when deciding which podcasts to recommend.
+        </td>
+        <td>1 placed guest post<br>10 listicle pitches<br>5 outbound guest pitches</td>
+        <td class="num">$350</td>
+      </tr>
+      <tr class="total">
+        <td colspan="3">All four layers — full podcast program</td>
+        <td class="num">$1,650 / mo</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>How each layer hits SEO / AEO / GEO</h3>
+  <p>
+    SEO, AEO, and GEO aren't separate services. They run through every layer
+    above. Here's how each layer contributes.
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Layer</th>
+        <th>SEO<br><span style="font-size:10px;color:var(--ink-dim);text-transform:none;letter-spacing:0;">Google / Bing</span></th>
+        <th>AEO<br><span style="font-size:10px;color:var(--ink-dim);text-transform:none;letter-spacing:0;">Google AI Overview, voice</span></th>
+        <th>GEO<br><span style="font-size:10px;color:var(--ink-dim);text-transform:none;letter-spacing:0;">ChatGPT, Claude, Perplexity</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="col-label">1 · Website</td>
+        <td>Schema tags, keyword copy, internal links, RSS</td>
+        <td>FAQ pages with direct answers at the top</td>
+        <td>llms.txt files that tell AI what to cite</td>
+      </tr>
+      <tr>
+        <td class="col-label">2 · Distribution</td>
+        <td><strong>Main job</strong>: backlinks from 6 platforms, all indexed by Google</td>
+        <td><strong>Main job</strong>: same idea in different formats — Q&amp;A, essay, video — so AI has more shapes to quote</td>
+        <td>Secondary: Medium, Reddit, and YouTube transcripts are crawled into AI training data</td>
+      </tr>
+      <tr>
+        <td class="col-label">3 · Platform Optimization</td>
+        <td>Episode descriptions with keywords; Apple and Spotify search rank</td>
+        <td>Chapter markers become quotable answers</td>
+        <td>Listen Notes, Podchaser, Goodpods are the directories AI tools cite</td>
+      </tr>
+      <tr>
+        <td class="col-label">4 · Guest Posts</td>
+        <td>High-authority backlinks (Accounting Today, etc.) lift domain rank</td>
+        <td>Authority-site articles show up in AI answers</td>
+        <td><strong>Main job</strong>: social proof and mentions are the signal AI uses to decide what to recommend</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="note">
+    Each layer works on its own. Run together, they cover every place a
+    listener might search — Google, AI tools, podcast apps.
+  </p>
+
+  <h3>AI workers do the drafting</h3>
+  <ul class="tight">
+    <li>Transcripts get turned into Medium / Reddit / LinkedIn / Substack posts (Layer 2)</li>
+    <li>Transcripts also feed the FAQ and key takeaways on the episode page (Layer 1)</li>
+    <li>Each episode generates social captions and a guest-post outline (Layer 4)</li>
+  </ul>
+  <p>
+    Humans review and publish. That keeps quality high and the monthly price
+    at $1,650 instead of $3,500+ at typical agency rates.
+  </p>
+
+  <h3>How the email list helps the podcast</h3>
+  <p>
+    The enrichment list from Section 1 does more than cold email. Verified
+    emails seed the Substack newsletter. LinkedIn URLs become ad audiences
+    for podcast awareness. Sections 1 and 2 work together.
+  </p>
+
+  <h3>90-day targets</h3>
+  <ul class="tight">
+    <li>First citation in ChatGPT, Claude, or Perplexity for "podcasts for tax professionals"</li>
+    <li>3+ inclusions in "best podcasts" roundups</li>
+    <li>Apple top-10 search rank in the Enrolled Agent niche</li>
+    <li>30–50% lift in episode-page traffic</li>
+    <li>2–3x lift in social clip views</li>
+    <li>Substack newsletter launched with 500–1,000 starter subscribers</li>
+  </ul>
+</section>
+
+<!-- 3 — DASHBOARD BUYOUT -->
+<section>
+  <h2>3. Decision Dashboard — One-Time Purchase</h2>
+  <p>
+    A custom dashboard for NAEA. Shows enrichment progress, podcast signals,
+    content distribution, and member funnel conversion in one weekly-refreshed
+    view. NAEA owns the source code outright.
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>What's included</th>
+        <th class="num">Cost</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="col-label">Dashboard buyout</td>
+        <td>
+          Custom-branded with NAEA's logo and colors. Full source code transferred.
+          You can host it on your own servers. One round of revisions included.
+          Setup support during handoff.
+        </td>
+        <td class="num">$7,500<br><span style="font-size:11px;color:var(--ink-dim);">one-time</span></td>
+      </tr>
+      <tr>
+        <td class="col-label">Optional yearly support</td>
+        <td>
+          Quarterly feature updates. Bug fixes within 5 business days.
+          Email support for NAEA staff. Yearly security updates.
+        </td>
+        <td class="num">+$1,200 / yr</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Cost comparison</h3>
+  <table>
+    <thead>
+      <tr><th>Alternative</th><th class="num">Year-1 cost</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>BI consultancy build (Tableau, Looker, Power BI)</td><td class="num">$15,000–25,000</td></tr>
+      <tr><td>Junior data analyst (salary + benefits)</td><td class="num">~$65,000</td></tr>
+      <tr><td>Mid-tier data analyst (salary + benefits)</td><td class="num">~$97,000</td></tr>
+      <tr><td>Tableau license + setup labor</td><td class="num">~$2,000 + build time</td></tr>
+      <tr class="total"><td>This dashboard, source code included</td><td class="num">$7,500</td></tr>
+    </tbody>
+  </table>
+
+  <p class="note">
+    The dashboard works whether or not NAEA keeps the enrichment or podcast
+    programs running. If you want us to keep the data flowing into it each
+    month, that's already covered by Section 1.
+  </p>
+</section>
+
+</main>
+
+<footer>
+  Prepared by Brand Spears / Digiwaxx · kawani@digiwaxx.com · May 2026
+</footer>
+
+</body>
+</html>

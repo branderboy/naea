@@ -1,0 +1,6 @@
+httpx>=0.27.0
+python-dotenv>=1.0.0
+tenacity>=8.2.0
+# Only needed if you want to call the MCP tools from Claude Code for ad-hoc lookups.
+# Skip if you're only running the batch pipeline (scripts/run_pipeline.py).
+mcp>=1.0.0

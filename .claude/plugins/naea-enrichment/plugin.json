@@ -1,0 +1,44 @@
+{
+  "name": "naea-enrichment",
+  "version": "0.1.0",
+  "description": "Enrich the IRS Enrolled Agent roster (~66K) with verified emails and LinkedIn URLs. Delivers a CSV segmented into email_direct, linkedin_only, and unverified.",
+  "author": "NAEA project",
+  "mcpServers": {
+    "apollo": {
+      "command": "python3",
+      "args": ["${PLUGIN_DIR}/mcp-servers/apollo/server.py"],
+      "env": {
+        "APOLLO_API_KEY": "${APOLLO_API_KEY}"
+      }
+    },
+    "outscraper": {
+      "command": "python3",
+      "args": ["${PLUGIN_DIR}/mcp-servers/outscraper/server.py"],
+      "env": {
+        "OUTSCRAPER_API_KEY": "${OUTSCRAPER_API_KEY}"
+      }
+    },
+    "snov": {
+      "command": "python3",
+      "args": ["${PLUGIN_DIR}/mcp-servers/snov/server.py"],
+      "env": {
+        "SNOV_CLIENT_ID": "${SNOV_CLIENT_ID}",
+        "SNOV_CLIENT_SECRET": "${SNOV_CLIENT_SECRET}"
+      }
+    },
+    "clearbit": {
+      "command": "python3",
+      "args": ["${PLUGIN_DIR}/mcp-servers/clearbit/server.py"],
+      "env": {
+        "CLEARBIT_API_KEY": "${CLEARBIT_API_KEY}"
+      }
+    },
+    "neverbounce": {
+      "command": "python3",
+      "args": ["${PLUGIN_DIR}/mcp-servers/neverbounce/server.py"],
+      "env": {
+        "NEVERBOUNCE_API_KEY": "${NEVERBOUNCE_API_KEY}"
+      }
+    }
+  }
+}

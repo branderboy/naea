@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NAEA Decision Dashboard — Q1 2026</title>
+<style>
+  :root {
+    --bg: #0b1220;
+    --panel: #131c30;
+    --panel-2: #1a2540;
+    --ink: #e8eefc;
+    --ink-dim: #9fb0d4;
+    --accent: #6cf0c2;
+    --accent-2: #6ca7ff;
+    --warn: #ffb454;
+    --danger: #ff6b6b;
+    --line: #243352;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg); color: var(--ink); min-height: 100vh;
+  }
+  header {
+    padding: 28px 40px; border-bottom: 1px solid var(--line);
+    display: flex; justify-content: space-between; align-items: center;
+    background: linear-gradient(180deg, #11193080, #0b122000);
+  }
+  header h1 { margin: 0; font-size: 22px; letter-spacing: 0.3px; }
+  header .sub { color: var(--ink-dim); font-size: 13px; margin-top: 4px; }
+  header .pill {
+    background: var(--panel-2); border: 1px solid var(--line);
+    padding: 6px 14px; border-radius: 999px; font-size: 12px; color: var(--accent);
+  }
+  .wrap { padding: 28px 40px 80px; }
+  .row { display: grid; gap: 18px; }
+  .row.cards { grid-template-columns: repeat(4, 1fr); margin-bottom: 22px; }
+  .row.split { grid-template-columns: 2fr 1fr; }
+  .row.split-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .card {
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: 14px; padding: 22px;
+  }
+  .card h3 {
+    margin: 0 0 14px; font-size: 12px; text-transform: uppercase;
+    letter-spacing: 1.5px; color: var(--ink-dim); font-weight: 600;
+  }
+  .kpi { font-size: 32px; font-weight: 700; line-height: 1; }
+  .kpi .unit { font-size: 14px; color: var(--ink-dim); font-weight: 500; margin-left: 4px; }
+  .delta { font-size: 12px; margin-top: 6px; color: var(--accent); }
+  .delta.warn { color: var(--warn); }
+  .delta.bad { color: var(--danger); }
+  .bar-track {
+    height: 8px; background: var(--panel-2); border-radius: 8px; overflow: hidden; margin-top: 12px;
+  }
+  .bar-fill { height: 100%; background: linear-gradient(90deg, var(--accent-2), var(--accent)); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--line); }
+  th { color: var(--ink-dim); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .seg-legend { display: flex; gap: 14px; margin-top: 14px; flex-wrap: wrap; font-size: 12px; color: var(--ink-dim); }
+  .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 6px; vertical-align: middle; }
+  .seg-stack {
+    display: flex; height: 22px; border-radius: 6px; overflow: hidden; margin-top: 10px;
+  }
+  .seg-stack > div { height: 100%; }
+  footer {
+    margin-top: 30px; padding-top: 18px; border-top: 1px solid var(--line);
+    color: var(--ink-dim); font-size: 12px;
+  }
+  .signal {
+    display: flex; gap: 10px; padding: 12px 0; border-bottom: 1px solid var(--line);
+  }
+  .signal:last-child { border-bottom: 0; }
+  .signal .badge {
+    font-size: 11px; padding: 3px 8px; border-radius: 6px;
+    background: var(--panel-2); color: var(--ink-dim); flex-shrink: 0;
+  }
+  .signal .badge.up { color: var(--accent); }
+  .signal .badge.down { color: var(--danger); }
+  .signal .badge.flat { color: var(--warn); }
+  .signal .body { font-size: 13px; line-height: 1.5; }
+  .signal .body strong { color: var(--ink); }
+  .pivot {
+    background: var(--panel-2); border-left: 3px solid var(--accent);
+    padding: 14px 16px; border-radius: 8px; margin-top: 10px; font-size: 13px; line-height: 1.5;
+  }
+  @media (max-width: 900px) {
+    .row.cards { grid-template-columns: repeat(2, 1fr); }
+    .row.split, .row.split-3 { grid-template-columns: 1fr; }
+    header, .wrap { padding-left: 20px; padding-right: 20px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>NAEA Decision Dashboard</h1>
+    <div class="sub">Q1 2026 &middot; Week 6 of 13 &middot; Updated 2026-05-22</div>
+  </div>
+  <div class="pill">LIVE</div>
+</header>
+
+<div class="wrap">
+
+  <div class="row cards">
+    <div class="card">
+      <h3>Enriched Agents</h3>
+      <div class="kpi">12,847<span class="unit">/ 66,000</span></div>
+      <div class="delta">+1,204 this week</div>
+      <div class="bar-track"><div class="bar-fill" style="width:19.5%"></div></div>
+    </div>
+    <div class="card">
+      <h3>Direct Emails Verified</h3>
+      <div class="kpi">3,612<span class="unit">28.1%</span></div>
+      <div class="delta">Target: 25–35%</div>
+      <div class="bar-track"><div class="bar-fill" style="width:80%"></div></div>
+    </div>
+    <div class="card">
+      <h3>LinkedIn URLs</h3>
+      <div class="kpi">6,930<span class="unit">53.9%</span></div>
+      <div class="delta">High-conf: 4,210</div>
+      <div class="bar-track"><div class="bar-fill" style="width:72%"></div></div>
+    </div>
+    <div class="card">
+      <h3>API Spend</h3>
+      <div class="kpi">$184<span class="unit">/ $1,000</span></div>
+      <div class="delta">Pace: under budget</div>
+      <div class="bar-track"><div class="bar-fill" style="width:18.4%"></div></div>
+    </div>
+  </div>
+
+  <div class="row split">
+    <div class="card">
+      <h3>Roster Segmentation</h3>
+      <div class="seg-stack">
+        <div style="background: var(--accent); width: 28.1%"></div>
+        <div style="background: var(--accent-2); width: 53.9%"></div>
+        <div style="background: var(--warn); width: 6.2%"></div>
+        <div style="background: #4a5a7c; width: 11.8%"></div>
+      </div>
+      <div class="seg-legend">
+        <span><span class="dot" style="background: var(--accent)"></span>Email direct (3,612)</span>
+        <span><span class="dot" style="background: var(--accent-2)"></span>LinkedIn only (6,930)</span>
+        <span><span class="dot" style="background: var(--warn)"></span>Catch-all flagged (797)</span>
+        <span><span class="dot" style="background: #4a5a7c"></span>Unverified (1,508)</span>
+      </div>
+      <table style="margin-top: 22px;">
+        <thead><tr><th>Top States</th><th class="num">Agents</th><th class="num">Email %</th><th class="num">LinkedIn %</th></tr></thead>
+        <tbody>
+          <tr><td>California</td><td class="num">2,184</td><td class="num">31.2%</td><td class="num">58.4%</td></tr>
+          <tr><td>New York</td><td class="num">1,547</td><td class="num">29.8%</td><td class="num">55.9%</td></tr>
+          <tr><td>Texas</td><td class="num">1,402</td><td class="num">27.4%</td><td class="num">52.1%</td></tr>
+          <tr><td>Florida</td><td class="num">1,209</td><td class="num">26.3%</td><td class="num">51.7%</td></tr>
+          <tr><td>Illinois</td><td class="num">718</td><td class="num">28.9%</td><td class="num">54.2%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>Podcast Signals</h3>
+      <div class="signal">
+        <div class="badge up">UP</div>
+        <div class="body"><strong>+34% downloads</strong> after Ep. 12 thumbnail A/B test. New template moves to all future episodes.</div>
+      </div>
+      <div class="signal">
+        <div class="badge up">UP</div>
+        <div class="body"><strong>Spotify completion 71%</strong> (target 65%). Chapter markers shipping next week.</div>
+      </div>
+      <div class="signal">
+        <div class="badge flat">FLAT</div>
+        <div class="body">Apple search rank for <strong>"enrolled agent"</strong> stuck at #14. Show-notes keyword pass scheduled.</div>
+      </div>
+      <div class="signal">
+        <div class="badge up">UP</div>
+        <div class="body">First <strong>ChatGPT citation</strong> detected — Ep. 9 referenced in answer about IRS audit prep.</div>
+      </div>
+      <div class="signal">
+        <div class="badge down">DOWN</div>
+        <div class="body">YouTube CTR 2.1% (target 4%). Thumbnail rewrites queued under YT Revival add-on.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row split-3" style="margin-top: 22px;">
+    <div class="card">
+      <h3>Clip Distribution (Q1)</h3>
+      <table>
+        <tbody>
+          <tr><td>TikTok</td><td class="num">42 clips</td><td class="num">218K views</td></tr>
+          <tr><td>Instagram Reels</td><td class="num">42 clips</td><td class="num">96K views</td></tr>
+          <tr><td>LinkedIn</td><td class="num">38 clips</td><td class="num">71K views</td></tr>
+          <tr><td>YouTube Shorts</td><td class="num">40 clips</td><td class="num">54K views</td></tr>
+          <tr><td>Facebook</td><td class="num">42 clips</td><td class="num">38K views</td></tr>
+        </tbody>
+      </table>
+      <div class="delta" style="margin-top: 10px;">Pacing: 67% of Q1 target (75–150 clips)</div>
+    </div>
+
+    <div class="card">
+      <h3>Campaign Performance</h3>
+      <table>
+        <tbody>
+          <tr><td>Email CTR (Email Direct)</td><td class="num">8.2%</td></tr>
+          <tr><td>LinkedIn Connect Accept</td><td class="num">31.4%</td></tr>
+          <tr><td>LinkedIn Ad CPC</td><td class="num">$3.42</td></tr>
+          <tr><td>Landing page conversion</td><td class="num">4.7%</td></tr>
+          <tr><td>New members attributed</td><td class="num">11</td></tr>
+        </tbody>
+      </table>
+      <div class="delta" style="margin-top: 10px;">Breakeven at 18 members &mdash; on pace</div>
+    </div>
+
+    <div class="card">
+      <h3>This Quarter's Pivot</h3>
+      <div class="pivot">
+        <strong>Shift 15% of LinkedIn ad budget</strong> from "Enrolled Agent" cold audience to retargeting visitors of the EA Resource Center landing page. Early data shows 3.2&times; lower CPA on retargeted users.
+      </div>
+      <div class="pivot" style="border-color: var(--warn);">
+        <strong>Pause Ep. 7–9 promotion.</strong> Completion rate &lt;48%. Reallocate spend to Ep. 11 (Terry Lemons interview), which is outperforming the cohort.
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    Decision Dashboard built on the NAEA enrichment + signal pipeline. Refresh cadence: weekly. Next quarterly review: 2026-06-30.
+  </footer>
+
+</div>
+</body>
+</html>
