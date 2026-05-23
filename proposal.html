@@ -77,9 +77,9 @@
 <section>
   <h2>1. Enrolled Agent Enrichment</h2>
   <p>
-    Pulled from the IRS FOIA Enrolled Agent roster. For each target volume the pipeline returns
-    a verified direct email where possible, and a matched LinkedIn profile URL for the rest —
-    so you can run LinkedIn audiences and InMail on the agents where email isn't recoverable.
+    Pulled from the IRS public roster. The pipeline returns a verified email
+    where we can find one, and a LinkedIn profile URL for the rest. That way
+    you can run email campaigns and LinkedIn ads on the same list.
   </p>
 
   <table>
@@ -135,9 +135,10 @@
   </table>
 
   <p class="note">
-    Yields are estimates from typical pipeline runs (Outscraper + NeverBounce). Hit rates vary
-    by state — California / NY tend higher; smaller states tend lower. Data cost is billed at-cost.
-    Output: one CSV with PTIN, name, city, state, firm, email, LinkedIn URL, confidence flags.
+    Yields are estimates from real pipeline runs. Big states like California
+    and New York tend to come back higher. Smaller states tend lower. Data
+    cost is what we pay vendors and is billed at-cost. You get one CSV with
+    name, city, state, firm, email, LinkedIn URL, and confidence flags.
   </p>
 </section>
 
@@ -145,10 +146,8 @@
 <section>
   <h2>2. Podcast Optimization (EA Advocate)</h2>
   <p>
-    A four-layer model that ranks the show in podcast directory search, optimizes the website
-    + RSS for discovery, gets cited by AI answer engines (AEO + GEO), and converts listeners
-    into newsletter subscribers and email captures. AI workers handle the execution layer so
-    output scales without scaling cost.
+    Four layers. Each one drives podcast traffic from a different angle.
+    AI workers handle the writing so cost stays flat as output grows.
   </p>
 
   <table>
@@ -162,57 +161,50 @@
     </thead>
     <tbody>
       <tr>
-        <td class="col-label">1 · Website Optimization</td>
+        <td class="col-label">1 · Website</td>
         <td>
-          Podcast landing page rewrite with full SEO + AEO + GEO. Schema markup
-          (PodcastEpisode, FAQPage, PodcastSeries). llms.txt + llms-full.txt at site root.
-          RSS feed cleaned and submitted to 40+ directories. Topic cluster pages
-          reinforce episode discoverability. Apple / Spotify show-page metadata tuned
-          for keyword rank. This is the core asset — everything else points traffic here.
+          Rewrite the podcast landing page so search engines and AI tools
+          can find it. Add the technical tags (schema, llms.txt) that help
+          Google and ChatGPT cite the show. Clean up the RSS feed. Submit
+          to 40+ podcast directories. Tune the Apple and Spotify show pages.
+          The website is the hub. Every other layer sends traffic here.
         </td>
-        <td>1 landing page audit + rewrite<br>2 cluster pages built or refreshed<br>RSS + directory updates</td>
+        <td>1 landing page rewrite<br>2 topic pages<br>RSS + directory updates</td>
         <td class="num">$500</td>
       </tr>
       <tr>
-        <td class="col-label">2 · Reinforcements / Distribution Partners</td>
+        <td class="col-label">2 · Distribution</td>
         <td>
-          An AI worker converts each episode transcript into <strong>multiple angles and
-          formats</strong> — published on <strong>Medium</strong>, <strong>Reddit</strong>
-          (r/tax, r/Accounting), <strong>LinkedIn</strong> (long-form articles + posts),
-          and <strong>Substack</strong> (newsletter). Episodes are also <strong>redistributed
-          to Facebook and YouTube</strong> for additional SEO reach and to capture native
-          platform users where they already consume content. Two purposes:
-          <strong>backlinks</strong> pointing back to the website (Layer 1), and
-          <strong>format coverage</strong> so the same insight is available as a Q&amp;A,
-          a long-form essay, a thread, a newsletter, and a video — giving answer engines
-          multiple shapes to pull from.
+          An AI worker takes each episode transcript and rewrites it for six
+          platforms: Medium, Reddit, LinkedIn, Substack, Facebook, and YouTube.
+          Each post is tuned to fit that platform. Two purposes: backlinks
+          pointing to the website, and the same idea published in different
+          formats so AI tools have more ways to quote it.
         </td>
-        <td>4 episodes × 6 platforms<br>= ~24 platform-native outputs<br>(AI-drafted, human-edited)</td>
+        <td>4 episodes × 6 platforms<br>≈ 24 posts a month<br>(AI-drafted, human-edited)</td>
         <td class="num">$500</td>
       </tr>
       <tr>
         <td class="col-label">3 · Platform Optimization</td>
         <td>
-          Show metadata tuned at the podcast hosting platform itself (Podbean, Buzzsprout,
-          Captivate, Transistor — whichever is in use): categories, tags, show description
-          first-250-chars rewrite, episode-level descriptions with keywords, thumbnail and
-          episode-art testing for click-through rate. Chapter markers added on Apple + Spotify.
-          Submission to remaining niche directories (Listen Notes, Podchaser, Goodpods) —
-          heavy LLM training signals.
+          Tune the podcast hosting account (Podbean, Buzzsprout, or whichever
+          one is in use). Rewrite the show description. Update categories
+          and tags. Test thumbnails for higher click-through. Add chapter
+          markers on Apple and Spotify. Submit to Listen Notes, Podchaser,
+          and Goodpods — the directories AI tools use to recommend podcasts.
         </td>
-        <td>4 episodes platform-optimized<br>Thumbnail A/B testing<br>Directory submission tracking</td>
+        <td>4 episodes optimized<br>Thumbnail A/B testing<br>Directory submissions</td>
         <td class="num">$300</td>
       </tr>
       <tr>
-        <td class="col-label">4 · Guest Posts (Social Proof + Mentions)</td>
+        <td class="col-label">4 · Guest Posts</td>
         <td>
-          One placed guest post per month on authority publications (Accounting Today,
-          CPA Practice Advisor, Tax Pro Today) plus listicle pitches ("best podcasts for
-          tax pros"). The goal is <strong>social proof and mentions</strong> on third-party
-          authority sites — which is the primary signal LLMs use to decide what to cite
-          when asked for recommendations. This is the GEO play.
+          Land one guest post per month in a tax publication like Accounting
+          Today or CPA Practice Advisor. Pitch the show to "best podcasts"
+          roundups. These mentions on outside sites are what AI tools look
+          for when deciding which podcasts to recommend.
         </td>
-        <td>1 placed guest post<br>10 listicle pitches sent<br>5 outbound guest pitches</td>
+        <td>1 placed guest post<br>10 listicle pitches<br>5 outbound guest pitches</td>
         <td class="num">$350</td>
       </tr>
       <tr class="total">
@@ -222,88 +214,80 @@
     </tbody>
   </table>
 
-
-  <h3>How each layer contributes to SEO / AEO / GEO</h3>
+  <h3>How each layer hits SEO / AEO / GEO</h3>
   <p>
-    Search Engine Optimization (SEO), Answer Engine Optimization (AEO), and Generative
-    Engine Optimization (GEO) aren't a separate layer — they're the through-line. Every
-    layer above is designed to compound across all three.
+    SEO, AEO, and GEO aren't separate services. They run through every layer
+    above. Here's how each layer contributes.
   </p>
 
   <table>
     <thead>
       <tr>
         <th>Layer</th>
-        <th>SEO (Google / Bing rankings)</th>
-        <th>AEO (Answer engines: Google AI Overview, voice, Alexa)</th>
-        <th>GEO (Generative engines: ChatGPT, Claude, Perplexity)</th>
+        <th>SEO<br><span style="font-size:10px;color:var(--ink-dim);text-transform:none;letter-spacing:0;">Google / Bing</span></th>
+        <th>AEO<br><span style="font-size:10px;color:var(--ink-dim);text-transform:none;letter-spacing:0;">Google AI Overview, voice</span></th>
+        <th>GEO<br><span style="font-size:10px;color:var(--ink-dim);text-transform:none;letter-spacing:0;">ChatGPT, Claude, Perplexity</span></th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td class="col-label">1 · Website</td>
-        <td>Schema markup, keyword-tuned page copy, internal links, RSS submission</td>
-        <td>FAQ pages with FAQPage schema, 2-sentence direct answers above the fold</td>
-        <td>llms.txt + llms-full.txt at site root, citation-ready episode pages</td>
+        <td>Schema tags, keyword copy, internal links, RSS</td>
+        <td>FAQ pages with direct answers at the top</td>
+        <td>llms.txt files that tell AI what to cite</td>
       </tr>
       <tr>
         <td class="col-label">2 · Distribution</td>
-        <td><strong>Primary play</strong>: backlinks from Medium / LinkedIn / Substack / Reddit / FB / YouTube all indexed by Google</td>
-        <td><strong>Primary play</strong>: same insight published in multiple angles + formats — Q&amp;A, essay, thread, newsletter, video — gives answer engines multiple shapes to pull from</td>
-        <td>Secondary: Medium, Reddit, and YouTube transcripts crawled into LLM training data</td>
+        <td><strong>Main job</strong>: backlinks from 6 platforms, all indexed by Google</td>
+        <td><strong>Main job</strong>: same idea in different formats — Q&amp;A, essay, video — so AI has more shapes to quote</td>
+        <td>Secondary: Medium, Reddit, and YouTube transcripts are crawled into AI training data</td>
       </tr>
       <tr>
         <td class="col-label">3 · Platform Optimization</td>
-        <td>Episode descriptions with target keywords; podcast-search ranking on Apple / Spotify</td>
-        <td>Chapter markers + episode summaries become quotable answers</td>
-        <td>Listen Notes, Podchaser, Goodpods are the directories LLMs cite when asked "best podcast for X"</td>
+        <td>Episode descriptions with keywords; Apple and Spotify search rank</td>
+        <td>Chapter markers become quotable answers</td>
+        <td>Listen Notes, Podchaser, Goodpods are the directories AI tools cite</td>
       </tr>
       <tr>
         <td class="col-label">4 · Guest Posts</td>
-        <td>High-PR backlinks (Accounting Today, CPA Practice Advisor) lift domain authority</td>
-        <td>Authority-site citations show up in AI answers about tax practice</td>
-        <td><strong>Primary play</strong>: social proof + mentions on authority sites and "best podcasts" listicles — the signal LLMs use to decide what to cite when asked for recommendations</td>
+        <td>High-authority backlinks (Accounting Today, etc.) lift domain rank</td>
+        <td>Authority-site articles show up in AI answers</td>
+        <td><strong>Main job</strong>: social proof and mentions are the signal AI uses to decide what to recommend</td>
       </tr>
     </tbody>
   </table>
 
   <p class="note">
-    Each layer is individually useful. Combined, they create overlapping coverage across
-    every discovery surface — traditional search, AI-answer summaries, and generative AI
-    recommendations — so the show is findable however the listener is searching.
+    Each layer works on its own. Run together, they cover every place a
+    listener might search — Google, AI tools, podcast apps.
   </p>
 
-  <h3>AI Worker Execution (built into the layers)</h3>
-  <p>
-    Production runs on AI workers across the program:
-  </p>
+  <h3>AI workers do the drafting</h3>
   <ul class="tight">
-    <li><strong>Transcripts → Medium / Reddit / LinkedIn / Substack:</strong> the core engine. One AI worker per platform converts each episode transcript into a publish-ready post tuned for that platform's audience and algorithm (Layer 2).</li>
-    <li><strong>Transcripts → episode page content:</strong> AI worker drafts the 2-sentence direct answer, FAQ section, and key takeaways for each website episode page (Layer 1).</li>
-    <li><strong>Episode → social clip captions:</strong> AI worker drafts platform-specific copy for short-form video clips.</li>
-    <li><strong>Episode → guest post draft:</strong> AI worker outlines and drafts the monthly guest post (Layer 4) from the episode being featured.</li>
+    <li>Transcripts get turned into Medium / Reddit / LinkedIn / Substack posts (Layer 2)</li>
+    <li>Transcripts also feed the FAQ and key takeaways on the episode page (Layer 1)</li>
+    <li>Each episode generates social captions and a guest-post outline (Layer 4)</li>
   </ul>
   <p>
-    Human review and strategic decisions stay with the agency; AI handles the drafting load.
-    This is how the program runs at $1,650/mo instead of $3,500+ at traditional agency labor rates.
+    Humans review and publish. That keeps quality high and the monthly price
+    at $1,650 instead of $3,500+ at typical agency rates.
   </p>
 
-  <h3>How the email list feeds the podcast</h3>
+  <h3>How the email list helps the podcast</h3>
   <p>
-    The Enrolled Agent enrichment from Section 1 isn't just for direct outreach — it
-    seeds the Substack newsletter (Layer 2) and feeds podcast subscriber growth.
-    Verified emails go in as a starter subscriber list; LinkedIn URLs become ad audiences
-    for podcast-awareness campaigns. Sections 1 and 2 compound when run together.
+    The enrichment list from Section 1 does more than cold email. Verified
+    emails seed the Substack newsletter. LinkedIn URLs become ad audiences
+    for podcast awareness. Sections 1 and 2 work together.
   </p>
 
-  <h3>90-day targets (full program)</h3>
+  <h3>90-day targets</h3>
   <ul class="tight">
-    <li>First LLM citation in ChatGPT / Claude / Perplexity for "podcasts for tax professionals"</li>
-    <li>3+ inclusions in "best podcasts" listicles</li>
-    <li>Apple search rank top-10 for "Enrolled Agent" niche</li>
-    <li>~30–50% lift in episode-page organic traffic vs baseline</li>
-    <li>~2–3x lift in social clip impressions</li>
-    <li>Substack newsletter launched, first 500–1,000 subscribers from enriched list</li>
+    <li>First citation in ChatGPT, Claude, or Perplexity for "podcasts for tax professionals"</li>
+    <li>3+ inclusions in "best podcasts" roundups</li>
+    <li>Apple top-10 search rank in the Enrolled Agent niche</li>
+    <li>30–50% lift in episode-page traffic</li>
+    <li>2–3x lift in social clip views</li>
+    <li>Substack newsletter launched with 500–1,000 starter subscribers</li>
   </ul>
 </section>
 
@@ -311,9 +295,9 @@
 <section>
   <h2>3. Decision Dashboard — One-Time Purchase</h2>
   <p>
-    A custom-built dashboard for NAEA showing enrichment progress, podcast signals, content
-    distribution, and membership-funnel conversion in one weekly-refreshed view. Built, branded,
-    and handed over with source code — NAEA owns it outright.
+    A custom dashboard for NAEA. Shows enrichment progress, podcast signals,
+    content distribution, and member funnel conversion in one weekly-refreshed
+    view. NAEA owns the source code outright.
   </p>
 
   <table>
@@ -328,17 +312,17 @@
       <tr>
         <td class="col-label">Dashboard buyout</td>
         <td>
-          Custom-branded dashboard (logo, colors, copy). Full source code transferred.
-          Perpetual license. NAEA self-hosts on its own infrastructure. One round of revisions
-          included. Email setup support during handoff.
+          Custom-branded with NAEA's logo and colors. Full source code transferred.
+          You can host it on your own servers. One round of revisions included.
+          Setup support during handoff.
         </td>
         <td class="num">$7,500<br><span style="font-size:11px;color:var(--ink-dim);">one-time</span></td>
       </tr>
       <tr>
-        <td class="col-label">Optional annual support</td>
+        <td class="col-label">Optional yearly support</td>
         <td>
-          Quarterly feature releases, bug-fix SLA (5 business days), email support for NAEA staff,
-          annual security and dependency updates.
+          Quarterly feature updates. Bug fixes within 5 business days.
+          Email support for NAEA staff. Yearly security updates.
         </td>
         <td class="num">+$1,200 / yr</td>
       </tr>
@@ -351,18 +335,18 @@
       <tr><th>Alternative</th><th class="num">Year-1 cost</th></tr>
     </thead>
     <tbody>
-      <tr><td>BI consultancy custom build (Tableau / Looker / Power BI)</td><td class="num">$15,000–25,000</td></tr>
+      <tr><td>BI consultancy build (Tableau, Looker, Power BI)</td><td class="num">$15,000–25,000</td></tr>
       <tr><td>Junior data analyst (salary + benefits)</td><td class="num">~$65,000</td></tr>
       <tr><td>Mid-tier data analyst (salary + benefits)</td><td class="num">~$97,000</td></tr>
-      <tr><td>Tableau Creator license (single seat + setup labor)</td><td class="num">~$2,000 + build time</td></tr>
+      <tr><td>Tableau license + setup labor</td><td class="num">~$2,000 + build time</td></tr>
       <tr class="total"><td>This dashboard, source code included</td><td class="num">$7,500</td></tr>
     </tbody>
   </table>
 
   <p class="note">
-    The dashboard works whether or not NAEA continues the enrichment or podcast programs.
-    If NAEA opts to keep the agency maintaining the data feed monthly, that's covered under
-    the enrichment line — the dashboard auto-refreshes from the pipeline output.
+    The dashboard works whether or not NAEA keeps the enrichment or podcast
+    programs running. If you want us to keep the data flowing into it each
+    month, that's already covered by Section 1.
   </p>
 </section>
 
