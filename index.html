@@ -1,965 +1,490 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NAEA Campaign Proposal & Podcast Mockup</title>
-    <link rel="icon" type="image/png" href="images/thumbnail.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NAEA 2026 — Options</title>
+<style>
+  :root {
+    --navy: #0f1f3d;
+    --gold: #c9a55b;
+    --bg: #fafaf7;
+    --panel: #ffffff;
+    --ink: #1a1a1a;
+    --ink-dim: #5a5a5a;
+    --line: #e2dfd8;
+    --accent: #2e7d6b;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg); color: var(--ink); line-height: 1.55;
+  }
+  header {
+    background: var(--navy); color: white; padding: 32px 48px;
+    border-bottom: 4px solid var(--gold);
+  }
+  header h1 { margin: 0; font-size: 24px; font-weight: 600; letter-spacing: 0.5px; }
+  header .sub { margin-top: 6px; color: #c4d0e3; font-size: 13px; }
+  main { max-width: 1080px; margin: 0 auto; padding: 40px 48px 80px; }
+  .intro { margin-bottom: 36px; font-size: 15px; color: var(--ink-dim); }
+  section { margin-bottom: 50px; }
+  h2 {
+    font-size: 18px; color: var(--navy); margin: 0 0 16px;
+    padding-bottom: 8px; border-bottom: 1px solid var(--line);
+    text-transform: uppercase; letter-spacing: 1.5px;
+  }
+  h2 .tag {
+    display: inline-block; background: var(--gold); color: white;
+    font-size: 10px; padding: 2px 8px; border-radius: 3px;
+    margin-left: 8px; letter-spacing: 1px; vertical-align: middle;
+  }
+  h3 { font-size: 14px; color: var(--navy); margin: 24px 0 8px; text-transform: uppercase; letter-spacing: 1px; }
+  p { margin: 8px 0; color: var(--ink); font-size: 14px; }
+  .note { color: var(--ink-dim); font-size: 12px; font-style: italic; margin-top: 6px; }
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+  table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 12px 0; }
+  th, td {
+    text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  th {
+    background: var(--panel); color: var(--navy); font-size: 11px;
+    text-transform: uppercase; letter-spacing: 1px; border-bottom: 2px solid var(--navy);
+  }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  td.col-label { font-weight: 600; color: var(--navy); }
+  tr.total td { font-weight: 700; background: #f5f3ec; }
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        /* NAEA Official Brand Colors from Website */
-                        navy: { 900: '#002D5B', 800: '#003B73', 700: '#004B8D' },
-                        /* The Coral/Red from their About Page Hero */
-                        naeared: { 400: '#F57A5D', 500: '#EF5A3A', 600: '#D64527' }, 
-                        cream: '#F7F8FA',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        heading: ['Montserrat', 'sans-serif']
-                    },
-                    animation: {
-                        'pulse-cf': 'pulse-cf 2.5s infinite',
-                        'bounce-x': 'bounce-x 1.5s infinite',
-                    },
-                    keyframes: {
-                        'pulse-cf': {
-                            '0%, 100%': { transform: 'scale(1)', boxShadow: '0 10px 25px rgba(239, 90, 58, 0.4)' },
-                            '50%': { transform: 'scale(1.02)', boxShadow: '0 15px 35px rgba(239, 90, 58, 0.7)' },
-                        },
-                        'bounce-x': {
-                            '0%, 100%': { transform: 'translateX(0)' },
-                            '50%': { transform: 'translateX(8px)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+  ul.tight { padding-left: 22px; margin: 8px 0; }
+  ul.tight li { margin-bottom: 4px; font-size: 14px; }
 
-    <style>
-        :root {
-            --primary-navy: #002D5B; 
-            --secondary-navy: #004B8D; 
-            --highlight-navy: #0066CC; 
-            
-            --naea-red-light: #F57A5D;
-            --naea-red-main: #EF5A3A;
-            --naea-red-dark: #D64527;
-            --accent-gradient: linear-gradient(180deg, var(--naea-red-light) 0%, var(--naea-red-dark) 100%);
-            
-            --bg-light: #F7F8FA; 
-            --text-main: #1E293B;
-            --text-light: #475569;
-            --white: #FFFFFF;
-            
-            --card-shadow: 0 20px 40px rgba(0, 45, 91, 0.08);
-            --glow-shadow: 0 8px 25px rgba(239, 90, 58, 0.4);
-            --text-drop: 0 4px 15px rgba(0,0,0,0.6);
-        }
+  .nav-toc {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 6px;
+    padding: 16px 20px; margin-bottom: 32px;
+    display: flex; gap: 12px; flex-wrap: wrap; align-items: center;
+  }
+  .nav-toc a {
+    color: var(--navy); text-decoration: none; font-size: 13px; font-weight: 600;
+    padding: 6px 12px; background: var(--bg); border-radius: 4px;
+    border: 1px solid var(--line);
+  }
+  .nav-toc a:hover { background: var(--gold); color: white; border-color: var(--gold); }
+  .nav-toc .label { font-size: 11px; color: var(--ink-dim); text-transform: uppercase; letter-spacing: 1px; }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+  footer {
+    padding: 20px 48px; background: var(--navy); color: #8a9bb8;
+    font-size: 12px; text-align: center;
+  }
 
-        body {
-            background-color: var(--bg-light);
-            color: var(--text-main);
-            font-family: 'Inter', sans-serif;
-            line-height: 1.7;
-            font-size: 18px;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        h1, h2, h3, h4, h5 { font-family: 'Montserrat', sans-serif; color: var(--primary-navy); line-height: 1.2; }
-
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 5%; position: relative; z-index: 2; }
-
-        /* Custom Utilities */
-        .glass-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .glass-card-dark { background: rgba(0, 45, 91, 0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05); }
-        .clip-diagonal { clip-path: polygon(0 0, 100% 4vw, 100% 100%, 0 100%); }
-        .clip-diagonal-bottom { clip-path: polygon(0 0, 100% 0, 100% calc(100% - 4vw), 0 100%); }
-        .text-glow { text-shadow: 0 0 20px rgba(255,255,255,0.5); }
-        
-        /* ClickFunnels Style Buttons (Red/Orange) */
-        .btn-cf {
-            display: inline-flex;
-            flex-direction: column;
-            align-items: center;
-            background: var(--accent-gradient);
-            color: var(--white);
-            padding: 16px 40px;
-            text-decoration: none;
-            border-radius: 8px;
-            border: 2px solid #B5351A;
-            box-shadow: 0 10px 25px rgba(239, 90, 58, 0.4), inset 0 2px 0 rgba(255,255,255,0.4);
-            transition: all 0.2s ease;
-            cursor: pointer;
-            text-align: center;
-            animation: pulse-cf 2.5s infinite;
-        }
-        .btn-cf:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(239, 90, 58, 0.6), inset 0 2px 0 rgba(255,255,255,0.4);
-            filter: brightness(1.05);
-            animation: none;
-        }
-        .btn-cf:disabled {
-            background: var(--secondary-navy);
-            border-color: var(--primary-navy);
-            box-shadow: none;
-            transform: none;
-            animation: none;
-            cursor: default;
-            filter: none;
-        }
-        .btn-cf .main-text { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 22px; text-transform: uppercase; letter-spacing: 1px; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
-        .btn-cf .sub-text { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; opacity: 0.95; margin-top: 4px; text-shadow: 0 1px 2px rgba(0,0,0,0.3); }
-
-        .white-glow-text { color: var(--white); text-shadow: 0 4px 20px rgba(255,255,255,0.4), 0 2px 10px rgba(0,0,0,0.8); display: inline-block; }
-
-        /* Deep Dimensional Background using NAEA Navy */
-        .deep-broadcast-bg {
-            background-color: var(--primary-navy);
-            background-image: 
-                radial-gradient(ellipse at 80% 20%, var(--highlight-navy) 0%, transparent 40%),
-                radial-gradient(ellipse at 20% 80%, var(--secondary-navy) 0%, transparent 50%),
-                repeating-radial-gradient(circle at 50% 150%, rgba(255,255,255,0.03) 0, rgba(255,255,255,0.03) 2px, transparent 2px, transparent 40px);
-            color: var(--white);
-            position: relative;
-            overflow: hidden;
-        }
-        .deep-broadcast-bg::after { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(0,0,0,0.4) 0%, transparent 100%); pointer-events: none; }
-
-        /* Signature Inputs */
-        .sig-input {
-            width: 100%; border: none; border-bottom: 2px solid rgba(0,45,91,0.2); padding: 8px 0 12px;
-            font-family: 'Montserrat', sans-serif; font-size: 24px; font-style: italic; font-weight: 700; color: var(--primary-navy);
-            background: transparent; outline: none; transition: border-color 0.3s;
-        }
-        .sig-input:focus { border-bottom-color: var(--primary-navy); }
-        .sig-input::placeholder { color: #CBD5E1; font-style: normal; font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 500; }
-        .sig-input.small { font-family: 'Inter', sans-serif; font-size: 18px; font-style: normal; font-weight: 600; }
-
-        /* Chat Animations */
-        #chat::-webkit-scrollbar { display: none; }
-        .msg-wrapper { opacity: 0; transform: translateY(15px); transition: all 0.4s ease; width: 100%; }
-        .msg-wrapper.show { opacity: 1; transform: translateY(0); }
-        .msg-wrapper.unfocused { opacity: 0.5; }
-    </style>
+  @media (max-width: 700px) {
+    header, main, footer { padding-left: 20px; padding-right: 20px; }
+    th, td { padding: 8px 6px; font-size: 13px; }
+  }
+</style>
 </head>
-<body class="bg-cream text-slate-800 antialiased selection:bg-naeared-500 selection:text-white">
+<body>
 
-    <!-- STICKY NAVBAR -->
-    <nav class="fixed w-full top-0 z-50 glass-card-dark border-b border-white/10 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <span class="font-heading font-black text-2xl text-white tracking-wide uppercase">NAEA PROPOSAL</span>
-            </div>
-            <a href="#investment" class="hidden md:flex flex-col items-center justify-center bg-gradient-to-b from-naeared-400 to-naeared-600 border-b-4 border-[#B5351A] active:border-b-0 active:translate-y-1 text-white rounded-lg px-6 py-2 shadow-[0_0_20px_rgba(239,90,58,0.5)] transition-all hover:brightness-110">
-                <span class="font-heading font-black text-sm uppercase tracking-wider text-shadow-sm">View Investment</span>
-            </a>
-        </div>
-    </nav>
+<header>
+  <h1>NAEA 2026 — Options</h1>
+  <div class="sub">Three ways to buy: List Build, Post Marketing, or both as a bundle. Updated May 2026.</div>
+</header>
 
-    <!-- OVERLAPPING HERO SECTION -->
-    <section class="relative pt-32 pb-40 lg:pt-48 lg:pb-52 overflow-hidden">
-        <div class="absolute inset-0 z-0 bg-navy-900">
-            <img src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=2000&auto=format&fit=crop" alt="Podcast Studio" class="w-full h-full object-cover opacity-50 mix-blend-multiply" />
-            <div class="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/80 to-transparent"></div>
-            <div class="absolute inset-0 bg-gradient-to-r from-navy-900/90 to-transparent"></div>
-        </div>
+<main>
 
-        <div class="relative z-10 max-w-7xl mx-auto px-6">
-            <div class="inline-flex items-center gap-3 px-5 py-3 rounded-full border border-white/20 mb-6">
-                <span class="w-3 h-3 rounded-full bg-naeared-500 animate-pulse"></span>
-                <span class="font-heading text-sm font-bold text-white uppercase tracking-widest">Membership + Awareness Campaign</span>
-            </div>
-            
-            <h1 class="font-heading font-black text-5xl md:text-7xl lg:text-[85px] text-white uppercase tracking-tighter leading-none mb-6">
-                NAEA: <br />
-                <span class="white-glow-text">There's Only One</span>
-            </h1>
-            
-            <p class="text-xl md:text-2xl text-slate-200 max-w-3xl font-medium leading-relaxed mb-10 border-l-4 border-naeared-500 pl-6 drop-shadow-md">
-                A full-year organic campaign to grow the Enrolled Agent Advocate Podcast, increase membership through targeted email outreach, and optimize the social media journey.
-            </p>
-        </div>
-    </section>
+<div class="nav-toc">
+  <span class="label">Jump to:</span>
+  <a href="#option-1">Option 1 — List Build</a>
+  <a href="#option-2">Option 2 — Post Marketing</a>
+  <a href="#option-3">Option 3 — Bundle</a>
+  <a href="#dashboard">Dashboard (add-on)</a>
+</div>
 
-    <!-- BROKEN GRID: OVERLAPPING META CARDS -->
-    <section class="relative z-20 -mt-20 md:-mt-24 max-w-7xl mx-auto px-6 mb-16">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="bg-white p-8 rounded-2xl shadow-xl hover:-translate-y-2 transition-transform duration-300 group border-t-4 border-naeared-500">
-                <i data-lucide="calendar" class="w-8 h-8 text-naeared-500 mb-4 group-hover:scale-110 transition-transform drop-shadow-md"></i>
-                <span class="block text-sm font-bold text-slate-500 uppercase tracking-widest mb-2">Program Scope</span>
-                <strong class="font-heading text-xl text-navy-900 drop-shadow-sm">6 Months – 12 Months</strong>
-            </div>
-            <div class="bg-white p-8 rounded-2xl shadow-xl hover:-translate-y-2 transition-transform duration-300 group border-t-4 border-naeared-500">
-                <i data-lucide="user" class="w-8 h-8 text-naeared-500 mb-4 group-hover:scale-110 transition-transform drop-shadow-md"></i>
-                <span class="block text-sm font-bold text-slate-500 uppercase tracking-widest mb-2">Prepared By</span>
-                <strong class="font-heading text-xl text-navy-900 drop-shadow-sm">Kawani Ali</strong>
-            </div>
-            <div class="bg-white p-8 rounded-2xl shadow-xl hover:-translate-y-2 transition-transform duration-300 group border-t-4 border-naeared-500">
-                <i data-lucide="briefcase" class="w-8 h-8 text-naeared-500 mb-4 group-hover:scale-110 transition-transform drop-shadow-md"></i>
-                <span class="block text-sm font-bold text-slate-500 uppercase tracking-widest mb-2">Prepared For</span>
-                <strong class="font-heading text-xl text-navy-900 drop-shadow-sm">Brandy Spears, NAEA</strong>
-            </div>
-        </div>
-    </section>
+<p class="intro">
+  Pick the option that fits where NAEA is right now. List Build gives you a
+  clean contact list. Post Marketing grows the podcast. The Bundle does both
+  and lowers the monthly rate. The Decision Dashboard is an add-on for any option.
+</p>
 
-    <!-- THE SYSTEM: PROCESS PREVIEW -->
-    <section class="max-w-7xl mx-auto px-6 mb-20">
-        <div class="flex flex-col lg:flex-row gap-12 items-center">
-            <div class="lg:w-1/3">
-                <h2 class="font-heading font-black text-4xl text-navy-900 uppercase tracking-tight mb-4">The System</h2>
-                <p class="text-slate-600 text-lg font-medium mb-6">Each campaign operates as a standalone workstream and feeds the next. The Facebook Business Page is the primary distribution hub.</p>
-                <div class="w-24 h-2 bg-gradient-to-r from-naeared-400 to-naeared-600 rounded-full"></div>
-            </div>
-            
-            <div class="lg:w-2/3 w-full">
-                <!-- Interactive Glassmorphic Pipeline -->
-                <div class="relative bg-white rounded-3xl p-8 shadow-[0_20px_50px_rgba(0,45,91,0.06)] border border-slate-100 flex flex-wrap justify-center gap-4 lg:gap-4">
-                    <!-- Absolute connecting line -->
-                    <div class="hidden lg:block absolute top-1/2 left-10 right-10 h-1 bg-slate-100 -translate-y-1/2 z-0"></div>
-                    
-                    <div class="relative z-10 flex flex-col items-center group cursor-default">
-                        <div class="w-16 h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 flex items-center justify-center mb-3 group-hover:bg-navy-900 group-hover:border-navy-900 transition-colors shadow-md">
-                            <i data-lucide="mic" class="w-6 h-6 text-navy-900 group-hover:text-white transition-colors"></i>
-                        </div>
-                        <span class="font-heading font-bold text-sm uppercase text-slate-800">Podcast</span>
-                    </div>
-                    <i data-lucide="chevron-right" class="w-6 h-6 text-naeared-500 self-center hidden lg:block z-10"></i>
-                    
-                    <div class="relative z-10 flex flex-col items-center group cursor-default">
-                        <div class="w-16 h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 flex items-center justify-center mb-3 group-hover:bg-navy-900 group-hover:border-navy-900 transition-colors shadow-md">
-                            <i data-lucide="video" class="w-6 h-6 text-navy-900 group-hover:text-white transition-colors"></i>
-                        </div>
-                        <span class="font-heading font-bold text-sm uppercase text-slate-800">Content</span>
-                    </div>
-                    <i data-lucide="chevron-right" class="w-6 h-6 text-naeared-500 self-center hidden lg:block z-10"></i>
+<!-- OPTION 1 — LIST BUILD -->
+<section id="option-1">
+  <h2>Option 1 — List Build</h2>
+  <p>
+    Pulled from the IRS public roster. The pipeline returns a verified email
+    where we can find one, and a LinkedIn profile URL for the rest. That way
+    you can run email campaigns and LinkedIn ads on the same list.
+  </p>
 
-                    <div class="relative z-10 flex flex-col items-center group cursor-default">
-                        <div class="w-16 h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 flex items-center justify-center mb-3 group-hover:bg-navy-900 group-hover:border-navy-900 transition-colors shadow-md">
-                            <i data-lucide="mouse-pointer-click" class="w-6 h-6 text-navy-900 group-hover:text-white transition-colors"></i>
-                        </div>
-                        <span class="font-heading font-bold text-sm uppercase text-slate-800">Traffic</span>
-                    </div>
-                    <i data-lucide="chevron-right" class="w-6 h-6 text-naeared-500 self-center hidden lg:block z-10"></i>
+  <table>
+    <thead>
+      <tr>
+        <th>Target</th>
+        <th class="num">Verified emails</th>
+        <th class="num">LinkedIn URLs<br>(no-email subset)</th>
+        <th class="num">Total reachable</th>
+        <th class="num">Data cost<br>(at-cost)</th>
+        <th class="num">Service fee</th>
+        <th class="num">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="col-label">10,000 agents</td>
+        <td class="num">~3,000 (30%)</td>
+        <td class="num">~5,500 (55%)</td>
+        <td class="num">~8,500</td>
+        <td class="num">$180</td>
+        <td class="num">$1,500</td>
+        <td class="num">$1,680</td>
+      </tr>
+      <tr>
+        <td class="col-label">20,000 agents</td>
+        <td class="num">~6,000</td>
+        <td class="num">~11,000</td>
+        <td class="num">~17,000</td>
+        <td class="num">$360</td>
+        <td class="num">$2,500</td>
+        <td class="num">$2,860</td>
+      </tr>
+      <tr>
+        <td class="col-label">30,000 agents</td>
+        <td class="num">~9,000</td>
+        <td class="num">~16,500</td>
+        <td class="num">~25,500</td>
+        <td class="num">$540</td>
+        <td class="num">$3,500</td>
+        <td class="num">$4,040</td>
+      </tr>
+      <tr>
+        <td class="col-label">60,000 agents<br>(full roster)</td>
+        <td class="num">~18,000</td>
+        <td class="num">~33,000</td>
+        <td class="num">~51,000</td>
+        <td class="num">$1,080</td>
+        <td class="num">$5,500</td>
+        <td class="num">$6,580</td>
+      </tr>
+    </tbody>
+  </table>
 
-                    <div class="relative z-10 flex flex-col items-center group cursor-default">
-                        <div class="w-16 h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 flex items-center justify-center mb-3 group-hover:bg-navy-900 group-hover:border-navy-900 transition-colors shadow-md">
-                            <i data-lucide="database" class="w-6 h-6 text-navy-900 group-hover:text-white transition-colors"></i>
-                        </div>
-                        <span class="font-heading font-bold text-sm uppercase text-slate-800">Data</span>
-                    </div>
-                    <i data-lucide="chevron-right" class="w-6 h-6 text-naeared-500 self-center hidden lg:block z-10"></i>
+  <p class="note">
+    Yields are estimates from real pipeline runs. Big states like California
+    and New York come back higher. Smaller states come lower. Data cost is
+    what we pay vendors and is billed at-cost. You get one CSV with name,
+    city, state, firm, email, LinkedIn URL, and confidence flags.
+  </p>
+</section>
 
-                    <div class="relative z-10 flex flex-col items-center group cursor-default">
-                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-naeared-400 to-naeared-600 flex items-center justify-center mb-3 shadow-[0_10px_20px_rgba(239,90,58,0.3)] group-hover:scale-110 transition-transform">
-                            <i data-lucide="users" class="w-6 h-6 text-white drop-shadow-md"></i>
-                        </div>
-                        <span class="font-heading font-black text-sm uppercase text-navy-900">Membership</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- OPTION 2 — POST MARKETING -->
+<section id="option-2">
+  <h2>Option 2 — Post Marketing</h2>
+  <p>
+    Four layers that grow the EA Advocate Podcast. Each layer drives traffic
+    from a different angle. AI workers handle the writing so cost stays flat
+    as output grows.
+  </p>
 
-    <!-- FEATURE GRID: GOALS & AUDIENCE -->
-    <section class="max-w-7xl mx-auto px-6 mb-20 grid grid-cols-1 md:grid-cols-2 gap-8">
-        
-        <!-- Left: Goals -->
-        <div class="bg-white rounded-3xl p-10 shadow-lg border border-slate-100 relative overflow-hidden group">
-            <div class="absolute top-0 right-0 w-64 h-64 bg-slate-50 rounded-full blur-3xl -mr-20 -mt-20 z-0"></div>
-            <div class="relative z-10">
-                <div class="flex items-center gap-4 mb-8">
-                    <div class="w-12 h-12 bg-navy-900 text-white rounded-xl flex items-center justify-center font-heading font-black text-xl shadow-lg">1</div>
-                    <h2 class="font-heading font-black text-3xl uppercase text-navy-900 tracking-tight">Goals</h2>
-                </div>
-                
-                <div class="space-y-6">
-                    <div class="flex gap-4 group/item">
-                        <i data-lucide="check-circle-2" class="w-6 h-6 text-naeared-500 flex-shrink-0 mt-1 transition-colors"></i>
-                        <div>
-                            <h4 class="font-heading font-bold text-navy-900 text-lg uppercase">Rank Podcast</h4>
-                            <p class="text-sm text-slate-600 mt-1">Landing pages optimized for AI and search demand, Riverside optimization, social optimization across IG, FB, TikTok and LinkedIn, thumbnail and podcast name testing, SEO, and GEO.</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-4 group/item">
-                        <i data-lucide="check-circle-2" class="w-6 h-6 text-naeared-500 flex-shrink-0 mt-1 transition-colors"></i>
-                        <div>
-                            <h4 class="font-heading font-bold text-navy-900 text-lg uppercase">Increase Quarterly Memberships</h4>
-                            <p class="text-sm text-slate-600 mt-1">Enrich email lists of U.S.-based enrolled agents and enrolled tax preparers from IRS records for NAEA's email campaigns and ad retargeting via Pardot/Salesforce — replacing costly direct mail. Check for Facebook and Google ad pixels on website. LinkedIn targeting to grow followers and drive engagement.</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-4 group/item">
-                        <i data-lucide="check-circle-2" class="w-6 h-6 text-naeared-500 flex-shrink-0 mt-1 transition-colors"></i>
-                        <div>
-                            <h4 class="font-heading font-bold text-navy-900 text-lg uppercase">Original Music for "There’s Only One"</h4>
-                            <p class="text-sm text-slate-600 mt-1">Create original music in the style of "Simply the Best" or "You’re the One For Me" for the "There’s Only One" FB ad campaign — full ownership, no licensing fees.</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-4 group/item">
-                        <i data-lucide="check-circle-2" class="w-6 h-6 text-naeared-500 flex-shrink-0 mt-1 transition-colors"></i>
-                        <div>
-                            <h4 class="font-heading font-bold text-navy-900 text-lg uppercase">Social Media Optimization</h4>
-                            <p class="text-sm text-slate-600 mt-1">Audit IG, TikTok, FB, and LinkedIn to optimize the journey to enrolled agents and leverage social media for awareness and acquisition.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Layer</th>
+        <th>What it does</th>
+        <th>Monthly output</th>
+        <th class="num">Cost / mo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="col-label">1 · Website</td>
+        <td>
+          Rewrite the podcast landing page so search engines and AI tools
+          can find it. Add the technical tags (schema, llms.txt) that help
+          Google and ChatGPT cite the show. Clean up the RSS feed. Submit
+          to 40+ podcast directories. Tune the Apple and Spotify show pages.
+          The website is the hub. Every other layer sends traffic here.
+        </td>
+        <td>1 landing page rewrite<br>2 topic pages<br>RSS + directory updates</td>
+        <td class="num">$500</td>
+      </tr>
+      <tr>
+        <td class="col-label">2 · Distribution</td>
+        <td>
+          An AI worker takes each episode transcript and rewrites it for six
+          platforms: Medium, Reddit, LinkedIn, Substack, Facebook, and YouTube.
+          Each post is tuned to fit that platform. Two purposes: backlinks
+          pointing to the website, and the same idea published in different
+          formats so AI tools have more ways to quote it.
+        </td>
+        <td>4 episodes × 6 platforms<br>≈ 24 posts a month<br>(AI-drafted, human-edited)</td>
+        <td class="num">$500</td>
+      </tr>
+      <tr>
+        <td class="col-label">3 · Platform Optimization</td>
+        <td>
+          Tune the podcast hosting account (Podbean, Buzzsprout, or whichever
+          one is in use). Rewrite the show description. Update categories
+          and tags. Test thumbnails for higher click-through. Add chapter
+          markers on Apple and Spotify. Submit to Listen Notes, Podchaser,
+          and Goodpods — the directories AI tools use to recommend podcasts.
+        </td>
+        <td>4 episodes optimized<br>Thumbnail A/B testing<br>Directory submissions</td>
+        <td class="num">$300</td>
+      </tr>
+      <tr>
+        <td class="col-label">4 · Guest Posts</td>
+        <td>
+          Land one guest post per month in a tax publication like Accounting
+          Today or CPA Practice Advisor. Pitch the show to "best podcasts"
+          roundups. These mentions on outside sites are what AI tools look
+          for when deciding which podcasts to recommend.
+        </td>
+        <td>1 placed guest post<br>10 listicle pitches<br>5 outbound guest pitches</td>
+        <td class="num">$350</td>
+      </tr>
+      <tr class="total">
+        <td colspan="3">All four layers — full Post Marketing program</td>
+        <td class="num">$1,650 / mo</td>
+      </tr>
+    </tbody>
+  </table>
 
-        <!-- Right: Audience (Dark Card) -->
-        <div class="bg-navy-900 rounded-3xl p-10 shadow-xl relative overflow-hidden group">
-            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=1000&auto=format&fit=crop')] opacity-10 mix-blend-overlay object-cover z-0 transition-transform duration-1000 group-hover:scale-110"></div>
-            <div class="relative z-10">
-                <div class="flex items-center gap-4 mb-8">
-                    <div class="w-12 h-12 bg-gradient-to-br from-naeared-400 to-naeared-600 text-white rounded-xl flex items-center justify-center font-heading font-black text-xl shadow-lg drop-shadow-md">2</div>
-                    <h2 class="font-heading font-black text-3xl uppercase text-white tracking-tight">Audience</h2>
-                </div>
-                
-                <div class="bg-white/10 backdrop-blur-md rounded-xl p-5 mb-6 border border-white/10">
-                    <span class="text-xs text-naeared-400 font-bold uppercase tracking-wider block mb-1">Internal Focus</span>
-                    <strong class="text-white font-heading text-xl leading-snug block">“CPAs, Tax Attorneys & Tax Preparers”</strong>
-                </div>
+  <h3>How each layer hits SEO / AEO / GEO</h3>
+  <p>
+    SEO, AEO, and GEO aren't separate services. They run through every layer
+    above. Here's how each layer contributes.
+  </p>
 
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="bg-navy-800 p-4 rounded-xl border border-white/10 shadow-sm hover:shadow-md transition-colors">
-                        <i data-lucide="shield-check" class="w-5 h-5 text-naeared-400 mb-2"></i>
-                        <h4 class="text-white font-bold text-sm">Enrolled Agents</h4>
-                        <p class="text-xs text-slate-300 mt-1">Primary target (non-members)</p>
-                    </div>
-                    <div class="bg-navy-800 p-4 rounded-xl border border-white/10 shadow-sm hover:shadow-md transition-colors">
-                        <i data-lucide="scale" class="w-5 h-5 text-naeared-400 mb-2"></i>
-                        <h4 class="text-white font-bold text-sm">Tax Attorneys</h4>
-                        <p class="text-xs text-slate-300 mt-1">Adjacent referral network</p>
-                    </div>
-                    <div class="bg-navy-800 p-4 rounded-xl border border-white/10 shadow-sm hover:shadow-md transition-colors">
-                        <i data-lucide="calculator" class="w-5 h-5 text-naeared-400 mb-2"></i>
-                        <h4 class="text-white font-bold text-sm">CPAs</h4>
-                        <p class="text-xs text-slate-300 mt-1">Adjacent referral network</p>
-                    </div>
-                    <div class="bg-navy-800 p-4 rounded-xl border border-white/10 shadow-sm hover:shadow-md transition-colors">
-                        <i data-lucide="file-signature" class="w-5 h-5 text-naeared-400 mb-2"></i>
-                        <h4 class="text-white font-bold text-sm">Tax Preparers</h4>
-                        <p class="text-xs text-slate-300 mt-1">Enrolled & unenrolled</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <table>
+    <thead>
+      <tr>
+        <th>Layer</th>
+        <th>SEO<br><span style="font-size:10px;color:var(--ink-dim);text-transform:none;letter-spacing:0;">Google / Bing</span></th>
+        <th>AEO<br><span style="font-size:10px;color:var(--ink-dim);text-transform:none;letter-spacing:0;">Google AI Overview, voice</span></th>
+        <th>GEO<br><span style="font-size:10px;color:var(--ink-dim);text-transform:none;letter-spacing:0;">ChatGPT, Claude, Perplexity</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="col-label">1 · Website</td>
+        <td>Schema tags, keyword copy, internal links, RSS</td>
+        <td>FAQ pages with direct answers at the top</td>
+        <td>llms.txt files that tell AI what to cite</td>
+      </tr>
+      <tr>
+        <td class="col-label">2 · Distribution</td>
+        <td><strong>Main job</strong>: backlinks from 6 platforms, all indexed by Google</td>
+        <td><strong>Main job</strong>: same idea in different formats — Q&amp;A, essay, video — so AI has more shapes to quote</td>
+        <td>Secondary: Medium, Reddit, and YouTube transcripts get crawled into AI training data</td>
+      </tr>
+      <tr>
+        <td class="col-label">3 · Platform Optimization</td>
+        <td>Episode descriptions with keywords; Apple and Spotify search rank</td>
+        <td>Chapter markers become quotable answers</td>
+        <td>Listen Notes, Podchaser, Goodpods are the directories AI tools cite</td>
+      </tr>
+      <tr>
+        <td class="col-label">4 · Guest Posts</td>
+        <td>High-authority backlinks (Accounting Today, etc.) lift domain rank</td>
+        <td>Authority-site articles show up in AI answers</td>
+        <td><strong>Main job</strong>: social proof and mentions are the signal AI uses to decide what to recommend</td>
+      </tr>
+    </tbody>
+  </table>
 
-    <!-- IMAGE-RICH CAMPAIGN CARDS -->
-    <section class="bg-white py-20 border-y border-slate-200 clip-diagonal relative z-10">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <span class="text-naeared-600 font-bold tracking-widest uppercase text-sm mb-2 block">Execution Strategy</span>
-                <h2 class="font-heading font-black text-4xl md:text-5xl text-navy-900 uppercase tracking-tight">Four Core Campaigns</h2>
-                <p class="text-slate-500 mt-4 font-medium text-lg">One Goal = One Campaign Workstream</p>
-            </div>
+  <p class="note">
+    Each layer works on its own. Run together, they cover every place a
+    listener might search — Google, AI tools, podcast apps.
+  </p>
 
-            <div class="grid grid-cols-1 gap-10">
-                
-                <!-- Camp 1 -->
-                <div class="group bg-slate-50 rounded-[2rem] overflow-hidden border border-slate-100 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col lg:flex-row">
-                    <div class="lg:w-1/2 bg-navy-900 relative overflow-hidden min-h-[250px]">
-                        <img src="https://images.unsplash.com/photo-1589903308904-1010c2294adc?q=80&w=1200&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-overlay group-hover:scale-110 transition-transform duration-700" alt="Podcast">
-                        <div class="absolute inset-0 p-8 flex flex-col justify-between">
-                            <span class="w-12 h-12 bg-gradient-to-br from-naeared-400 to-naeared-600 rounded-xl flex items-center justify-center font-heading font-black text-white text-xl shadow-lg">1</span>
-                            <h3 class="font-heading font-black text-3xl text-white uppercase leading-tight">Podcast<br>Ranking</h3>
-                        </div>
-                    </div>
-                    <div class="p-10 lg:w-1/2 bg-white flex flex-col justify-center">
-                        <ul class="space-y-4">
-                            <li class="flex items-start gap-3"><i data-lucide="chevron-right" class="w-5 h-5 text-naeared-500 mt-1 flex-shrink-0"></i><span class="text-base text-slate-600"><strong>Landing Pages:</strong> Structured for search and AI discovery, optimizing podcast metadata, and link building on high-PR websites using guest posts.</span></li>
-                            <li class="flex items-start gap-3"><i data-lucide="chevron-right" class="w-5 h-5 text-naeared-500 mt-1 flex-shrink-0"></i><span class="text-base text-slate-600"><strong>SEO:</strong> Search engine optimization for podcast discoverability and organic ranking.</span></li>
-                            <li class="flex items-start gap-3"><i data-lucide="chevron-right" class="w-5 h-5 text-naeared-500 mt-1 flex-shrink-0"></i><span class="text-base text-slate-600"><strong>GEO:</strong> Generative Engine Optimization — structuring content so AI tools surface the podcast in answers.</span></li>
-                            <li class="flex items-start gap-3"><i data-lucide="chevron-right" class="w-5 h-5 text-naeared-500 mt-1 flex-shrink-0"></i><span class="text-base text-slate-600"><strong>Podcast Page Reformatting:</strong> Redesigning the podcast page for better engagement and conversion.</span></li>
-                            <li class="flex items-start gap-3"><i data-lucide="chevron-right" class="w-5 h-5 text-naeared-500 mt-1 flex-shrink-0"></i><span class="text-base text-slate-600"><strong>Audience Sections:</strong> For EAs, CPAs, & Preparers.</span></li>
-                            <li class="flex items-start gap-3"><i data-lucide="chevron-right" class="w-5 h-5 text-naeared-500 mt-1 flex-shrink-0"></i><span class="text-base text-slate-600"><strong>Production:</strong> Riverside consistency & summaries.</span></li>
-                            <li class="flex items-start gap-3"><i data-lucide="chevron-right" class="w-5 h-5 text-naeared-500 mt-1 flex-shrink-0"></i><span class="text-base text-slate-600"><strong>A/B Testing:</strong> Thumbnails + naming framework.</span></li>
-                        </ul>
-                    </div>
-                </div>
+  <h3>AI workers do the drafting</h3>
+  <ul class="tight">
+    <li>Transcripts get turned into Medium / Reddit / LinkedIn / Substack posts (Layer 2)</li>
+    <li>Transcripts feed the FAQ and key takeaways on the episode page (Layer 1)</li>
+    <li>Each episode generates social captions and a guest-post outline (Layer 4)</li>
+  </ul>
+  <p>
+    Humans review and publish. That keeps quality high and the monthly price
+    at $1,650 instead of $3,500+ at typical agency rates.
+  </p>
 
-                <!-- Camp 2 -->
-                <div class="group bg-slate-50 rounded-[2rem] overflow-hidden border border-slate-100 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col lg:flex-row">
-                    <div class="lg:w-1/2 bg-navy-900 relative overflow-hidden min-h-[250px] lg:order-2">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-overlay group-hover:scale-110 transition-transform duration-700" alt="Data">
-                        <div class="absolute inset-0 p-8 flex flex-col justify-between">
-                            <span class="w-12 h-12 bg-gradient-to-br from-naeared-400 to-naeared-600 rounded-xl flex items-center justify-center font-heading font-black text-white text-xl shadow-lg">2</span>
-                            <h3 class="font-heading font-black text-3xl text-white uppercase leading-tight">Data<br>Enrichment</h3>
-                        </div>
-                    </div>
-                    <div class="p-10 lg:w-1/2 bg-white flex flex-col justify-center lg:order-1">
-                        <ul class="space-y-4">
-                            <li class="flex items-start gap-3"><i data-lucide="chevron-right" class="w-5 h-5 text-naeared-500 mt-1 flex-shrink-0"></i><span class="text-base text-slate-600"><strong>IRS Source:</strong> Official FOIA listings of U.S.-based enrolled agents and enrolled tax preparers as source of truth.</span></li>
-                            <li class="flex items-start gap-3"><i data-lucide="chevron-right" class="w-5 h-5 text-naeared-500 mt-1 flex-shrink-0"></i><span class="text-base text-slate-600"><strong>Deep Enrichment:</strong> Verified emails mapped to EAs, tax preparers, tax attorneys, and CPAs.</span></li>
-                            <li class="flex items-start gap-3"><i data-lucide="chevron-right" class="w-5 h-5 text-naeared-500 mt-1 flex-shrink-0"></i><span class="text-base text-slate-600"><strong>Dual Use:</strong> Feeds Pardot AND Custom Audiences.</span></li>
-                            <li class="flex items-start gap-3"><i data-lucide="chevron-right" class="w-5 h-5 text-naeared-500 mt-1 flex-shrink-0"></i><span class="text-base text-slate-600"><strong>Target:</strong> 25–45% match rate guarantees.</span></li>
-                            <li class="flex items-start gap-3"><i data-lucide="chevron-right" class="w-5 h-5 text-naeared-500 mt-1 flex-shrink-0"></i><span class="text-base text-slate-600"><strong>Replaces Direct Mail:</strong> Enriched email lists eliminate costly print campaigns — NAEA runs automated outreach via Pardot/Salesforce to convert nonmembers into members.</span></li>
-                        </ul>
-                    </div>
-                </div>
+  <h3>90-day targets</h3>
+  <ul class="tight">
+    <li>First citation in ChatGPT, Claude, or Perplexity for "podcasts for tax professionals"</li>
+    <li>3+ inclusions in "best podcasts" roundups</li>
+    <li>Apple top-10 search rank in the Enrolled Agent niche</li>
+    <li>30–50% lift in episode-page traffic</li>
+    <li>2–3x lift in social clip views</li>
+    <li>Substack newsletter launched with 500–1,000 starter subscribers</li>
+  </ul>
+</section>
 
-                <!-- Camp 3 -->
-                <div class="group bg-slate-50 rounded-[2rem] overflow-hidden border border-slate-100 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col lg:flex-row">
-                    <div class="lg:w-1/2 bg-navy-900 relative overflow-hidden min-h-[250px]">
-                        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1200&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-overlay group-hover:scale-110 transition-transform duration-700" alt="Music">
-                        <div class="absolute inset-0 p-8 flex flex-col justify-between">
-                            <span class="w-12 h-12 bg-gradient-to-br from-naeared-400 to-naeared-600 rounded-xl flex items-center justify-center font-heading font-black text-white text-xl shadow-lg">3</span>
-                            <h3 class="font-heading font-black text-3xl text-white uppercase leading-tight">Original<br>Music</h3>
-                        </div>
-                    </div>
-                    <div class="p-10 lg:w-1/2 bg-white flex flex-col justify-center">
-                        <ul class="space-y-4">
-                            <li class="flex items-start gap-3"><i data-lucide="chevron-right" class="w-5 h-5 text-naeared-500 mt-1 flex-shrink-0"></i><span class="text-base text-slate-600"><strong>"There's Only One" Theme:</strong> Original music in the style of "Simply the Best" or "You're the One For Me" for the FB ad campaign.</span></li>
-                            <li class="flex items-start gap-3"><i data-lucide="chevron-right" class="w-5 h-5 text-naeared-500 mt-1 flex-shrink-0"></i><span class="text-base text-slate-600"><strong>Full Ownership:</strong> No major label licensing fees — NAEA receives a 1-year usage license for the "There's Only One" original music, included in monthly retainer.</span></li>
-                            <li class="flex items-start gap-3"><i data-lucide="chevron-right" class="w-5 h-5 text-naeared-500 mt-1 flex-shrink-0"></i><span class="text-base text-slate-600"><strong>Campaign Creative:</strong> Licensed usage for all ads, podcast intros/outros, and event media.</span></li>
-                        </ul>
-                    </div>
-                </div>
+<!-- OPTION 3 — BUNDLE -->
+<section id="option-3">
+  <h2>Option 3 — Bundle <span class="tag">Best Value</span></h2>
+  <p>
+    Buy List Build and Post Marketing together. The enriched email list
+    seeds the Substack newsletter. LinkedIn URLs become ad audiences for
+    podcast awareness. The two work better together than either alone.
+  </p>
 
-                <!-- Camp 4 -->
-                <div class="group bg-slate-50 rounded-[2rem] overflow-hidden border border-slate-100 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col lg:flex-row">
-                    <div class="lg:w-1/2 bg-navy-900 relative overflow-hidden min-h-[250px] lg:order-2">
-                        <img src="https://images.unsplash.com/photo-1611944212129-29977ae1398c?q=80&w=1200&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-overlay group-hover:scale-110 transition-transform duration-700" alt="LinkedIn">
-                        <div class="absolute inset-0 p-8 flex flex-col justify-between">
-                            <span class="w-12 h-12 bg-gradient-to-br from-naeared-400 to-naeared-600 rounded-xl flex items-center justify-center font-heading font-black text-white text-xl shadow-lg">4</span>
-                            <div>
-                                <h3 class="font-heading font-black text-3xl text-white uppercase leading-tight">Social Media<br>Acquisition</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-10 lg:w-1/2 bg-white flex flex-col justify-center lg:order-1">
-                        <h4 class="font-heading font-bold text-navy-900 text-lg uppercase mb-4">LinkedIn Connection & Signal System</h4>
-                        <ul class="space-y-4">
-                            <li class="flex items-start gap-3"><i data-lucide="chevron-right" class="w-5 h-5 text-naeared-500 mt-1 flex-shrink-0"></i><span class="text-base text-slate-600"><strong>LinkedIn Content Audit:</strong> Analyze what content performs best on LinkedIn to inform strategy.</span></li>
-                            <li class="flex items-start gap-3"><i data-lucide="chevron-right" class="w-5 h-5 text-naeared-500 mt-1 flex-shrink-0"></i><span class="text-base text-slate-600"><strong>Enrich Lists:</strong> Match IRS EA and adjacent lists with LinkedIn profiles.</span></li>
-                            <li class="flex items-start gap-3"><i data-lucide="chevron-right" class="w-5 h-5 text-naeared-500 mt-1 flex-shrink-0"></i><span class="text-base text-slate-600"><strong>Connection Queues:</strong> Build targeted connection queues for NAEA leaders.</span></li>
-                            <li class="flex items-start gap-3"><i data-lucide="chevron-right" class="w-5 h-5 text-naeared-500 mt-1 flex-shrink-0"></i><span class="text-base text-slate-600"><strong>Content Plays:</strong> Convert podcast insights and key NAEA content into weekly posts and comment plays that show up in connections' feeds.</span></li>
-                            <li class="flex items-start gap-3"><i data-lucide="chevron-right" class="w-5 h-5 text-naeared-500 mt-1 flex-shrink-0"></i><span class="text-base text-slate-600"><strong>Audience CSV:</strong> Deliver LinkedIn-ready audience file for Sponsored Content + Lead Gen Forms (name/email/company/profile &rarr; 30-50% match rate, $8-12 CPC, 15-25% form fills).</span></li>
-                            <li class="flex items-start gap-3"><i data-lucide="chevron-right" class="w-5 h-5 text-naeared-500 mt-1 flex-shrink-0"></i><span class="text-base text-slate-600"><strong>Facebook Fanpage Setup:</strong> Build and launch the NAEA Facebook Business Page as a dedicated distribution hub for campaign content and audience growth.</span></li>
-                            <li class="flex items-start gap-3"><i data-lucide="chevron-right" class="w-5 h-5 text-naeared-500 mt-1 flex-shrink-0"></i><span class="text-base text-slate-600"><strong>Full Coverage:</strong> LinkedIn connections and InMail reach the contacts email enrichment can't — together, email + LinkedIn close the gap for near-complete audience coverage.</span></li>
-                        </ul>
-                    </div>
-                </div>
+  <h3>Bundle pricing</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Bundle</th>
+        <th class="num">List Build<br>(one-time)</th>
+        <th class="num">Post Marketing<br>standalone</th>
+        <th class="num">Bundle Post<br>Marketing rate</th>
+        <th class="num">Monthly savings</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="col-label">10K + Post Marketing</td>
+        <td class="num">$1,680</td>
+        <td class="num">$1,650 / mo</td>
+        <td class="num">$1,500 / mo</td>
+        <td class="num">$150 / mo</td>
+      </tr>
+      <tr>
+        <td class="col-label">20K + Post Marketing</td>
+        <td class="num">$2,860</td>
+        <td class="num">$1,650 / mo</td>
+        <td class="num">$1,450 / mo</td>
+        <td class="num">$200 / mo</td>
+      </tr>
+      <tr>
+        <td class="col-label">30K + Post Marketing</td>
+        <td class="num">$4,040</td>
+        <td class="num">$1,650 / mo</td>
+        <td class="num">$1,400 / mo</td>
+        <td class="num">$250 / mo</td>
+      </tr>
+      <tr>
+        <td class="col-label">60K + Post Marketing</td>
+        <td class="num">$6,580</td>
+        <td class="num">$1,650 / mo</td>
+        <td class="num">$1,350 / mo</td>
+        <td class="num">$300 / mo</td>
+      </tr>
+    </tbody>
+  </table>
 
-            </div>
-        </div>
-    </section>
+  <p class="note">
+    Bundle savings come off the Post Marketing monthly rate. Bigger List
+    Build means bigger ongoing discount. The List Build is paid once.
+    Post Marketing runs monthly with a 3-month minimum.
+  </p>
 
-    <!-- DATA & CONTEXT (DARK OVERLAP) -->
-    <section class="bg-navy-900 text-white py-20 relative z-0 -mt-12 pt-28 pb-32 clip-diagonal-bottom">
-        <div class="max-w-4xl mx-auto px-6 text-center">
+  <h3>Year-1 bundle totals</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Bundle</th>
+        <th class="num">List Build</th>
+        <th class="num">12 mo Post Marketing</th>
+        <th class="num">Year-1 total</th>
+        <th class="num">Year-1 savings</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="col-label">10K bundle</td>
+        <td class="num">$1,680</td>
+        <td class="num">$18,000</td>
+        <td class="num">$19,680</td>
+        <td class="num">$1,800</td>
+      </tr>
+      <tr>
+        <td class="col-label">20K bundle</td>
+        <td class="num">$2,860</td>
+        <td class="num">$17,400</td>
+        <td class="num">$20,260</td>
+        <td class="num">$2,400</td>
+      </tr>
+      <tr>
+        <td class="col-label">30K bundle</td>
+        <td class="num">$4,040</td>
+        <td class="num">$16,800</td>
+        <td class="num">$20,840</td>
+        <td class="num">$3,000</td>
+      </tr>
+      <tr>
+        <td class="col-label">60K bundle</td>
+        <td class="num">$6,580</td>
+        <td class="num">$16,200</td>
+        <td class="num">$22,780</td>
+        <td class="num">$3,600</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
 
-            <h2 class="font-heading font-black text-4xl md:text-5xl uppercase tracking-tight mb-8 text-white drop-shadow-md">Match Rate Context</h2>
-            <p class="text-slate-200 mb-10 font-medium text-xl md:text-2xl">The IRS Active EA FOIA listing contains <span class="text-white font-black">~66,000</span> enrolled agents.</p>
+<!-- DASHBOARD ADD-ON -->
+<section id="dashboard">
+  <h2>Decision Dashboard <span class="tag">Add-on</span></h2>
+  <p>
+    A custom dashboard for NAEA. Shows enrichment progress, podcast signals,
+    content distribution, and member funnel conversion in one weekly-refreshed
+    view. NAEA owns the source code. Works with any option above, or on its own.
+  </p>
 
-            <div class="bg-white rounded-[2rem] p-10 md:p-14 mb-10 shadow-[0_20px_50px_rgba(0,0,0,0.3)] w-full max-w-2xl mx-auto">
-                <div class="grid grid-cols-2 gap-8">
-                    <div class="text-center">
-                        <div class="w-24 h-24 rounded-full bg-naeared-50 flex items-center justify-center border-2 border-naeared-300 mx-auto mb-4"><span class="text-naeared-600 font-black text-3xl">35%</span></div>
-                        <p class="font-heading font-black text-4xl text-navy-900 mb-1">~23,000</p>
-                        <span class="text-base font-semibold text-slate-500 uppercase tracking-wide">Verified Emails</span>
-                    </div>
-                    <div class="text-center">
-                        <div class="w-24 h-24 rounded-full bg-slate-100 flex items-center justify-center border-2 border-slate-300 mx-auto mb-4"><span class="text-slate-600 font-black text-3xl">25%</span></div>
-                        <p class="font-heading font-black text-4xl text-navy-900 mb-1">~16,500</p>
-                        <span class="text-base font-semibold text-slate-500 uppercase tracking-wide">Verified Emails</span>
-                    </div>
-                </div>
-            </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>What's included</th>
+        <th class="num">Cost</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="col-label">Dashboard buyout</td>
+        <td>
+          Custom-branded with NAEA's logo and colors. Full source code transferred.
+          You can host it on your own servers. One round of revisions included.
+          Setup support during handoff.
+        </td>
+        <td class="num">$7,500<br><span style="font-size:11px;color:var(--ink-dim);">one-time</span></td>
+      </tr>
+      <tr>
+        <td class="col-label">Optional yearly support</td>
+        <td>
+          Quarterly feature updates. Bug fixes within 5 business days.
+          Email support for NAEA staff. Yearly security updates.
+        </td>
+        <td class="num">+$1,200 / yr</td>
+      </tr>
+    </tbody>
+  </table>
 
-            <div class="border-l-4 border-naeared-500 pl-6 text-left max-w-2xl mx-auto bg-white/5 backdrop-blur-sm rounded-r-xl p-6">
-                <h4 class="text-lg font-black text-naeared-400 uppercase mb-3">If match rate drops below 25%:</h4>
-                <p class="text-base text-white leading-relaxed">We automatically expand sourcing to secondary directories, cross-reference against LinkedIn, and deliver verified contacts on schedule regardless.</p>
-            </div>
+  <h3>Cost comparison</h3>
+  <table>
+    <thead>
+      <tr><th>Alternative</th><th class="num">Year-1 cost</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>BI consultancy build (Tableau, Looker, Power BI)</td><td class="num">$15,000–25,000</td></tr>
+      <tr><td>Junior data analyst (salary + benefits)</td><td class="num">~$65,000</td></tr>
+      <tr><td>Mid-tier data analyst (salary + benefits)</td><td class="num">~$97,000</td></tr>
+      <tr><td>Tableau license + setup labor</td><td class="num">~$2,000 + build time</td></tr>
+      <tr class="total"><td>This dashboard, source code included</td><td class="num">$7,500</td></tr>
+    </tbody>
+  </table>
 
-            <div class="flex flex-col items-center mt-10 mb-2">
-                <i data-lucide="arrow-down" class="w-10 h-10 text-naeared-400 animate-bounce stroke-[3]"></i>
-            </div>
+  <p class="note">
+    The dashboard works whether or not NAEA keeps the List Build or Post
+    Marketing programs running. If you want us to keep the data flowing
+    each month, that's covered by the List Build line.
+  </p>
+</section>
 
-            <div class="border-l-4 border-white/30 pl-6 text-left max-w-2xl mx-auto bg-white/5 backdrop-blur-sm rounded-r-xl p-6 mt-2">
-                <h4 class="text-lg font-black text-white uppercase mb-3 flex items-center gap-3">
-                    <svg class="w-8 h-8 flex-shrink-0" viewBox="0 0 24 24" fill="white"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                    LinkedIn Closes the Gap
-                </h4>
-                <p class="text-base text-white leading-relaxed">Email enrichment captures 25 to 35% of the IRS list. LinkedIn connections and InMail reach the remaining 65 to 75% that email can't. Together, both channels deliver near complete audience coverage, no one falls through the cracks.</p>
-            </div>
+</main>
 
-        </div>
-    </section>
-
-    <!-- TIMELINE SECTION -->
-    <div class="w-full py-8 md:py-12 bg-cream flex items-center justify-center border-b border-slate-200">
-        <h2 class="text-4xl md:text-6xl font-heading font-black text-navy-900 uppercase tracking-tight text-center px-6">Monthly Execution</h2>
-    </div>
-
-    <section class="max-w-5xl mx-auto px-6 pb-24 pt-16">
-        <div class="relative border-l-4 border-slate-200 ml-6 md:ml-0 md:border-l-0">
-            <!-- Absolute center line for desktop -->
-            <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-slate-200 -translate-x-1/2 z-0"></div>
-
-            <!-- Week 1 -->
-            <div class="relative mb-16 md:mb-20 flex flex-col md:flex-row items-start md:items-center w-full group">
-                <div class="absolute -left-10 md:left-1/2 md:-translate-x-1/2 w-10 h-10 rounded-full bg-gold-500 border-4 border-cream z-10 shadow-[0_0_10px_rgba(246,190,0,0.5)] group-hover:scale-110 transition-transform"></div>
-                <div class="md:w-1/2 md:pr-12 text-left md:text-right mb-4 md:mb-0 pl-6 md:pl-0">
-                    <h3 class="font-heading font-black text-4xl text-navy-900">WEEK 1</h3>
-                    <p class="text-orange-600 font-bold uppercase tracking-wider text-sm mt-2">Audit & Foundation</p>
-                </div>
-                <div class="md:w-1/2 md:pl-12 pl-6 md:pl-16">
-                    <div class="bg-white p-8 rounded-2xl shadow-xl border border-slate-100">
-                        <p class="text-base text-slate-500 mb-5 leading-relaxed">We establish the baseline. Nothing gets rebuilt without knowing what is already working.</p>
-                        <div class="space-y-3">
-                            <span class="inline-flex items-center gap-3 text-sm font-bold bg-slate-50 text-slate-700 px-4 py-2.5 rounded-lg border border-slate-100"><i data-lucide="check" class="w-4 h-4 text-green-500"></i> LinkedIn Content Audit</span>
-                            <span class="inline-flex items-center gap-3 text-sm font-bold bg-slate-50 text-slate-700 px-4 py-2.5 rounded-lg border border-slate-100"><i data-lucide="check" class="w-4 h-4 text-green-500"></i> Podcast Audit</span>
-                            <span class="inline-flex items-center gap-3 text-sm font-bold bg-slate-50 text-slate-700 px-4 py-2.5 rounded-lg border border-slate-100"><i data-lucide="check" class="w-4 h-4 text-green-500"></i> Creative & Distro Audit</span>
-                            <span class="inline-flex items-center gap-3 text-sm font-black bg-naeared-50 text-naeared-600 px-4 py-2.5 rounded-lg border border-naeared-200"><i data-lucide="music" class="w-4 h-4"></i> First Music Demo Delivered</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Week 2 -->
-            <div class="relative mb-16 md:mb-20 flex flex-col md:flex-row items-start md:items-center w-full group">
-                <div class="absolute -left-10 md:left-1/2 md:-translate-x-1/2 w-8 h-8 rounded-full bg-slate-300 border-4 border-cream z-10 group-hover:bg-gold-500 transition-colors"></div>
-                <div class="md:w-1/2 md:pr-12 text-left md:text-right mb-4 md:mb-0 pl-6 md:pl-0 md:order-2">
-                    <h3 class="font-heading font-black text-4xl text-navy-900">WEEK 2</h3>
-                    <p class="text-slate-500 font-bold uppercase tracking-wider text-sm mt-2">Production Begins</p>
-                </div>
-                <div class="md:w-1/2 md:pl-12 pl-6 md:pl-0 md:pr-12 md:order-1">
-                    <div class="bg-white p-8 rounded-2xl shadow-xl border border-slate-100">
-                        <ul class="space-y-4">
-                            <li class="flex items-center gap-3 text-base font-semibold text-slate-700"><div class="w-3 h-3 bg-navy-900 rounded-full"></div> IRS List Enrichment Begins</li>
-                            <li class="flex items-center gap-3 text-base font-semibold text-slate-700"><div class="w-3 h-3 bg-navy-900 rounded-full"></div> Podcast Landing Page Rewrite</li>
-                            <li class="flex items-center gap-3 text-base font-semibold text-slate-700"><div class="w-3 h-3 bg-navy-900 rounded-full"></div> Music Demo Feedback</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Week 3 -->
-            <div class="relative mb-16 md:mb-20 flex flex-col md:flex-row items-start md:items-center w-full group">
-                <div class="absolute -left-10 md:left-1/2 md:-translate-x-1/2 w-8 h-8 rounded-full bg-slate-300 border-4 border-cream z-10 group-hover:bg-gold-500 transition-colors"></div>
-                <div class="md:w-1/2 md:pr-12 text-left md:text-right mb-4 md:mb-0 pl-6 md:pl-0">
-                    <h3 class="font-heading font-black text-4xl text-navy-900">WEEK 3</h3>
-                    <p class="text-slate-500 font-bold uppercase tracking-wider text-sm mt-2">Delivery & Deployment</p>
-                </div>
-                <div class="md:w-1/2 md:pl-12 pl-6 md:pl-16">
-                    <div class="bg-white p-8 rounded-2xl shadow-xl border border-slate-100">
-                        <ul class="space-y-4">
-                            <li class="flex items-center gap-3 text-base font-black text-navy-900 bg-blue-50 p-3 rounded-lg"><i data-lucide="send" class="w-5 h-5 text-blue-500"></i> Enriched List Delivered</li>
-                            <li class="flex items-center gap-3 text-base font-semibold text-slate-700"><div class="w-3 h-3 bg-navy-900 rounded-full"></div> Podcast SEO Live</li>
-                            <li class="flex items-center gap-3 text-base font-semibold text-slate-700"><div class="w-3 h-3 bg-navy-900 rounded-full"></div> LinkedIn Content Audit</li>
-                            <li class="flex items-center gap-3 text-base font-semibold text-slate-700"><div class="w-3 h-3 bg-navy-900 rounded-full"></div> LinkedIn Signal System Live</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Week 4 -->
-            <div class="relative flex flex-col md:flex-row items-start md:items-center w-full group">
-                <div class="absolute -left-10 md:left-1/2 md:-translate-x-1/2 w-10 h-10 rounded-full bg-green-500 border-4 border-cream z-10 shadow-[0_0_10px_rgba(34,197,94,0.5)] group-hover:scale-110 transition-transform"></div>
-                <div class="md:w-1/2 md:pr-12 text-left md:text-right mb-4 md:mb-0 pl-6 md:pl-0 md:order-2">
-                    <h3 class="font-heading font-black text-4xl text-navy-900">WEEK 4</h3>
-                    <p class="text-green-600 font-bold uppercase tracking-wider text-sm mt-2">Systems Active</p>
-                </div>
-                <div class="md:w-1/2 md:pl-12 pl-6 md:pl-0 md:pr-12 md:order-1">
-                    <div class="bg-white p-8 rounded-2xl shadow-xl border border-slate-100">
-                        <ul class="space-y-4">
-                            <li class="flex items-center gap-3 text-base font-black text-slate-800"><i data-lucide="bar-chart-2" class="w-5 h-5 text-green-500"></i> Baseline Report Delivered</li>
-                            <li class="flex items-center gap-3 text-base font-black text-slate-800"><i data-lucide="zap" class="w-5 h-5 text-green-500"></i> All 4 Campaigns Active</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========================================================= -->
-    <!-- PART 2: THE PODCAST LANDING PAGE MOCKUP                   -->
-    <!-- ========================================================= -->
-
-    <div id="mockup-section" class="bg-navy-900 py-16 text-center shadow-[0_15px_30px_rgba(0,0,0,0.3)] relative z-20">
-        <span class="block text-naeared-400 font-bold uppercase tracking-[0.2em] text-sm mb-2">Campaign 1 Deliverable Preview</span>
-        <h2 class="font-heading font-black text-white text-3xl md:text-5xl uppercase tracking-tight text-shadow-sm">Podcast Page Optimization Ideas</h2>
-    </div>
-
-    <div class="max-w-[1200px] mx-auto my-12 bg-white rounded-[2rem] overflow-hidden shadow-2xl border border-slate-200">
-        
-        <!-- Mockup: Interactive Hero -->
-        <section class="flex flex-col lg:flex-row items-center p-10 lg:p-16 bg-white gap-10 border-b border-slate-100">
-            <div class="flex-1 min-w-[300px]">
-                <span class="inline-block font-heading font-bold text-xs uppercase tracking-widest text-naeared-600 mb-4 bg-naeared-50 px-3 py-1 rounded-full border border-naeared-100">Insights</span>
-                <h2 class="font-heading font-black text-4xl md:text-5xl text-navy-900 leading-tight mb-6">The Secret to Year-Round Revenue Teaser</h2>
-                <p class="text-lg text-slate-600 mb-4">Tax season doesn't have to end in April. Millions of taxpayers face IRS issues—letters, balances, and audits—every single month.</p>
-                <p class="text-lg text-slate-600 mb-6">By learning representation, you transform your practice from a 4-month sprint into a 12-month marathon of steady, high-value consulting income.</p>
-                <p class="font-bold text-navy-900 text-lg border-l-4 border-naeared-500 pl-4 bg-slate-50 py-3 rounded-r-lg">Tap the phone to see how your peers are breaking the cycle.</p>
-            </div>
-
-            <div class="flex-shrink-0 mx-auto">
-                <div class="w-[320px] h-[600px] bg-slate-50 rounded-[3rem] border-[12px] border-navy-900 shadow-[0_20px_40px_rgba(0,45,91,0.15)] relative overflow-hidden group/phone">
-                    <div id="app-screen" class="h-full flex flex-col bg-slate-50 relative">
-                        
-                        <div id="start-screen" class="absolute inset-0 z-50 bg-navy-900 flex flex-col items-center justify-center p-6 cursor-pointer transition-opacity duration-500" onclick="startExperience()">
-                            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=400&auto=format&fit=crop')] opacity-10 mix-blend-overlay"></div>
-                            <img src="images/thumbnail.png" alt="Podcast" class="w-32 h-32 rounded-2xl shadow-xl mb-6 object-cover object-top border border-white/10 group-hover/phone:scale-105 transition-transform duration-500">
-                            <h3 class="font-heading font-black text-white text-2xl mb-4 text-shadow-sm">EA Advocate</h3>
-                            <div class="bg-white/10 backdrop-blur-sm border border-white/20 text-white font-bold px-6 py-2 rounded-full text-sm animate-pulse shadow-sm">Tap to Play Chat</div>
-                        </div>
-
-                        <div id="app-header" class="bg-white p-4 text-center z-10 shadow-sm border-b border-slate-100">
-                            <div class="font-heading font-black text-navy-900 text-lg">NAEA</div>
-                            <div class="text-xs text-slate-500 font-medium">You Don't Have To Stay Seasonal</div>
-                        </div>
-                        
-                        <div class="bg-white text-center p-3 text-2xl border-b border-slate-100 shadow-[0_2px_5px_rgba(0,0,0,0.02)]">🎧</div>
-                        
-                        <div id="chat" class="flex-1 p-4 overflow-y-auto flex flex-col gap-3 pb-16"></div>
-                        
-                        <div id="ending" class="absolute inset-0 z-40 bg-navy-900/95 backdrop-blur-sm text-white flex flex-col items-center justify-center p-8 opacity-0 pointer-events-none transition-opacity duration-500 text-center">
-                            <h4 class="font-bold text-xl leading-snug mb-6 drop-shadow-md">If your income resets every year, you're missing the second half of the work.</h4>
-                            <div class="w-12 h-1.5 bg-gradient-to-r from-naeared-400 to-naeared-600 rounded-full"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Mockup: Banner -->
-        <section class="bg-navy-900 text-center py-20 px-6 relative overflow-hidden border-y-4 border-naeared-500">
-            <div class="absolute inset-0 bg-gradient-to-r from-navy-900 via-highlight-navy/20 to-navy-900 z-0 pointer-events-none"></div>
-            <div class="relative z-10">
-                <h2 class="font-heading font-black text-white text-3xl md:text-4xl mb-4 text-shadow-sm leading-tight drop-shadow-lg">You Don't Have To Stay Seasonal.</h2>
-                <p class="text-lg text-slate-200 max-w-3xl mx-auto font-medium">Expand your tax preparation practice into a lucrative, year-round business with the National Association of Enrolled Agents.</p>
-            </div>
-        </section>
-
-        <!-- Mockup: Promo & Listen -->
-        <section class="py-20 px-8 bg-slate-50 border-b border-slate-200">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
-                <div>
-                    <h2 class="font-heading font-black text-3xl md:text-4xl text-navy-900 leading-tight mb-6">Join thousands of EAs, CPAs, Tax Attorneys and Tax Preparers</h2>
-                    <p class="text-base text-slate-600 mb-8">The Enrolled Agent Advocate is the official podcast of America's Tax Experts. Each episode features practitioners, IRS insiders, and policy advocates exploring what it means to represent taxpayers.</p>
-                    
-                    <div class="p-6">
-                        <h4 class="text-base font-black text-navy-900 uppercase tracking-widest mb-4">Where To Listen</h4>
-                        <div class="flex flex-wrap gap-3">
-                            <a href="#" class="px-5 py-2 rounded-full border-2 border-navy-900 text-navy-900 font-bold text-sm hover:bg-navy-900 hover:text-white transition-colors shadow-sm">Apple Podcasts</a>
-                            <a href="#" class="px-5 py-2 rounded-full border-2 border-navy-900 text-navy-900 font-bold text-sm hover:bg-navy-900 hover:text-white transition-colors shadow-sm">Spotify</a>
-                            <a href="#" class="px-5 py-2 rounded-full border-2 border-navy-900 text-navy-900 font-bold text-sm hover:bg-navy-900 hover:text-white transition-colors shadow-sm">YouTube</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="mx-auto group cursor-pointer relative">
-                    <div class="absolute inset-0 bg-naeared-500 rounded-[1.5rem] translate-x-4 translate-y-4 z-0 opacity-20 group-hover:translate-x-5 group-hover:translate-y-5 transition-transform"></div>
-                    <img src="images/thumbnail.png" class="relative z-10 w-full max-w-[320px] rounded-[1.5rem] shadow-[0_20px_40px_rgba(0,45,91,0.15)] group-hover:scale-[1.02] transition-transform duration-500 object-cover object-top" alt="Podcast">
-                </div>
-            </div>
-        </section>
-
-        <!-- Stat: Why We Updated the Thumbnail -->
-        <section class="py-16 px-8 bg-navy-900 relative overflow-hidden">
-          <div class="absolute inset-0 bg-gradient-to-r from-navy-900 via-highlight-navy/10 to-navy-900 pointer-events-none"></div>
-          <div class="relative z-10 max-w-5xl mx-auto">
-            <h3 class="font-heading font-black text-white text-2xl md:text-3xl text-center mb-4 uppercase tracking-tight">
-              Why We Updated the Podcast Thumbnail
-            </h3>
-            <p class="text-slate-300 text-center max-w-2xl mx-auto mb-12">
-              Podcast thumbnails featuring human faces achieve significantly higher click-through rates. We put a face on the brand.
-            </p>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-              <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-colors">
-                <div class="font-heading font-black text-naeared-400 text-5xl md:text-6xl mb-3">20%</div>
-                <p class="text-slate-300 text-sm font-medium">Minimum CTR increase with expressive face thumbnails</p>
-              </div>
-              <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-colors">
-                <div class="font-heading font-black text-naeared-400 text-5xl md:text-6xl mb-3">34%</div>
-                <p class="text-slate-300 text-sm font-medium">Average CTR boost when thumbnails feature human faces</p>
-              </div>
-              <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-colors">
-                <div class="font-heading font-black text-naeared-400 text-5xl md:text-6xl mb-3">45%</div>
-                <p class="text-slate-300 text-sm font-medium">CTR jump seen in high-performing face thumbnail examples</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Mockup: Audiences -->
-        <section class="py-20 px-8 bg-white max-w-5xl mx-auto">
-            <h2 class="text-center font-heading font-black text-3xl md:text-4xl text-navy-900 mb-12 uppercase tracking-tight">Latest Episodes</h2>
-            
-            <div class="bg-white rounded-[1.5rem] overflow-hidden flex flex-col md:flex-row shadow-[0_10px_30px_rgba(0,45,91,0.06)] border border-slate-100 mb-8 group cursor-pointer hover:shadow-[0_15px_40px_rgba(0,45,91,0.1)] transition-shadow">
-                <div class="md:w-2/5 overflow-hidden relative min-h-[350px]">
-                    <img src="images/thumbnail.png" alt="Episode" class="absolute inset-0 w-full h-full object-contain object-top group-hover:scale-105 transition-transform duration-700 bg-slate-50">
-                </div>
-                <div class="p-8 md:w-3/5 flex flex-col justify-center">
-                    <span class="self-start bg-navy-900 text-naeared-400 px-3 py-1 rounded text-xs font-black uppercase tracking-wider mb-4 shadow-sm border border-naeared-500/20">Featured</span>
-                    <h3 class="font-heading font-black text-2xl text-navy-900 mb-3">Magic, Movies & Tax Controversy</h3>
-                    <p class="text-slate-600 text-sm mb-6">Host Brandy Spears sits down with Jeffrey Thompson, a tax pro whose career sits at the intersection of tax, storytelling, and performance...</p>
-                    <div class="inline-flex items-center gap-2 text-navy-900 font-bold text-sm bg-slate-50 px-4 py-2 rounded-lg border border-slate-200 group-hover:border-navy-900 transition-colors"><i data-lucide="play-circle" class="w-5 h-5 text-naeared-600"></i> Play Episode (56 min)</div>
-                </div>
-            </div>
-
-            <div class="space-y-4">
-                <div class="bg-white rounded-xl p-5 flex items-center border border-slate-100 shadow-sm hover:shadow-md hover:border-naeared-500 transition-all cursor-pointer group">
-                    <div class="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center mr-6 group-hover:bg-naeared-50 transition-colors"><i data-lucide="play" class="w-5 h-5 text-navy-900 group-hover:text-naeared-600 transition-colors"></i></div>
-                    <div>
-                        <h4 class="font-heading font-bold text-lg text-navy-900 mb-1">Finding Your Voice Before the IRS</h4>
-                        <span class="text-sm text-slate-500 font-medium">Mar 2 • 50 min</span>
-                    </div>
-                </div>
-                <div class="bg-white rounded-xl p-5 flex items-center border border-slate-100 shadow-sm hover:shadow-md hover:border-naeared-500 transition-all cursor-pointer group">
-                    <div class="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center mr-6 group-hover:bg-naeared-50 transition-colors"><i data-lucide="play" class="w-5 h-5 text-navy-900 group-hover:text-naeared-600 transition-colors"></i></div>
-                    <div>
-                        <h4 class="font-heading font-bold text-lg text-navy-900 mb-1">Tax Strategy, Leadership, and Trust</h4>
-                        <span class="text-sm text-slate-500 font-medium">Feb 16 • 50 min</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </div>
-
-    <!-- INVESTMENT -->
-    <section id="investment" class="bg-navy-900 py-24 relative overflow-hidden">
-        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=1000&auto=format&fit=crop')] opacity-5 mix-blend-overlay object-cover z-0"></div>
-
-        <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
-            <h2 class="font-heading font-black text-4xl md:text-5xl text-white uppercase mb-4 text-shadow-sm">Contract & Investment</h2>
-            <p class="text-xl text-slate-300 font-medium mb-12">Choose the commitment that fits. Payment: monthly.</p>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- 6-Month Package -->
-                <div class="bg-white rounded-3xl p-10 md:p-12 shadow-[0_20px_40px_rgba(0,0,0,0.4)] border-t-8 border-slate-300">
-                    <span class="inline-block bg-blue-50 text-navy-900 font-black px-4 py-1 rounded-full text-sm uppercase tracking-widest mb-6 border border-navy-900/10">6-Month Package</span>
-                    <div class="font-heading font-black text-5xl md:text-6xl text-navy-900 leading-none tracking-tighter mb-2">$1,980</div>
-                    <div class="text-slate-500 font-bold text-lg mb-8 uppercase tracking-wider">Per Month <span class="mx-2">&bull;</span> $11,880 Total</div>
-
-                    <div class="bg-slate-50 rounded-xl p-6 text-left border border-slate-100">
-                        <ul class="space-y-4">
-                            <li class="flex items-center gap-3"><i data-lucide="check-square" class="w-6 h-6 text-green-500 flex-shrink-0"></i><span class="font-semibold text-slate-700 text-base">Full Organic Campaign Elements</span></li>
-                            <li class="flex items-center gap-3"><i data-lucide="check-square" class="w-6 h-6 text-green-500 flex-shrink-0"></i><span class="font-semibold text-slate-700 text-base">Audits & Strategy Included</span></li>
-                            <li class="flex items-center gap-3"><i data-lucide="check-square" class="w-6 h-6 text-green-500 flex-shrink-0"></i><span class="font-semibold text-slate-700 text-base">Monthly Execution & Distribution</span></li>
-                            <li class="flex items-center gap-3"><i data-lucide="check-square" class="w-6 h-6 text-green-500 flex-shrink-0"></i><span class="font-semibold text-slate-700 text-base">Ongoing Reporting</span></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- 1-Year Package -->
-                <div class="bg-white rounded-3xl p-10 md:p-12 shadow-[0_20px_40px_rgba(0,0,0,0.4)] border-t-8 border-naeared-500 relative">
-                    <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-naeared-500 text-white font-black px-5 py-1.5 rounded-full text-xs uppercase tracking-widest shadow-lg">Best Value</span>
-                    <span class="inline-block bg-naeared-50 text-naeared-600 font-black px-4 py-1 rounded-full text-sm uppercase tracking-widest mb-6 border border-naeared-200">1-Year Package</span>
-                    <div class="font-heading font-black text-5xl md:text-6xl text-navy-900 leading-none tracking-tighter mb-2">$1,750</div>
-                    <div class="text-slate-500 font-bold text-lg mb-4 uppercase tracking-wider">Per Month <span class="mx-2">&bull;</span> $21,000 Total</div>
-                    <div class="text-naeared-600 font-black text-sm mb-8 uppercase tracking-wider">Save $230/mo vs. 6-month</div>
-
-                    <div class="bg-slate-50 rounded-xl p-6 text-left border border-slate-100">
-                        <ul class="space-y-4">
-                            <li class="flex items-center gap-3"><i data-lucide="check-square" class="w-6 h-6 text-green-500 flex-shrink-0"></i><span class="font-semibold text-slate-700 text-base">Full Organic Campaign Elements</span></li>
-                            <li class="flex items-center gap-3"><i data-lucide="check-square" class="w-6 h-6 text-green-500 flex-shrink-0"></i><span class="font-semibold text-slate-700 text-base">Audits & Strategy Included</span></li>
-                            <li class="flex items-center gap-3"><i data-lucide="check-square" class="w-6 h-6 text-green-500 flex-shrink-0"></i><span class="font-semibold text-slate-700 text-base">Monthly Execution & Distribution</span></li>
-                            <li class="flex items-center gap-3"><i data-lucide="check-square" class="w-6 h-6 text-green-500 flex-shrink-0"></i><span class="font-semibold text-slate-700 text-base">Ongoing Reporting</span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- Ready to Move Forward -->
-            <div class="mt-16">
-                <h3 class="font-heading font-black text-3xl md:text-4xl text-white uppercase tracking-tight mb-4">Ready to Move Forward</h3>
-                <p class="text-lg text-slate-300 font-medium mb-12">Brandy, let's hop on a 15-minute call this week. I'll handle the heavy lift — you get the wins. Sign below and we move.</p>
-            </div>
-        </div>
-
-        <div class="max-w-4xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <!-- Service Provider -->
-            <div class="bg-white rounded-2xl p-8 shadow-lg border border-slate-100">
-                <h4 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-6">Service Provider</h4>
-                <div class="space-y-4">
-                    <div>
-                        <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Signature</p>
-                        <p class="font-heading font-black text-2xl text-navy-900 italic">Kawani Ali</p>
-                    </div>
-                    <div>
-                        <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Title</p>
-                        <p class="text-base font-semibold text-slate-700">Campaign Director</p>
-                    </div>
-                    <div>
-                        <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Date</p>
-                        <p class="text-base font-semibold text-slate-700">March 25, 2026</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- NAEA Authorized Signatory -->
-            <div class="bg-white rounded-2xl p-8 shadow-lg border border-slate-100">
-                <h4 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-6">NAEA &middot; Authorized Signatory</h4>
-                <div class="space-y-4">
-                    <div>
-                        <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Signature</p>
-                        <div class="border-b-2 border-dashed border-slate-300 py-4 text-slate-400 italic text-sm">Sign here</div>
-                    </div>
-                    <div>
-                        <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Name + Title</p>
-                        <p class="text-base font-semibold text-slate-700">Brandy Spears, Director of Marketing</p>
-                    </div>
-                    <div>
-                        <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Date</p>
-                        <div class="border-b-2 border-dashed border-slate-300 py-4 text-slate-400 italic text-sm">Date</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="max-w-3xl mx-auto px-6 text-center">
-            <a href="#" class="btn-cf inline-flex items-center gap-2 text-lg px-10 py-5 rounded-xl shadow-xl">
-                ACCEPT PROPOSAL + SCHEDULE KICKOFF CALL &rarr;
-            </a>
-            <p class="text-xs text-slate-400 mt-4 max-w-md mx-auto">By signing and clicking accept, both parties agree to the terms outlined in this proposal. A formal contract document will be provided upon acceptance.</p>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="bg-navy-900 py-10 text-center border-t-4 border-naeared-500">
-        <div class="flex items-center justify-center gap-3 mb-3">
-            <div class="w-10 h-10 rounded-full bg-naeared-500 flex items-center justify-center font-heading font-black text-white text-lg">K</div>
-            <p class="text-white font-bold">Kawani Ali</p>
-        </div>
-        <p class="text-slate-400 text-sm">Prepared exclusively for NAEA &middot; March 25, 2026</p>
-    </footer>
-
-    <!-- INTERACTIVE SCRIPTS -->
-    <script>
-        lucide.createIcons();
-
-        // --- SIGNATURE SCRIPT ---
-        function handleAccept() {
-            const sig = document.getElementById('sig-name').value.trim();
-            if (!sig) {
-                alert('Please add your signature before accepting.');
-                document.getElementById('sig-name').focus();
-                return;
-            }
-            if (!document.getElementById('sig-date').value) {
-                document.getElementById('sig-date').value = new Date().toLocaleDateString('en-US', {month:'long', day:'numeric', year:'numeric'});
-            }
-            const btn = document.getElementById('accept-btn');
-            btn.innerHTML = '<span class="main-text text-lg">✓ PROPOSAL ACCEPTED</span><span class="sub-text">We will be in touch shortly to schedule the kickoff.</span>';
-            btn.disabled = true;
-        }
-
-        // --- PHONE MOCKUP SCRIPT ---
-        const messages = [
-            { sender: 'mike', text: 'Dead until next April 😭' },
-            { sender: 'mike', text: 'Gotta wait it out' },
-            { sender: 'jess', text: 'Why you waiting' },
-            { sender: 'mike', text: 'No more returns' },
-            { sender: 'jess', text: 'Your clients still have IRS problems' },
-            { sender: 'mike', text: 'Like what' },
-            { sender: 'jess', text: 'Letters, balances, payment plans' },
-            { sender: 'mike', text: 'I don’t do that' },
-            { sender: 'jess', text: 'I didn’t either' },
-            { sender: 'jess', text: 'NAEA showed me' },
-            { sender: 'mike', text: 'They actually teach that?' },
-            { sender: 'jess', text: 'Yeah that’s where I learned it' }
-        ];
-
-        const chat = document.getElementById('chat');
-        const ending = document.getElementById('ending');
-        const startScreen = document.getElementById('start-screen');
-        const END_PAUSE = 4000; 
-        const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-
-        let audioCtx;
-
-        function initAudio() {
-            if (!audioCtx) {
-                const AudioContext = window.AudioContext || window.webkitAudioContext;
-                audioCtx = new AudioContext();
-            }
-            if (audioCtx.state === 'suspended') {
-                audioCtx.resume();
-            }
-        }
-
-        function playMessageSound(isReceiver) {
-            if (!audioCtx) return;
-            const osc = audioCtx.createOscillator();
-            const gainNode = audioCtx.createGain();
-            osc.connect(gainNode);
-            gainNode.connect(audioCtx.destination);
-            const startFreq = isReceiver ? 600 : 400;
-            const endFreq = isReceiver ? 900 : 600;
-            osc.type = 'sine';
-            osc.frequency.setValueAtTime(startFreq, audioCtx.currentTime);
-            osc.frequency.exponentialRampToValueAtTime(endFreq, audioCtx.currentTime + 0.1);
-            gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
-            gainNode.gain.linearRampToValueAtTime(0.1, audioCtx.currentTime + 0.02);
-            gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.15);
-            osc.start(audioCtx.currentTime);
-            osc.stop(audioCtx.currentTime + 0.15);
-        }
-
-        function startExperience() {
-            initAudio();
-            startScreen.classList.add('hidden');
-            setTimeout(runAnimation, 500);
-        }
-
-        async function runAnimation() {
-            chat.innerHTML = '';
-            ending.classList.remove('show');
-            await sleep(500);
-            for (const msg of messages) {
-                const prevMessages = document.querySelectorAll('.msg-wrapper');
-                prevMessages.forEach(el => el.classList.add('unfocused'));
-                const wrapper = document.createElement('div');
-                wrapper.className = `msg-wrapper flex flex-col ${msg.sender === 'mike' ? 'items-start' : 'items-end'}`;
-                
-                const bubble = document.createElement('div');
-                bubble.className = `max-w-[85%] px-4 py-3 text-sm font-medium leading-snug shadow-sm ${
-                    msg.sender === 'mike' 
-                    ? 'bg-white text-slate-800 rounded-[18px_18px_18px_4px] border border-slate-100' 
-                    : 'bg-navy-900 text-white rounded-[18px_18px_4px_18px]'
-                }`;
-                bubble.textContent = msg.text;
-                
-                wrapper.appendChild(bubble);
-                chat.appendChild(wrapper);
-                
-                // Trigger reflow
-                void wrapper.offsetWidth;
-                wrapper.classList.add('show');
-                
-                playMessageSound(msg.sender === 'jess');
-                chat.scrollTo({ top: chat.scrollHeight, behavior: 'smooth' });
-                
-                const naturalDelay = 700 + (msg.text.length * 50);
-                await sleep(naturalDelay);
-            }
-            await sleep(1000);
-            ending.classList.add('show');
-            await sleep(END_PAUSE);
-            runAnimation(); // loop
-        }
-    </script>
-
+<footer>
+  Prepared by Brand Spears / Digiwaxx · kawani@digiwaxx.com · May 2026
+</footer>
 
 </body>
 </html>
