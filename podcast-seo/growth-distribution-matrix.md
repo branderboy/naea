@@ -11,35 +11,11 @@
 
 ---
 
-## Bundled Service Offering — SEO + Podcast Audit & Optimization Package
+## Bundled Service Offering
 
-A single productized engagement that combines the diagnostic, the on-platform fixes, and the distribution lift.
+**Includes:**
+- SEO + podcast audit
+- Podbean optimization: chapter markers, tighter episode segmentation, stronger intros, clearer topic transitions
+- Distribution: Medium, guest posts, free PR
 
-### What's included
-
-**1. SEO + Podcast Audit**
-- Current Apple, Spotify, and Podbean ranking positions
-- Episode-level SEO audit (titles, descriptions, keywords, transcripts)
-- Completion rate + listen-through analysis
-- Directory presence check (Listen Notes, Podchaser, Goodpods)
-- AEO citation status — what LLMs currently say when asked for tax-podcast recommendations
-- Email + Pardot funnel health check
-
-**2. Podbean Optimization**
-- Add chapter markers to every episode
-- Tighter episode segmentation
-- Stronger intros (cold-open the hook before any music)
-- Clearer topic transitions between segments
-- Show-page metadata: categories, keywords, descriptions, cover art, cross-links
-
-**3. Distribution Activation** (the matrix elements)
-- Medium blog posts repurposing each episode
-- Guest-post outreach for "best tax podcasts" roundups (AEO play)
-- Free PR distribution (PRLog, OpenPR, EIN Presswire free tier) — no paid wire required
-- Non-branded Facebook page setup + posting cadence
-- Pardot automation flow against the agent list
-- Launch-window email pushes for downloads, follows, and reviews
-
-### Price
-
-**$960** — flat-rate bundle covering the audit, Podbean optimization (chapter markers, segmentation, intros, topic transitions), and distribution activation (Medium, guest posts, free PR).
+**Price: $960**
