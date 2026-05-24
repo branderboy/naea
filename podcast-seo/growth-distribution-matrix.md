@@ -2,7 +2,7 @@
 
 | Goal | Real Strategy |
 |---|---|
-| **Reach Growth** | Use two paths at the same time. Earned: write press releases and get them posted on news sites, and write blogs on Medium. Owned: make a Facebook page that isn't tied to the NAEA name and post there. |
-| **Podcast Ranking** | One trigger: reviews. Ask for a review inside every episode. Most shows skip this, so doing it puts you ahead of them. |
-| **Subscribers** | Once the email list is built, use Parot to send them an automated email flow. |
-| **Average Listen Time** | Add chapter markers to each episode so people can jump around. To get more downloads, list the show on Listen Notes, Podchaser, and Goodpods. The biggest SEO win is writing guest posts that show up in "best tax podcasts" lists — AI tools like ChatGPT pull from those lists when people ask for podcast recommendations, so being on them means the AI knows your show exists. Also send "in case you missed this" emails to the agents on your list. |
+| **Reach Growth** | Run two channels at once. Earned (news/pitch): write press releases and get them posted, plus publish Medium blogs. Owned (FB): post on a non-branded Facebook page that sits outside the NAEA brand so it reaches people who won't follow a trade association. |
+| **Podcast Ranking** | Focus on reviews. Ask for a review inside every episode and email the agent list with a direct link to the review screen. Most shows skip this step, so doing it consistently moves you up the chart. |
+| **Subscribers** | Once the email list is built, run a Parot automation flow against it. The flow brings people back for a second episode, which is when most listeners actually decide to subscribe. |
+| **Average Listen Time** | Add chapter markers to every episode so listeners can jump to what they care about — that lifts completion rate. For downloads, get the show listed on Listen Notes, Podchaser, and Goodpods so it shows up in search and feeds AI training data. The biggest SEO win is landing in "best tax podcasts" roundup posts — LLMs pull from those lists when people ask for podcast recommendations, so being on them is how the AI learns the show exists. Back it up with "in case you missed this" emails to the agent list to recover anyone who missed the launch. |
