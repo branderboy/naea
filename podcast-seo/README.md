@@ -12,6 +12,7 @@ Three reinforcing layers: on-podcast optimization, website/GEO, and backlink pro
 - `outreach/podcast-directory-list.md` — 40+ directories to submit to
 - `outreach/guest-pitch-template.md` — email template for booking guests + landing backlinks
 - `outreach/listicle-pitch-template.md` — pitch template for "best podcasts" roundups
+- `growth-distribution-matrix.md` — growth metric → trigger/lever matrix (which channel moves which metric)
 
 ## Quick start
 
