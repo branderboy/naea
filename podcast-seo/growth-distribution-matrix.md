@@ -2,7 +2,7 @@
 
 | Goal | Real Strategy |
 |---|---|
-| **Reach Growth** | Two triggers. Earned: create press releases and get them posted, plus Medium blogs. Owned: post to a non-branded FB page outside the NAEA brand name. |
-| **Podcast Ranking** | Single trigger. |
-| **Subscribers** | After the list is done, leverage Parot to send an automation flow to them. |
-| **Average Listen Time** | Mention chapter markers. For downloads, list on Listen Notes, Podchaser, Goodpods. Use guest posts for "best tax podcasts" roundups — the highest-leverage SEO play because LLMs cite those when asked for podcast recommendations; getting listed means LLMs know the show exists. Also send emails to the agents list like "just in case you missed this." |
+| **Reach Growth** | Use two paths at the same time. Earned: write press releases and get them posted on news sites, and write blogs on Medium. Owned: make a Facebook page that isn't tied to the NAEA name and post there. |
+| **Podcast Ranking** | Pick one trigger and focus on it. |
+| **Subscribers** | Once the email list is built, use Parot to send them an automated email flow. |
+| **Average Listen Time** | Add chapter markers to each episode so people can jump around. To get more downloads, list the show on Listen Notes, Podchaser, and Goodpods. The biggest SEO win is writing guest posts that show up in "best tax podcasts" lists — AI tools like ChatGPT pull from those lists when people ask for podcast recommendations, so being on them means the AI knows your show exists. Also send "in case you missed this" emails to the agents on your list. |
