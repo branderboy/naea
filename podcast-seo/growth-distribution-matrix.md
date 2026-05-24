@@ -13,10 +13,8 @@
 
 ## Bundled Service Offering — $960
 
-**Use case:** A podcast that's already publishing but isn't growing — downloads flat, low rankings, no LLM/search visibility, no distribution muscle. Owner doesn't want to spend on ads. Needs the show fixed on-platform and pushed off-platform.
-
 **What you get for $960:**
 
-1. **SEO + Podcast Audit** — current rankings, episode SEO, completion rate, directory presence, what shows up when LLMs are asked for tax podcasts
+1. **SEO + Podcast Audit**
 2. **Podbean Optimization** — chapter markers, tighter episode segmentation, stronger intros, clearer topic transitions
-3. **Distribution** — Medium posts, guest posts (best tax podcasts roundups), free PR placements
+3. **Distribution** — Medium, guest posts, free PR
