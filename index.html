@@ -296,83 +296,73 @@
             </div>
 
             <!-- GROWTH + DISTRIBUTION MATRIX -->
-            <div class="bg-white rounded-2xl p-6 md:p-8 shadow-xl mb-12 max-w-6xl mx-auto">
-                <h3 class="font-heading font-black text-2xl md:text-3xl text-navy-900 uppercase tracking-tight mb-2">Growth + Distribution Matrix</h3>
-                <p class="text-base text-slate-600 mb-6">EA Advocate — what Apple and the discovery platforms reward, and how we move each lever.</p>
-                <div class="overflow-x-auto rounded-xl border border-slate-200">
-                    <table class="w-full text-sm">
-                        <thead class="bg-navy-900 text-white">
-                            <tr>
-                                <th class="text-left px-4 py-3 font-heading font-bold text-xs uppercase tracking-wider">Growth Area</th>
-                                <th class="text-left px-4 py-3 font-heading font-bold text-xs uppercase tracking-wider">What Apple / Discovery Platforms Reward</th>
-                                <th class="text-left px-4 py-3 font-heading font-bold text-xs uppercase tracking-wider">Strategy</th>
-                                <th class="text-left px-4 py-3 font-heading font-bold text-xs uppercase tracking-wider">Execution</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="bg-white border-b border-slate-100 align-top">
-                                <td class="px-4 py-4 font-heading font-black text-navy-900">Distribution</td>
-                                <td class="px-4 py-4 text-slate-700">Consistent traffic + listener activity</td>
-                                <td class="px-4 py-4 text-slate-700">Split distribution into Earned and Owned channels</td>
-                                <td class="px-4 py-4 text-slate-700">Earned: news outreach, podcast pitches, guest appearances, industry mentions. Owned: Facebook, email, NAEA channels, website placements</td>
-                            </tr>
-                            <tr class="bg-slate-50 border-b border-slate-100 align-top">
-                                <td class="px-4 py-4 font-heading font-black text-navy-900">Podcast Rankings</td>
-                                <td class="px-4 py-4 text-slate-700">Download velocity, completion rate, subscriber count, review count, recency</td>
-                                <td class="px-4 py-4 text-slate-700">Create coordinated ranking pushes around every episode launch</td>
-                                <td class="px-4 py-4 text-slate-700">Send launch emails requesting downloads, follows, and reviews within the first 24–72 hours</td>
-                            </tr>
-                            <tr class="bg-white border-b border-slate-100 align-top">
-                                <td class="px-4 py-4 font-heading font-black text-navy-900">Subscriber Growth</td>
-                                <td class="px-4 py-4 text-slate-700">Repeat listeners + returning audience</td>
-                                <td class="px-4 py-4 text-slate-700">Use automation once enrolled agent lists are built</td>
-                                <td class="px-4 py-4 text-slate-700">Leverage Pardot for nurture flows, episode reminders, and "just in case you missed this" follow-up campaigns</td>
-                            </tr>
-                            <tr class="bg-slate-50 border-b border-slate-100 align-top">
-                                <td class="px-4 py-4 font-heading font-black text-navy-900">Listen Time &amp; Retention</td>
-                                <td class="px-4 py-4 text-slate-700">Average listen duration + completion rate</td>
-                                <td class="px-4 py-4 text-slate-700">Improve episode structure and usability</td>
-                                <td class="px-4 py-4 text-slate-700">Add chapter markers, tighter episode segmentation, stronger intros, and clearer topic transitions</td>
-                            </tr>
-                            <tr class="bg-white align-top">
-                                <td class="px-4 py-4 font-heading font-black text-navy-900">Podcast SEO + AEO</td>
-                                <td class="px-4 py-4 text-slate-700">Search visibility, authority mentions, and citations in the sources LLMs pull from</td>
-                                <td class="px-4 py-4 text-slate-700">Expand the indexing footprint for traditional search and get the show into the content LLMs cite when asked "best podcast for…"</td>
-                                <td class="px-4 py-4 text-slate-700">List the show on Listen Notes, Podchaser, and Goodpods for SEO. For AEO, land guest posts in "best tax podcasts" roundups — LLMs cite those lists when asked for podcast recommendations, so being on them is how the LLM learns the show exists</td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <div class="max-w-6xl mx-auto mb-12">
+                <div class="text-center mb-8">
+                    <h3 class="font-heading font-black text-2xl md:text-3xl text-white uppercase tracking-tight mb-2">Growth + Distribution Matrix</h3>
+                    <p class="text-base text-white/80">EA Advocate — what Apple and the discovery platforms reward, and how we move each lever.</p>
                 </div>
-            </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-                <div class="bg-white rounded-2xl p-8 shadow-xl border-t-4 border-naeared-500">
-                    <div class="flex items-center gap-3 mb-3">
-                        <i data-lucide="globe" class="w-7 h-7 text-naeared-500"></i>
-                        <h3 class="font-heading font-black text-xl text-navy-900 uppercase">Website</h3>
+                    <!-- Card 1: Distribution -->
+                    <div class="bg-white rounded-2xl p-6 shadow-xl border-t-4 border-naeared-500 flex flex-col">
+                        <div class="flex items-center gap-3 mb-4">
+                            <i data-lucide="share-2" class="w-7 h-7 text-naeared-500"></i>
+                            <h4 class="font-heading font-black text-xl text-navy-900 uppercase">Distribution</h4>
+                        </div>
+                        <p class="text-xs uppercase tracking-widest font-bold text-naeared-600 mb-1">Metric</p>
+                        <p class="text-sm text-slate-700 mb-4">Consistent traffic + listener activity</p>
+                        <p class="text-xs uppercase tracking-widest font-bold text-naeared-600 mb-1">Solution</p>
+                        <p class="text-sm text-slate-700">Split distribution into Earned and Owned. Earned: news outreach, podcast pitches, guest appearances, industry mentions. Owned: Facebook, email, NAEA channels, website placements.</p>
                     </div>
-                    <p class="text-base text-slate-600">Landing page, schema, RSS, Apple and Spotify tuning.</p>
-                </div>
-                <div class="bg-white rounded-2xl p-8 shadow-xl border-t-4 border-naeared-500">
-                    <div class="flex items-center gap-3 mb-3">
-                        <i data-lucide="share-2" class="w-7 h-7 text-naeared-500"></i>
-                        <h3 class="font-heading font-black text-xl text-navy-900 uppercase">Distribution</h3>
+
+                    <!-- Card 2: Podcast Rankings -->
+                    <div class="bg-white rounded-2xl p-6 shadow-xl border-t-4 border-naeared-500 flex flex-col">
+                        <div class="flex items-center gap-3 mb-4">
+                            <i data-lucide="bar-chart-3" class="w-7 h-7 text-naeared-500"></i>
+                            <h4 class="font-heading font-black text-xl text-navy-900 uppercase">Podcast Rankings</h4>
+                        </div>
+                        <p class="text-xs uppercase tracking-widest font-bold text-naeared-600 mb-1">Metric</p>
+                        <p class="text-sm text-slate-700 mb-4">Download velocity, completion rate, subscriber count, review count, recency</p>
+                        <p class="text-xs uppercase tracking-widest font-bold text-naeared-600 mb-1">Solution</p>
+                        <p class="text-sm text-slate-700">Coordinated ranking pushes around every episode launch. Send launch emails requesting downloads, follows, and reviews within the first 24&ndash;72 hours.</p>
                     </div>
-                    <p class="text-base text-slate-600">Each episode reaches Medium, Reddit, LinkedIn, Substack, Facebook, and YouTube.</p>
-                </div>
-                <div class="bg-white rounded-2xl p-8 shadow-xl border-t-4 border-naeared-500">
-                    <div class="flex items-center gap-3 mb-3">
-                        <i data-lucide="settings-2" class="w-7 h-7 text-naeared-500"></i>
-                        <h3 class="font-heading font-black text-xl text-navy-900 uppercase">Platform Optimization</h3>
+
+                    <!-- Card 3: Subscriber Growth -->
+                    <div class="bg-white rounded-2xl p-6 shadow-xl border-t-4 border-naeared-500 flex flex-col">
+                        <div class="flex items-center gap-3 mb-4">
+                            <i data-lucide="users" class="w-7 h-7 text-naeared-500"></i>
+                            <h4 class="font-heading font-black text-xl text-navy-900 uppercase">Subscriber Growth</h4>
+                        </div>
+                        <p class="text-xs uppercase tracking-widest font-bold text-naeared-600 mb-1">Metric</p>
+                        <p class="text-sm text-slate-700 mb-4">Repeat listeners + returning audience</p>
+                        <p class="text-xs uppercase tracking-widest font-bold text-naeared-600 mb-1">Solution</p>
+                        <p class="text-sm text-slate-700">Once enrolled agent lists are built, leverage Pardot for nurture flows, episode reminders, and "just in case you missed this" follow-up campaigns.</p>
                     </div>
-                    <p class="text-base text-slate-600">Show and episode metadata, tuned inside your podcast hosting account, whichever you use. Plus niche directory submissions.</p>
-                </div>
-                <div class="bg-white rounded-2xl p-8 shadow-xl border-t-4 border-naeared-500">
-                    <div class="flex items-center gap-3 mb-3">
-                        <i data-lucide="newspaper" class="w-7 h-7 text-naeared-500"></i>
-                        <h3 class="font-heading font-black text-xl text-navy-900 uppercase">Guest Posts</h3>
+
+                    <!-- Card 4: Listen Time & Retention -->
+                    <div class="bg-white rounded-2xl p-6 shadow-xl border-t-4 border-naeared-500 flex flex-col">
+                        <div class="flex items-center gap-3 mb-4">
+                            <i data-lucide="clock" class="w-7 h-7 text-naeared-500"></i>
+                            <h4 class="font-heading font-black text-xl text-navy-900 uppercase">Listen Time &amp; Retention</h4>
+                        </div>
+                        <p class="text-xs uppercase tracking-widest font-bold text-naeared-600 mb-1">Metric</p>
+                        <p class="text-sm text-slate-700 mb-4">Average listen duration + completion rate</p>
+                        <p class="text-xs uppercase tracking-widest font-bold text-naeared-600 mb-1">Solution</p>
+                        <p class="text-sm text-slate-700">Add chapter markers, tighter episode segmentation, stronger intros, and clearer topic transitions.</p>
                     </div>
-                    <p class="text-base text-slate-600">One placed guest post. Listicle pitches for AI recommendations.</p>
+
+                    <!-- Card 5: Podcast SEO + AEO -->
+                    <div class="bg-white rounded-2xl p-6 shadow-xl border-t-4 border-naeared-500 flex flex-col">
+                        <div class="flex items-center gap-3 mb-4">
+                            <i data-lucide="search" class="w-7 h-7 text-naeared-500"></i>
+                            <h4 class="font-heading font-black text-xl text-navy-900 uppercase">Podcast SEO + AEO</h4>
+                        </div>
+                        <p class="text-xs uppercase tracking-widest font-bold text-naeared-600 mb-1">Metric</p>
+                        <p class="text-sm text-slate-700 mb-4">Search visibility, authority mentions, and citations in the sources LLMs pull from</p>
+                        <p class="text-xs uppercase tracking-widest font-bold text-naeared-600 mb-1">Solution</p>
+                        <p class="text-sm text-slate-700">List the show on Listen Notes, Podchaser, and Goodpods for SEO. For AEO, land guest posts in "best tax podcasts" roundups &mdash; LLMs cite those lists when asked for podcast recommendations, so being on them is how the LLM learns the show exists.</p>
+                    </div>
+
                 </div>
             </div>
 
